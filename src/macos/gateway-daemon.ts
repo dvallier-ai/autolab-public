@@ -28,7 +28,7 @@ type GatewayWsLogStyle = "auto" | "full" | "compact";
 
 async function main() {
   if (hasFlag(args, "--version") || hasFlag(args, "-v")) {
-    // Match `openclaw --version` behavior for Swift env/version checks.
+    // Match `autolab --version` behavior for Swift env/version checks.
     // Keep output a single line.
     console.log(BUNDLED_VERSION);
     process.exit(0);

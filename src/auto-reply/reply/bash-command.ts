@@ -197,7 +197,7 @@ function formatElevatedUnavailableMessage(params: {
   lines.push("- agents.list[].tools.elevated.allowFrom.<provider>");
   if (params.sessionKey) {
     lines.push(
-      `See: ${formatCliCommand(`openclaw sandbox explain --session ${params.sessionKey}`)}`,
+      `See: ${formatCliCommand(`autolab sandbox explain --session ${params.sessionKey}`)}`,
     );
   }
   return lines.join("\n");

@@ -327,7 +327,7 @@ describe("config identity defaults", () => {
                 {
                   id: "main",
                   identity: {
-                    name: "OpenClaw",
+                    name: "AutoLab",
                     theme: "space lobster",
                     emoji: "🦞",
                   },

@@ -156,7 +156,7 @@ function buildDocsSection(params: { docsPath?: string; isMinimal: boolean; readT
     "Community: https://discord.com/invite/clawd",
     "Find new skills: https://clawhub.com",
     "For OpenClaw behavior, commands, config, or architecture: consult local docs first.",
-    "When diagnosing issues, run `openclaw status` yourself when possible; only ask the user if you lack access (e.g., sandboxed).",
+    "When diagnosing issues, run `autolab status` yourself when possible; only ask the user if you lack access (e.g., sandboxed).",
     "",
   ];
 }
@@ -419,7 +419,7 @@ export function buildAgentSystemPrompt(params: {
     "- openclaw gateway start",
     "- openclaw gateway stop",
     "- openclaw gateway restart",
-    "If unsure, ask the user to run `openclaw help` (or `openclaw gateway --help`) and paste the output.",
+    "If unsure, ask the user to run `autolab help` (or `autolab gateway --help`) and paste the output.",
     "",
     ...skillsSection,
     ...memorySection,
