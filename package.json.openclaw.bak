@@ -1,12 +1,12 @@
 {
-  "name": "@danv-intel/ass",
+  "name": "openclaw",
   "version": "2026.2.9",
-  "description": "Autonomous Support Structure - AI agent framework for Intel validation",
+  "description": "Multi-channel AI gateway with extensible messaging integrations",
   "keywords": [],
   "license": "MIT",
   "author": "",
   "bin": {
-    "ass": "ass.mjs"
+    "openclaw": "openclaw.mjs"
   },
   "files": [
     "assets/",
