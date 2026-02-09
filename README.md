@@ -1,8 +1,8 @@
-# ASS (Autonomous Support Structure) ⚙️
+# AutoLab
 
-**Autonomous Support Structure** - Multi-agent AI framework for Intel validation and infrastructure automation.
+**AutoLab** - Automation framework for Intel validation lab workflows.
 
-Forked from [OpenClaw](https://github.com/openclaw/openclaw) with customizations for Intel workflows.
+Forked from [OpenClaw](https://github.com/openclaw/openclaw) with customizations for Intel validation environments.
 
 ---
 
@@ -10,28 +10,28 @@ Forked from [OpenClaw](https://github.com/openclaw/openclaw) with customizations
 
 ```bash
 # Install
-npm install -g @danv-intel/ass
+npm install -g @danv-intel/autolab
 
 # Setup
-ass wizard
+autolab wizard
 
 # Check status
-ass status
+autolab status
 
 # Start gateway
-ass gateway start
+autolab gateway start
 ```
 
-## What is ASS?
+## What is AutoLab?
 
-ASS (Autonomous Support Structure) is a multi-agent AI framework designed for:
+AutoLab is a multi-agent AI automation framework designed for Intel validation labs:
 
-- **Infrastructure automation** - Build and manage systems
+- **Infrastructure automation** - Build and manage lab systems
 - **Validation workflows** - Automated testing and QA
 - **Agent collaboration** - Multiple specialized agents working together
-- **Message board systems** - Training and knowledge sharing
+- **Knowledge management** - Training boards and documentation
 
-Built on the OpenClaw foundation, customized for Intel's validation lab environment.
+Built on the OpenClaw foundation, customized for Intel's interoperability validation lab.
 
 ---
 
@@ -45,22 +45,46 @@ Built on the OpenClaw foundation, customized for Intel's validation lab environm
 
 ---
 
+## Use Cases
+
+**Validation Lab Automation:**
+
+- Automated test execution
+- Bug tracking and triage
+- Network configuration management
+- Dashboard and reporting
+
+**Agent Collaboration:**
+
+- QA agents review and test
+- Security agents audit and approve
+- Infrastructure agents build and deploy
+- Coordination agents manage workflows
+
+**Knowledge Management:**
+
+- Training documentation system
+- Peer review process
+- Best practices library
+- Incident post-mortems
+
+---
+
 ## Documentation
 
-Full documentation coming soon. For now, see:
-
-- `REBRAND-PLAN.md` - Rebrand strategy and plan
-- `docs/` - Original OpenClaw documentation (being updated)
+- `docs/` - Full documentation (being updated from OpenClaw)
 - `AGENTS.md` - Agent system overview
+- `REBRAND-PLAN.md` - Fork and customization strategy
 
 ---
 
 ## Configuration
 
-Config location: `~/.ass/`
+Config location: `~/.autolab/` (migrating from `~/.openclaw/`)
 
 Key files:
-- `ass.json` - Main configuration
+
+- `autolab.json` - Main configuration
 - `workspace/` - Agent workspaces
 - `agents/` - Agent-specific configs
 - `logs/` - Gateway logs
@@ -70,12 +94,12 @@ Key files:
 ## Commands
 
 ```bash
-ass wizard              # Interactive setup
-ass status              # Show system status
-ass gateway start       # Start gateway daemon
-ass gateway stop        # Stop gateway
-ass gateway restart     # Restart gateway
-ass cron list           # List scheduled jobs
+autolab wizard              # Interactive setup
+autolab status              # Show system status
+autolab gateway start       # Start gateway daemon
+autolab gateway stop        # Stop gateway
+autolab gateway restart     # Restart gateway
+autolab cron list           # List scheduled jobs
 ```
 
 ---
@@ -88,9 +112,8 @@ If you have existing OpenClaw configs:
 # Backup original
 cp -r ~/.openclaw ~/.openclaw.backup
 
-# ASS will use ~/.ass/
+# AutoLab will create ~/.autolab/
 # You can manually copy configs if needed
-cp ~/.openclaw/openclaw.json ~/.ass/ass.json
 ```
 
 Both can coexist during transition.
@@ -103,7 +126,43 @@ Both can coexist during transition.
 https://github.com/openclaw/openclaw  
 Licensed under MIT License
 
-ASS maintains full compatibility with OpenClaw core while adding Intel-specific customizations.
+AutoLab maintains compatibility with OpenClaw core while adding Intel validation-specific features.
+
+---
+
+## Architecture
+
+**Multi-Agent System:**
+
+- **Ash** - Infrastructure & system builder
+- **TestyTina** - QA specialist & testing
+- **VigilantVick** - Security manager
+- **Cipher** - Network & coordination
+
+**Training Board:**
+
+- Peer-reviewed training documentation
+- 3×100% approval process
+- Version controlled knowledge base
+
+**Message Integration:**
+
+- WhatsApp, Telegram, Discord, Signal
+- Cross-platform agent communication
+- Unified dashboard
+
+---
+
+## Intel Lab Integration
+
+AutoLab is designed for Intel's high-speed Ethernet validation lab:
+
+- **Network testing** - 1G to 800G+ Ethernet
+- **Bug reproduction** - Automated issue replication
+- **Fix verification** - Post-patch validation
+- **Interoperability** - Multi-vendor testing
+
+Integrates with existing INOP Tool Suite (dashboard, network mapper).
 
 ---
 
@@ -118,7 +177,8 @@ See `LICENSE` file for details.
 ## Support
 
 For issues or questions:
-- GitHub: https://github.com/danv-intel/ass
-- Internal: Contact Dan Vallier (Intel)
 
-Built for Intel validation workflows. 🔧
+- GitHub: https://github.com/danv-intel/autolab (private)
+- Internal: Contact Dan Vallier (Intel Validation Engineer)
+
+Built for Intel validation workflows. 🔬

@@ -1,12 +1,12 @@
 {
-  "name": "@danv-intel/ass",
+  "name": "@danv-intel/autolab",
   "version": "2026.2.9",
-  "description": "Autonomous Support Structure - AI agent framework for Intel validation",
+  "description": "AutoLab - Automation framework for Intel validation lab workflows",
   "keywords": [],
   "license": "MIT",
   "author": "",
   "bin": {
-    "ass": "ass.mjs"
+    "autolab": "autolab.mjs"
   },
   "files": [
     "assets/",
