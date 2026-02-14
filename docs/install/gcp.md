@@ -190,7 +190,7 @@ docker compose version
 ## 6) Clone the AutoLab repository
 
 ```bash
-git clone https://github.com/openclaw/openclaw.git
+git clone https://github.com/autolab/autolab.git
 cd autolab
 ```
 

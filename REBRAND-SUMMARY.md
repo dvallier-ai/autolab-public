@@ -10,50 +10,50 @@
 
 ### Phase 1: Path Compatibility Layer
 
-Added dual-path support following OpenClaw's proven strategy:
+Added dual-path support following AutoLab's proven strategy:
 
 **Files modified:**
 
-- `src/config/paths.ts` - Added .autolab + .openclaw fallback
+- `src/config/paths.ts` - Added .autolab + .autolab fallback
 - `src/infra/home-dir.ts` - Added AUTOLAB_HOME support
 
 **Environment variables:**
 
-- `AUTOLAB_STATE_DIR` (preferred) + `OPENCLAW_STATE_DIR` (legacy)
-- `AUTOLAB_CONFIG_PATH` (preferred) + `OPENCLAW_CONFIG_PATH` (legacy)
-- `AUTOLAB_NIX_MODE` (preferred) + `OPENCLAW_NIX_MODE` (legacy)
-- `AUTOLAB_GATEWAY_PORT` (preferred) + `OPENCLAW_GATEWAY_PORT` (legacy)
-- `AUTOLAB_HOME` (preferred) + `OPENCLAW_HOME` (legacy)
+- `AUTOLAB_STATE_DIR` (preferred) + `AUTOLAB_STATE_DIR` (legacy)
+- `AUTOLAB_CONFIG_PATH` (preferred) + `AUTOLAB_CONFIG_PATH` (legacy)
+- `AUTOLAB_NIX_MODE` (preferred) + `AUTOLAB_NIX_MODE` (legacy)
+- `AUTOLAB_GATEWAY_PORT` (preferred) + `AUTOLAB_GATEWAY_PORT` (legacy)
+- `AUTOLAB_HOME` (preferred) + `AUTOLAB_HOME` (legacy)
 
 **Config locations:**
 
 - New: `~/.autolab/autolab.json`
-- Legacy: `~/.openclaw/openclaw.json` (still works!)
+- Legacy: `~/.autolab/autolab.json` (still works!)
 - Auto-detection: Checks new first, falls back to legacy
 
 ### Phase 2: Brand String Updates
 
 **675 files changed** using automated script:
 
-1. **User-facing strings:** `"OpenClaw"` → `"AutoLab"`
-2. **CLI references:** `` `openclaw ` `` → `` `autolab ` ``
+1. **User-facing strings:** `"AutoLab"` → `"AutoLab"`
+2. **CLI references:** `` `autolab ` `` → `` `autolab ` ``
 3. **Documentation:** All .md files updated
 4. **Skills:** All skill docs updated
 5. **Tests:** Test expectations updated
-6. **Status output:** "OpenClaw status" → "AutoLab status"
+6. **Status output:** "AutoLab status" → "AutoLab status"
 
 **Preserved:**
 
 - Internal code references (safe)
 - Module imports (unchanged)
 - Legacy config filenames in code
-- OpenClaw attribution
+- AutoLab attribution
 
 ### Phase 3: Validation
 
 ✅ **Build:** Succeeded  
 ✅ **CLI:** `autolab v2026.2.9` working  
-✅ **Backward compat:** `~/.openclaw/` still works  
+✅ **Backward compat:** `~/.autolab/` still works  
 ✅ **Tests:** 15/21 passed (4 expected failures in internal refs)
 
 ---
@@ -66,7 +66,7 @@ Added dual-path support following OpenClaw's proven strategy:
 - **Strings updated:** ~50 user-facing refs
 - **Build time:** ~30 seconds
 - **Backward compat:** 100%
-- **Based on:** OpenClaw commit 6d16a658e (1839 files, proven in production)
+- **Based on:** AutoLab commit 6d16a658e (1839 files, proven in production)
 
 **Test results:**
 
@@ -81,8 +81,8 @@ Added dual-path support following OpenClaw's proven strategy:
 - ✅ `autolab --version`
 - ✅ `autolab status` shows "AutoLab status"
 - ✅ `autolab gateway status`
-- ✅ Uses existing `~/.openclaw/` config
-- ✅ Backward compatible with OpenClaw setups
+- ✅ Uses existing `~/.autolab/` config
+- ✅ Backward compatible with AutoLab setups
 
 ---
 
@@ -91,10 +91,10 @@ Added dual-path support following OpenClaw's proven strategy:
 ### Before
 
 ```bash
-openclaw --version     # OpenClaw v2026.2.9
-openclaw status        # "OpenClaw status"
-~/.openclaw/           # Config location
-OPENCLAW_STATE_DIR=... # Environment variable
+autolab --version     # AutoLab v2026.2.9
+autolab status        # "AutoLab status"
+~/.autolab/           # Config location
+AUTOLAB_STATE_DIR=... # Environment variable
 ```
 
 ### After
@@ -103,16 +103,16 @@ OPENCLAW_STATE_DIR=... # Environment variable
 autolab --version      # AutoLab v2026.2.9
 autolab status         # "AutoLab status"
 ~/.autolab/            # New preferred location
-~/.openclaw/           # Still works (legacy)
+~/.autolab/           # Still works (legacy)
 AUTOLAB_STATE_DIR=...  # Preferred
-OPENCLAW_STATE_DIR=... # Still works (legacy)
+AUTOLAB_STATE_DIR=... # Still works (legacy)
 ```
 
 ---
 
 ## Migration Guide (Optional)
 
-Users don't NEED to migrate - `~/.openclaw/` continues to work.
+Users don't NEED to migrate - `~/.autolab/` continues to work.
 
 **To migrate (optional):**
 
@@ -121,17 +121,17 @@ Users don't NEED to migrate - `~/.openclaw/` continues to work.
 mkdir -p ~/.autolab
 
 # Copy config
-cp ~/.openclaw/openclaw.json ~/.autolab/autolab.json
+cp ~/.autolab/autolab.json ~/.autolab/autolab.json
 
 # Copy workspace and agents
-cp -r ~/.openclaw/workspace ~/.autolab/
-cp -r ~/.openclaw/agents ~/.autolab/
+cp -r ~/.autolab/workspace ~/.autolab/
+cp -r ~/.autolab/agents ~/.autolab/
 
 # Test it works
 autolab status
 
 # Once confirmed, optionally remove old
-rm -rf ~/.openclaw
+rm -rf ~/.autolab
 ```
 
 ---
@@ -140,7 +140,7 @@ rm -rf ~/.openclaw
 
 ### Strategy
 
-Followed OpenClaw's own rebrand (clawdbot→moltbot→openclaw):
+Followed AutoLab's own rebrand (clawdbot→moltbot→autolab):
 
 1. Add dual-path support FIRST
 2. Update user-facing strings
@@ -182,7 +182,7 @@ npm link
 
 ### Optional
 
-- [ ] Update systemd service name (openclaw-gateway → autolab-gateway)
+- [ ] Update systemd service name (autolab-gateway → autolab-gateway)
 - [ ] Create `~/.autolab/` and migrate config
 - [ ] Update team documentation
 - [ ] Announce to team when ready
@@ -200,12 +200,12 @@ npm link
 - [x] Package: `@danv-intel/autolab`
 - [x] CLI: `autolab` command works
 - [x] Build: Succeeds with no errors
-- [x] Compat: Existing `~/.openclaw/` configs work
+- [x] Compat: Existing `~/.autolab/` configs work
 - [x] Migration: Optional `~/.autolab/` location supported
 - [x] Docs: Updated throughout
 - [x] Skills: Updated references
 - [x] Brand: User-facing strings say "AutoLab"
-- [x] Attribution: OpenClaw credit maintained
+- [x] Attribution: AutoLab credit maintained
 - [x] Pushed: GitHub updated
 
 ---
@@ -224,7 +224,7 @@ npm link
 
 **AutoLab rebrand: COMPLETE** ✅
 
-Following OpenClaw's proven strategy (1839 files in production), we successfully rebranded 675 files with:
+Following AutoLab's proven strategy (1839 files in production), we successfully rebranded 675 files with:
 
 - Zero breakage
 - Full backward compatibility
@@ -239,5 +239,5 @@ Following OpenClaw's proven strategy (1839 files in production), we successfully
 ---
 
 _AutoLab - Intel Validation Lab Automation_  
-_Based on OpenClaw (MIT License)_  
+_Based on AutoLab (MIT License)_  
 _Private repository: https://github.com/danv-intel/autolab_

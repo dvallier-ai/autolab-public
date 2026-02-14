@@ -1,6 +1,6 @@
 ---
 title: "Showcase"
-description: "Real-world OpenClaw projects from the community"
+description: "Real-world AutoLab projects from the community"
 summary: "Community-built projects and integrations powered by AutoLab"
 ---
 

@@ -1,9 +1,9 @@
-import OpenClawProtocol
+import AutoLabProtocol
 import SwiftUI
 import Testing
-@testable import OpenClaw
+@testable import AutoLab
 
-private typealias ProtoAnyCodable = OpenClawProtocol.AnyCodable
+private typealias ProtoAnyCodable = AutoLabProtocol.AnyCodable
 
 @Suite(.serialized)
 @MainActor

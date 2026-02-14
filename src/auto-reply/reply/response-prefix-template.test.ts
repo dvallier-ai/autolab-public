@@ -53,14 +53,14 @@ describe("resolveResponsePrefixTemplate", () => {
     const result = resolveResponsePrefixTemplate("[{identity.name}]", {
       identityName: "AutoLab",
     });
-    expect(result).toBe("[OpenClaw]");
+    expect(result).toBe("[AutoLab]");
   });
 
   it("resolves {identityName} as alias", () => {
     const result = resolveResponsePrefixTemplate("[{identityName}]", {
       identityName: "AutoLab",
     });
-    expect(result).toBe("[OpenClaw]");
+    expect(result).toBe("[AutoLab]");
   });
 
   it("resolves multiple variables", () => {
@@ -109,7 +109,7 @@ describe("resolveResponsePrefixTemplate", () => {
         thinkingLevel: "high",
       },
     );
-    expect(result).toBe("[OpenClaw] anthropic/claude-opus-4-5 (think:high)");
+    expect(result).toBe("[AutoLab] anthropic/claude-opus-4-5 (think:high)");
   });
 });
 

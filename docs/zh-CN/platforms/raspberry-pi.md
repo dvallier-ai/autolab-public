@@ -125,7 +125,7 @@ curl -fsSL https://autolab.ai/install.sh | bash
 ### 选项 B：可修改安装（用于调试）
 
 ```bash
-git clone https://github.com/openclaw/openclaw.git
+git clone https://github.com/autolab/autolab.git
 cd autolab
 npm install
 npm run build

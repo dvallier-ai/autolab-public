@@ -122,7 +122,7 @@ Both can coexist during transition.
 
 ## Attribution
 
-**Based on OpenClaw**  
+**Based on AutoLab**  
 https://github.com/autolab/autolab  
 Licensed under MIT License
 

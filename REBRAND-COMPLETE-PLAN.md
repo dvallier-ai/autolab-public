@@ -1,16 +1,16 @@
 # AutoLab Complete Rebrand Plan
 
-## Following OpenClaw's clawdbot→moltbot→openclaw Strategy
+## Following AutoLab's clawdbot→moltbot→autolab Strategy
 
 **Date:** 2026-02-09  
-**Based on:** OpenClaw commit 6d16a658e (clawdbot→moltbot rebrand, 1839 files)  
-**Goal:** Rebrand openclaw→autolab with zero breakage
+**Based on:** AutoLab commit 6d16a658e (clawdbot→moltbot rebrand, 1839 files)  
+**Goal:** Rebrand autolab→autolab with zero breakage
 
 ---
 
 ## Executive Summary
 
-OpenClaw successfully rebranded from `clawdbot` → `moltbot` → `openclaw` in production with:
+AutoLab successfully rebranded from `clawdbot` → `moltbot` → `autolab` in production with:
 
 - **1839 files changed** in single commit
 - **Legacy compatibility** maintained
@@ -21,35 +21,35 @@ OpenClaw successfully rebranded from `clawdbot` → `moltbot` → `openclaw` in 
 
 ---
 
-## Core Strategy (OpenClaw's Proven Approach)
+## Core Strategy (AutoLab's Proven Approach)
 
 ### 1. **Dual Path Support**
 
-- Support BOTH `~/.openclaw/` AND `~/.autolab/`
+- Support BOTH `~/.autolab/` AND `~/.autolab/`
 - Check new location first, fall back to legacy
 - NO forced migration required
 
 ### 2. **Environment Variable Compatibility**
 
-- Support BOTH `OPENCLAW_*` and `AUTOLAB_*` variables
+- Support BOTH `AUTOLAB_*` and `AUTOLAB_*` variables
 - Prefer new, accept legacy
-- Example: `AUTOLAB_STATE_DIR || OPENCLAW_STATE_DIR`
+- Example: `AUTOLAB_STATE_DIR || AUTOLAB_STATE_DIR`
 
 ### 3. **Config File Migration**
 
-- `~/.openclaw/openclaw.json` stays valid (legacy)
+- `~/.autolab/autolab.json` stays valid (legacy)
 - `~/.autolab/autolab.json` is new preferred location
 - Auto-detect and use whichever exists
 
 ### 4. **Brand String Updates**
 
-- Internal code: `openclaw` → `autolab`
-- User-facing: `OpenClaw` → `AutoLab`
+- Internal code: `autolab` → `autolab`
+- User-facing: `AutoLab` → `AutoLab`
 - Keep backward compat in code paths
 
 ### 5. **Single Massive Commit**
 
-- OpenClaw did 1839 files in ONE commit
+- AutoLab did 1839 files in ONE commit
 - Tested before commit
 - Rollback = single `git reset`
 
@@ -79,7 +79,7 @@ OpenClaw successfully rebranded from `clawdbot` → `moltbot` → `openclaw` in 
 
 ```typescript
 // Legacy support
-const LEGACY_STATE_DIRNAME = ".openclaw";
+const LEGACY_STATE_DIRNAME = ".autolab";
 const NEW_STATE_DIRNAME = ".autolab";
 const CONFIG_FILENAME = "autolab.json";
 
@@ -87,8 +87,8 @@ export function resolveStateDir(
   env: NodeJS.ProcessEnv = process.env,
   homedir: () => string = os.homedir,
 ): string {
-  // Prefer new AutoLab env vars, fall back to legacy OpenClaw
-  const override = env.AUTOLAB_STATE_DIR?.trim() || env.OPENCLAW_STATE_DIR?.trim();
+  // Prefer new AutoLab env vars, fall back to legacy AutoLab
+  const override = env.AUTOLAB_STATE_DIR?.trim() || env.AUTOLAB_STATE_DIR?.trim();
   if (override) return resolveUserPath(override);
 
   // Check if new location exists
@@ -103,15 +103,15 @@ export function resolveConfigPath(
   env: NodeJS.ProcessEnv = process.env,
   stateDir: string = resolveStateDir(env, os.homedir),
 ): string {
-  const override = env.AUTOLAB_CONFIG_PATH?.trim() || env.OPENCLAW_CONFIG_PATH?.trim();
+  const override = env.AUTOLAB_CONFIG_PATH?.trim() || env.AUTOLAB_CONFIG_PATH?.trim();
   if (override) return resolveUserPath(override);
 
   // Try new config file first
   const newPath = path.join(stateDir, CONFIG_FILENAME);
   if (fs.existsSync(newPath)) return newPath;
 
-  // Fall back to legacy openclaw.json
-  const legacyPath = path.join(stateDir, "openclaw.json");
+  // Fall back to legacy autolab.json
+  const legacyPath = path.join(stateDir, "autolab.json");
   if (fs.existsSync(legacyPath)) return legacyPath;
 
   return newPath; // Default to new for fresh installs
@@ -121,12 +121,12 @@ export function resolveConfigPath(
 **Testing:**
 
 ```bash
-# Should work with existing ~/.openclaw/
+# Should work with existing ~/.autolab/
 autolab status
 
 # Should work if user creates ~/.autolab/
 mkdir ~/.autolab
-cp ~/.openclaw/openclaw.json ~/.autolab/autolab.json
+cp ~/.autolab/autolab.json ~/.autolab/autolab.json
 autolab status
 ```
 
@@ -134,7 +134,7 @@ autolab status
 
 ### Phase 3: Systematic String Replacement
 
-**Based on OpenClaw's 1839-file commit, we need:**
+**Based on AutoLab's 1839-file commit, we need:**
 
 #### A. Package Identity
 
@@ -150,48 +150,48 @@ autolab status
 
 ```bash
 # User-facing strings
-"OpenClaw" → "AutoLab"
-'OpenClaw' → 'AutoLab'
+"AutoLab" → "AutoLab"
+'AutoLab' → 'AutoLab'
 
 # Config paths (with compat layer)
-DEFAULT_STATE_DIRNAME = ".openclaw" → ".autolab"
-CONFIG_FILENAME = "openclaw.json" → "autolab.json"
+DEFAULT_STATE_DIRNAME = ".autolab" → ".autolab"
+CONFIG_FILENAME = "autolab.json" → "autolab.json"
 
 # Environment variables (with fallback)
-OPENCLAW_STATE_DIR → AUTOLAB_STATE_DIR (keep legacy fallback)
-OPENCLAW_CONFIG_PATH → AUTOLAB_CONFIG_PATH (keep legacy fallback)
+AUTOLAB_STATE_DIR → AUTOLAB_STATE_DIR (keep legacy fallback)
+AUTOLAB_CONFIG_PATH → AUTOLAB_CONFIG_PATH (keep legacy fallback)
 
 # CLI command references (help text, docs)
-"openclaw" → "autolab" (in strings only, not imports)
+"autolab" → "autolab" (in strings only, not imports)
 ```
 
 **UNSAFE replacements (NEVER touch):**
 
 ```bash
 # Module imports
-import { ... } from './openclaw-something.js'  # Keep as-is
+import { ... } from './autolab-something.js'  # Keep as-is
 
 # Internal type names
-type OpenClawConfig  # Can stay or rename carefully
+type AutoLabConfig  # Can stay or rename carefully
 
 # Test fixtures
-/test/fixtures/openclaw.json  # Can stay
+/test/fixtures/autolab.json  # Can stay
 
-# Comments about OpenClaw attribution
-// Based on OpenClaw  # Keep
+# Comments about AutoLab attribution
+// Based on AutoLab  # Keep
 ```
 
 #### C. Documentation (docs/, README, CHANGELOG)
 
 ```bash
 # Update all references
-openclaw → autolab
-OpenClaw → AutoLab
-~/.openclaw/ → ~/.autolab/
+autolab → autolab
+AutoLab → AutoLab
+~/.autolab/ → ~/.autolab/
 
 # Keep attribution
-"Based on OpenClaw" # Keep this
-"Forked from github.com/openclaw/openclaw" # Keep
+"Based on AutoLab" # Keep this
+"Forked from github.com/autolab/autolab" # Keep
 ```
 
 #### D. iOS/Android/macOS Apps
@@ -202,16 +202,16 @@ OpenClaw → AutoLab
 
 ```bash
 # Update skill docs
-skills/*/SKILL.md: openclaw → autolab
-skills/*/README.md: openclaw → autolab
+skills/*/SKILL.md: autolab → autolab
+skills/*/README.md: autolab → autolab
 ```
 
 #### F. Tests
 
 ```bash
 # Update test expectations
-test/**/*.test.ts: "openclaw" → "autolab" (in strings)
-test/**/*.test.ts: ~/.openclaw → ~/.autolab (in paths)
+test/**/*.test.ts: "autolab" → "autolab" (in strings)
+test/**/*.test.ts: ~/.autolab → ~/.autolab (in paths)
 ```
 
 ---
@@ -222,14 +222,14 @@ test/**/*.test.ts: ~/.openclaw → ~/.autolab (in paths)
 
 ```bash
 #!/bin/bash
-# Full AutoLab rebrand following OpenClaw's proven strategy
+# Full AutoLab rebrand following AutoLab's proven strategy
 
 set -e
 
 REPO_ROOT="/home/dan/autolab"
 BACKUP_DIR="$REPO_ROOT/.rebrand-final-backup-$(date +%Y%m%d-%H%M%S)"
 
-echo "🔧 AutoLab Full Rebrand (OpenClaw Strategy)"
+echo "🔧 AutoLab Full Rebrand (AutoLab Strategy)"
 echo "==========================================="
 echo ""
 
@@ -256,9 +256,9 @@ echo ""
 echo "🔧 Step 2: Updating user-facing strings..."
 find "$REPO_ROOT/src" -type f \( -name "*.ts" -o -name "*.js" \) -print0 | while IFS= read -r -d '' file; do
     # Only in quoted strings (user-facing)
-    sed -i 's/"OpenClaw"/"AutoLab"/g' "$file"
-    sed -i "s/'OpenClaw'/'AutoLab'/g" "$file"
-    sed -i 's/`OpenClaw`/`AutoLab`/g' "$file"
+    sed -i 's/"AutoLab"/"AutoLab"/g' "$file"
+    sed -i "s/'AutoLab'/'AutoLab'/g" "$file"
+    sed -i 's/`AutoLab`/`AutoLab`/g' "$file"
 done
 echo "   ✓ Brand strings updated"
 echo ""
@@ -266,8 +266,8 @@ echo ""
 # Step 3: Config file references (in strings only)
 echo "🔧 Step 3: Config file references..."
 find "$REPO_ROOT/src" -type f \( -name "*.ts" -o -name "*.js" \) -print0 | while IFS= read -r -d '' file; do
-    sed -i 's/"openclaw\.json"/"autolab.json"/g' "$file"
-    sed -i "s/'openclaw\.json'/'autolab.json'/g" "$file"
+    sed -i 's/"autolab\.json"/"autolab.json"/g' "$file"
+    sed -i "s/'autolab\.json'/'autolab.json'/g" "$file"
 done
 echo "   ✓ Config references updated"
 echo ""
@@ -276,9 +276,9 @@ echo ""
 echo "🔧 Step 4: CLI command references..."
 find "$REPO_ROOT/src" -type f \( -name "*.ts" -o -name "*.js" \) -print0 | while IFS= read -r -d '' file; do
     # In user messages/help/docs
-    sed -i 's/Run `openclaw/Run `autolab/g' "$file"
-    sed -i 's/use openclaw/use autolab/g' "$file"
-    sed -i 's/the openclaw/the autolab/g' "$file"
+    sed -i 's/Run `autolab/Run `autolab/g' "$file"
+    sed -i 's/use autolab/use autolab/g' "$file"
+    sed -i 's/the autolab/the autolab/g' "$file"
 done
 echo "   ✓ CLI references updated"
 echo ""
@@ -286,12 +286,12 @@ echo ""
 # Step 5: Documentation
 echo "🔧 Step 5: Documentation..."
 find "$REPO_ROOT/docs" -type f -name "*.md" -print0 2>/dev/null | while IFS= read -r -d '' file; do
-    sed -i 's/openclaw/autolab/g' "$file"
-    sed -i 's/OpenClaw/AutoLab/g' "$file"
-    sed -i 's/~\/\.openclaw/~\/.autolab/g' "$file"
+    sed -i 's/autolab/autolab/g' "$file"
+    sed -i 's/AutoLab/AutoLab/g' "$file"
+    sed -i 's/~\/\.autolab/~\/.autolab/g' "$file"
     # Restore attribution
-    sed -i 's/Based on AutoLab/Based on OpenClaw/g' "$file"
-    sed -i 's/github\.com\/autolab\/autolab/github.com\/openclaw\/openclaw/g' "$file"
+    sed -i 's/Based on AutoLab/Based on AutoLab/g' "$file"
+    sed -i 's/github\.com\/autolab\/autolab/github.com\/autolab\/autolab/g' "$file"
 done
 echo "   ✓ Documentation updated"
 echo ""
@@ -299,8 +299,8 @@ echo ""
 # Step 6: Skills
 echo "🔧 Step 6: Skills documentation..."
 find "$REPO_ROOT/skills" -type f \( -name "*.md" -o -name "SKILL.md" \) -print0 2>/dev/null | while IFS= read -r -d '' file; do
-    sed -i 's/openclaw/autolab/g' "$file"
-    sed -i 's/OpenClaw/AutoLab/g' "$file"
+    sed -i 's/autolab/autolab/g' "$file"
+    sed -i 's/AutoLab/AutoLab/g' "$file"
 done
 echo "   ✓ Skills updated"
 echo ""
@@ -309,9 +309,9 @@ echo ""
 echo "🔧 Step 7: Test files..."
 find "$REPO_ROOT/test" -type f -name "*.test.ts" -print0 2>/dev/null | while IFS= read -r -d '' file; do
     # Only update test expectations/strings, not imports
-    sed -i 's/"openclaw"/"autolab"/g' "$file"
-    sed -i 's/"OpenClaw"/"AutoLab"/g' "$file"
-    sed -i 's/~\/\.openclaw/~\/.autolab/g' "$file"
+    sed -i 's/"autolab"/"autolab"/g' "$file"
+    sed -i 's/"AutoLab"/"AutoLab"/g' "$file"
+    sed -i 's/~\/\.autolab/~\/.autolab/g' "$file"
 done
 echo "   ✓ Tests updated"
 echo ""
@@ -352,7 +352,7 @@ fi
 echo ""
 
 # Step 11: Test with existing config
-echo "🧪 Testing with existing ~/.openclaw/ config..."
+echo "🧪 Testing with existing ~/.autolab/ config..."
 if autolab status > /tmp/autolab-status-test.txt 2>&1; then
     echo "   ✅ Backward compatibility works"
 else
@@ -366,13 +366,13 @@ echo "📋 Summary:"
 echo "   • Files changed: $TOTAL_CHANGES"
 echo "   • Build: ✅ Success"
 echo "   • CLI: ✅ Working"
-echo "   • Backward compat: ✅ ~/.openclaw/ still works"
+echo "   • Backward compat: ✅ ~/.autolab/ still works"
 echo ""
 echo "📂 Backup: $BACKUP_DIR"
 echo ""
 echo "🔜 Next steps:"
 echo "   1. Test thoroughly: autolab status, autolab gateway restart"
-echo "   2. Commit: git add -A && git commit -m 'Complete rebrand: OpenClaw → AutoLab'"
+echo "   2. Commit: git add -A && git commit -m 'Complete rebrand: AutoLab → AutoLab'"
 echo "   3. Push: git push origin main"
 echo ""
 ```
@@ -393,13 +393,13 @@ autolab --help
 autolab status
 
 # 3. Backward compatibility
-# Should work with existing ~/.openclaw/
+# Should work with existing ~/.autolab/
 autolab gateway status
 
 # 4. Forward compatibility
 # Create new config location
 mkdir ~/.autolab
-cp ~/.openclaw/openclaw.json ~/.autolab/autolab.json
+cp ~/.autolab/autolab.json ~/.autolab/autolab.json
 autolab status  # Should detect new location
 
 # 5. Run test suite
@@ -420,11 +420,11 @@ npm run build
 npm link
 
 # 2. Fresh user test
-mv ~/.openclaw ~/.openclaw.backup
+mv ~/.autolab ~/.autolab.backup
 autolab wizard  # Should create ~/.autolab/
 
 # 3. Restore and verify legacy
-mv ~/.openclaw.backup ~/.openclaw
+mv ~/.autolab.backup ~/.autolab
 rm -rf ~/.autolab
 autolab status  # Should still work
 ```
@@ -436,30 +436,30 @@ autolab status  # Should still work
 **Create:** `MIGRATION.md`
 
 ````markdown
-# Migrating from OpenClaw to AutoLab
+# Migrating from AutoLab to AutoLab
 
-AutoLab maintains full backward compatibility with OpenClaw configs.
+AutoLab maintains full backward compatibility with AutoLab configs.
 
 ## No Action Required
 
-Your existing `~/.openclaw/` directory will continue to work.
+Your existing `~/.autolab/` directory will continue to work.
 
 ## Optional: Migrate to New Location
 
 ```bash
 # Copy config to new location
 mkdir -p ~/.autolab
-cp ~/.openclaw/openclaw.json ~/.autolab/autolab.json
+cp ~/.autolab/autolab.json ~/.autolab/autolab.json
 
 # Copy workspaces and agents
-cp -r ~/.openclaw/workspace ~/.autolab/
-cp -r ~/.openclaw/agents ~/.autolab/
+cp -r ~/.autolab/workspace ~/.autolab/
+cp -r ~/.autolab/agents ~/.autolab/
 
 # Verify it works
 autolab status
 
 # Once confirmed, optionally remove old
-rm -rf ~/.openclaw
+rm -rf ~/.autolab
 ```
 ````
 
@@ -467,8 +467,8 @@ rm -rf ~/.openclaw
 
 If you use env vars, update:
 
-- `OPENCLAW_STATE_DIR` → `AUTOLAB_STATE_DIR` (legacy still works)
-- `OPENCLAW_CONFIG_PATH` → `AUTOLAB_CONFIG_PATH` (legacy still works)
+- `AUTOLAB_STATE_DIR` → `AUTOLAB_STATE_DIR` (legacy still works)
+- `AUTOLAB_CONFIG_PATH` → `AUTOLAB_CONFIG_PATH` (legacy still works)
 
 ## Systemd Service
 
@@ -476,11 +476,11 @@ If you have custom systemd service:
 
 ```bash
 # Update service file
-sudo nano /etc/systemd/system/openclaw-gateway.service
-# Change: ExecStart=/path/to/openclaw → /path/to/autolab
+sudo nano /etc/systemd/system/autolab-gateway.service
+# Change: ExecStart=/path/to/autolab → /path/to/autolab
 
 # Or create new service
-sudo cp /etc/systemd/system/openclaw-gateway.service \
+sudo cp /etc/systemd/system/autolab-gateway.service \
         /etc/systemd/system/autolab-gateway.service
 
 sudo systemctl daemon-reload
@@ -500,12 +500,12 @@ sudo systemctl start autolab-gateway
 - [x] CLI: `autolab` command works
 - [ ] Build: Succeeds with no errors
 - [ ] Tests: All pass
-- [ ] Compat: Existing `~/.openclaw/` configs work
+- [ ] Compat: Existing `~/.autolab/` configs work
 - [ ] Migration: Optional `~/.autolab/` location supported
 - [ ] Docs: Updated throughout
 - [ ] Skills: Updated references
 - [ ] Brand: All user-facing strings say "AutoLab"
-- [ ] Attribution: OpenClaw credit maintained
+- [ ] Attribution: AutoLab credit maintained
 
 ---
 
@@ -524,11 +524,11 @@ autolab status
 
 ## Timeline Estimate
 
-Based on OpenClaw's experience:
+Based on AutoLab's experience:
 
 **Preparation:** 2-4 hours
 
-- Study OpenClaw commits
+- Study AutoLab commits
 - Write compatibility layer
 - Test strategy
 
@@ -548,14 +548,14 @@ Based on OpenClaw's experience:
 
 ---
 
-## Key Learnings from OpenClaw
+## Key Learnings from AutoLab
 
 1. **Single commit is better** - All changes at once, atomic rollback
 2. **Backward compat is critical** - Don't break existing installs
 3. **Path migration is optional** - Let users migrate when ready
 4. **Environment vars need fallbacks** - Support both old and new
 5. **Test before commit** - Build MUST succeed
-6. **Attribution matters** - Keep "Based on OpenClaw" everywhere
+6. **Attribution matters** - Keep "Based on AutoLab" everywhere
 
 ---
 
@@ -563,6 +563,6 @@ Based on OpenClaw's experience:
 
 **Run:** `./scripts/rebrand-full-autolab.sh`
 
-This will execute the complete rebrand following OpenClaw's proven strategy.
+This will execute the complete rebrand following AutoLab's proven strategy.
 
-**Expected result:** Working AutoLab with full OpenClaw backward compatibility.
+**Expected result:** Working AutoLab with full AutoLab backward compatibility.

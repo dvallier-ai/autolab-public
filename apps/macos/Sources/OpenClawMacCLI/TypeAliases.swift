@@ -1,5 +1,5 @@
-import OpenClawKit
-import OpenClawProtocol
+import AutoLabKit
+import AutoLabProtocol
 
-typealias ProtoAnyCodable = OpenClawProtocol.AnyCodable
-typealias KitAnyCodable = OpenClawKit.AnyCodable
+typealias ProtoAnyCodable = AutoLabProtocol.AnyCodable
+typealias KitAnyCodable = AutoLabKit.AnyCodable

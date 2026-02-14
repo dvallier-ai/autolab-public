@@ -118,7 +118,7 @@ curl -fsSL https://autolab.ai/install.sh | bash
 ### Option B: Hackable Install (For tinkering)
 
 ```bash
-git clone https://github.com/openclaw/openclaw.git
+git clone https://github.com/autolab/autolab.git
 cd autolab
 npm install
 npm run build

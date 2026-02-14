@@ -116,7 +116,7 @@ Moltbot never quite rolled off the tongue. And so, at 4am GMT, the team gathered
 
 In just 3 hours:
 
-- GitHub renamed: `github.com/openclaw/openclaw` ✅
+- GitHub renamed: `github.com/autolab/autolab` ✅
 - X handle `@autolab` secured with GOLD CHECKMARK 💰
 - npm packages released under new name
 - Docs migrated to `docs.autolab.ai`
@@ -130,7 +130,7 @@ In just 3 hours:
 - **Shadow** secured Discord vanity, nuked malware
 - **The whole Claw Crew** pulled an all-nighter
 
-**The Scammer Speedrun:** Crypto grifters launched a $OPENCLAW token on Pump.fun within MINUTES. They stole artwork that was created 20 minutes earlier. Business-verified accounts pushed scams. The audacity was almost impressive.
+**The Scammer Speedrun:** Crypto grifters launched a $AUTOLAB token on Pump.fun within MINUTES. They stole artwork that was created 20 minutes earlier. Business-verified accounts pushed scams. The audacity was almost impressive.
 
 **New Traditions Born:**
 

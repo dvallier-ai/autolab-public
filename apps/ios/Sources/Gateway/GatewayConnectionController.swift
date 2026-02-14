@@ -4,7 +4,7 @@ import CoreLocation
 import CoreMotion
 import EventKit
 import Foundation
-import OpenClawKit
+import AutoLabKit
 import Network
 import Observation
 import Photos
@@ -426,7 +426,7 @@ final class GatewayConnectionController {
         if manualClientId?.isEmpty == false {
             return manualClientId!
         }
-        return "openclaw-ios"
+        return "autolab-ios"
     }
 
     private func resolveManualPort(host: String, port: Int, useTLS: Bool) -> Int? {
@@ -456,29 +456,29 @@ final class GatewayConnectionController {
     }
 
     private func currentCaps() -> [String] {
-        var caps = [OpenClawCapability.canvas.rawValue, OpenClawCapability.screen.rawValue]
+        var caps = [AutoLabCapability.canvas.rawValue, AutoLabCapability.screen.rawValue]
 
         // Default-on: if the key doesn't exist yet, treat it as enabled.
         let cameraEnabled =
             UserDefaults.standard.object(forKey: "camera.enabled") == nil
                 ? true
                 : UserDefaults.standard.bool(forKey: "camera.enabled")
-        if cameraEnabled { caps.append(OpenClawCapability.camera.rawValue) }
+        if cameraEnabled { caps.append(AutoLabCapability.camera.rawValue) }
 
         let voiceWakeEnabled = UserDefaults.standard.bool(forKey: VoiceWakePreferences.enabledKey)
-        if voiceWakeEnabled { caps.append(OpenClawCapability.voiceWake.rawValue) }
+        if voiceWakeEnabled { caps.append(AutoLabCapability.voiceWake.rawValue) }
 
         let locationModeRaw = UserDefaults.standard.string(forKey: "location.enabledMode") ?? "off"
-        let locationMode = OpenClawLocationMode(rawValue: locationModeRaw) ?? .off
-        if locationMode != .off { caps.append(OpenClawCapability.location.rawValue) }
+        let locationMode = AutoLabLocationMode(rawValue: locationModeRaw) ?? .off
+        if locationMode != .off { caps.append(AutoLabCapability.location.rawValue) }
 
-        caps.append(OpenClawCapability.device.rawValue)
-        caps.append(OpenClawCapability.photos.rawValue)
-        caps.append(OpenClawCapability.contacts.rawValue)
-        caps.append(OpenClawCapability.calendar.rawValue)
-        caps.append(OpenClawCapability.reminders.rawValue)
+        caps.append(AutoLabCapability.device.rawValue)
+        caps.append(AutoLabCapability.photos.rawValue)
+        caps.append(AutoLabCapability.contacts.rawValue)
+        caps.append(AutoLabCapability.calendar.rawValue)
+        caps.append(AutoLabCapability.reminders.rawValue)
         if Self.motionAvailable() {
-            caps.append(OpenClawCapability.motion.rawValue)
+            caps.append(AutoLabCapability.motion.rawValue)
         }
 
         return caps
@@ -486,54 +486,54 @@ final class GatewayConnectionController {
 
     private func currentCommands() -> [String] {
         var commands: [String] = [
-            OpenClawCanvasCommand.present.rawValue,
-            OpenClawCanvasCommand.hide.rawValue,
-            OpenClawCanvasCommand.navigate.rawValue,
-            OpenClawCanvasCommand.evalJS.rawValue,
-            OpenClawCanvasCommand.snapshot.rawValue,
-            OpenClawCanvasA2UICommand.push.rawValue,
-            OpenClawCanvasA2UICommand.pushJSONL.rawValue,
-            OpenClawCanvasA2UICommand.reset.rawValue,
-            OpenClawScreenCommand.record.rawValue,
-            OpenClawSystemCommand.notify.rawValue,
-            OpenClawChatCommand.push.rawValue,
-            OpenClawTalkCommand.pttStart.rawValue,
-            OpenClawTalkCommand.pttStop.rawValue,
-            OpenClawTalkCommand.pttCancel.rawValue,
-            OpenClawTalkCommand.pttOnce.rawValue,
+            AutoLabCanvasCommand.present.rawValue,
+            AutoLabCanvasCommand.hide.rawValue,
+            AutoLabCanvasCommand.navigate.rawValue,
+            AutoLabCanvasCommand.evalJS.rawValue,
+            AutoLabCanvasCommand.snapshot.rawValue,
+            AutoLabCanvasA2UICommand.push.rawValue,
+            AutoLabCanvasA2UICommand.pushJSONL.rawValue,
+            AutoLabCanvasA2UICommand.reset.rawValue,
+            AutoLabScreenCommand.record.rawValue,
+            AutoLabSystemCommand.notify.rawValue,
+            AutoLabChatCommand.push.rawValue,
+            AutoLabTalkCommand.pttStart.rawValue,
+            AutoLabTalkCommand.pttStop.rawValue,
+            AutoLabTalkCommand.pttCancel.rawValue,
+            AutoLabTalkCommand.pttOnce.rawValue,
         ]
 
         let caps = Set(self.currentCaps())
-        if caps.contains(OpenClawCapability.camera.rawValue) {
-            commands.append(OpenClawCameraCommand.list.rawValue)
-            commands.append(OpenClawCameraCommand.snap.rawValue)
-            commands.append(OpenClawCameraCommand.clip.rawValue)
+        if caps.contains(AutoLabCapability.camera.rawValue) {
+            commands.append(AutoLabCameraCommand.list.rawValue)
+            commands.append(AutoLabCameraCommand.snap.rawValue)
+            commands.append(AutoLabCameraCommand.clip.rawValue)
         }
-        if caps.contains(OpenClawCapability.location.rawValue) {
-            commands.append(OpenClawLocationCommand.get.rawValue)
+        if caps.contains(AutoLabCapability.location.rawValue) {
+            commands.append(AutoLabLocationCommand.get.rawValue)
         }
-        if caps.contains(OpenClawCapability.device.rawValue) {
-            commands.append(OpenClawDeviceCommand.status.rawValue)
-            commands.append(OpenClawDeviceCommand.info.rawValue)
+        if caps.contains(AutoLabCapability.device.rawValue) {
+            commands.append(AutoLabDeviceCommand.status.rawValue)
+            commands.append(AutoLabDeviceCommand.info.rawValue)
         }
-        if caps.contains(OpenClawCapability.photos.rawValue) {
-            commands.append(OpenClawPhotosCommand.latest.rawValue)
+        if caps.contains(AutoLabCapability.photos.rawValue) {
+            commands.append(AutoLabPhotosCommand.latest.rawValue)
         }
-        if caps.contains(OpenClawCapability.contacts.rawValue) {
-            commands.append(OpenClawContactsCommand.search.rawValue)
-            commands.append(OpenClawContactsCommand.add.rawValue)
+        if caps.contains(AutoLabCapability.contacts.rawValue) {
+            commands.append(AutoLabContactsCommand.search.rawValue)
+            commands.append(AutoLabContactsCommand.add.rawValue)
         }
-        if caps.contains(OpenClawCapability.calendar.rawValue) {
-            commands.append(OpenClawCalendarCommand.events.rawValue)
-            commands.append(OpenClawCalendarCommand.add.rawValue)
+        if caps.contains(AutoLabCapability.calendar.rawValue) {
+            commands.append(AutoLabCalendarCommand.events.rawValue)
+            commands.append(AutoLabCalendarCommand.add.rawValue)
         }
-        if caps.contains(OpenClawCapability.reminders.rawValue) {
-            commands.append(OpenClawRemindersCommand.list.rawValue)
-            commands.append(OpenClawRemindersCommand.add.rawValue)
+        if caps.contains(AutoLabCapability.reminders.rawValue) {
+            commands.append(AutoLabRemindersCommand.list.rawValue)
+            commands.append(AutoLabRemindersCommand.add.rawValue)
         }
-        if caps.contains(OpenClawCapability.motion.rawValue) {
-            commands.append(OpenClawMotionCommand.activity.rawValue)
-            commands.append(OpenClawMotionCommand.pedometer.rawValue)
+        if caps.contains(AutoLabCapability.motion.rawValue) {
+            commands.append(AutoLabMotionCommand.activity.rawValue)
+            commands.append(AutoLabMotionCommand.pedometer.rawValue)
         }
 
         return commands

@@ -1,13 +1,13 @@
 {
-  "name": "@openclaw/line",
+  "name": "@autolab/line",
   "version": "2026.2.9",
   "private": true,
-  "description": "OpenClaw LINE channel plugin",
+  "description": "AutoLab LINE channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "autolab": "workspace:*"
   },
-  "openclaw": {
+  "autolab": {
     "extensions": [
       "./index.ts"
     ],
@@ -22,7 +22,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@openclaw/line",
+      "npmSpec": "@autolab/line",
       "localPath": "extensions/line",
       "defaultChoice": "npm"
     }

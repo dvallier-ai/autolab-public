@@ -1,19 +1,19 @@
-import OpenClawProtocol
+import AutoLabProtocol
 import Foundation
 
-enum OpenClawConfigFile {
-    private static let logger = Logger(subsystem: "ai.openclaw", category: "config")
+enum AutoLabConfigFile {
+    private static let logger = Logger(subsystem: "ai.autolab", category: "config")
 
     static func url() -> URL {
-        OpenClawPaths.configURL
+        AutoLabPaths.configURL
     }
 
     static func stateDirURL() -> URL {
-        OpenClawPaths.stateDirURL
+        AutoLabPaths.stateDirURL
     }
 
     static func defaultWorkspaceURL() -> URL {
-        OpenClawPaths.workspaceURL
+        AutoLabPaths.workspaceURL
     }
 
     static func loadDict() -> [String: Any] {

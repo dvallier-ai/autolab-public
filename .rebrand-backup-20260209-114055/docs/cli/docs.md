@@ -1,15 +1,15 @@
 ---
-summary: "CLI reference for `openclaw docs` (search the live docs index)"
+summary: "CLI reference for `autolab docs` (search the live docs index)"
 read_when:
-  - You want to search the live OpenClaw docs from the terminal
+  - You want to search the live AutoLab docs from the terminal
 title: "docs"
 ---
 
-# `openclaw docs`
+# `autolab docs`
 
 Search the live docs index.
 
 ```bash
-openclaw docs browser extension
-openclaw docs sandbox allowHostControl
+autolab docs browser extension
+autolab docs sandbox allowHostControl
 ```

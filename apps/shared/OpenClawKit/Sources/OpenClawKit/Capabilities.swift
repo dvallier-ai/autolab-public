@@ -1,6 +1,6 @@
 import Foundation
 
-public enum OpenClawCapability: String, Codable, Sendable {
+public enum AutoLabCapability: String, Codable, Sendable {
     case canvas
     case camera
     case screen

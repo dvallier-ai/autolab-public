@@ -1,6 +1,6 @@
 # AutoLab Validation Test Plan
 
-**Goal:** Validate AutoLab works identically to OpenClaw after full rebrand
+**Goal:** Validate AutoLab works identically to AutoLab after full rebrand
 
 **Date:** 2026-02-09  
 **Tester:** Ash (automated)
@@ -37,7 +37,7 @@ autolab --version
 
 ```bash
 autolab --help
-# Expected: Command help, no "openclaw" references
+# Expected: Command help, no "autolab" references
 # Status:
 ```
 
@@ -90,7 +90,7 @@ curl -s http://localhost:18789/api/health | jq
 
 ```bash
 # Visit http://localhost:18789/
-# Expected: Dashboard loads, no "openclaw" branding visible
+# Expected: Dashboard loads, no "autolab" branding visible
 # Status:
 ```
 
@@ -110,7 +110,7 @@ autolab status | grep -A 10 "Agents"
 
 ```bash
 # Check agent sessions exist
-ls ~/.openclaw/agents/main/sessions/ | wc -l
+ls ~/.autolab/agents/main/sessions/ | wc -l
 # Expected: >0 sessions
 # Status:
 ```
@@ -158,7 +158,7 @@ curl -s http://10.23.19.102:8080/api/training/messages?board=collab | jq '.[] | 
 ### T5.1: Config File Exists
 
 ```bash
-ls -la ~/.openclaw/openclaw.json
+ls -la ~/.autolab/autolab.json
 # Expected: Config file exists
 # Status:
 ```
@@ -166,7 +166,7 @@ ls -la ~/.openclaw/openclaw.json
 ### T5.2: Config Valid JSON
 
 ```bash
-jq . ~/.openclaw/openclaw.json > /dev/null
+jq . ~/.autolab/autolab.json > /dev/null
 # Expected: No errors, valid JSON
 # Status:
 ```
@@ -174,7 +174,7 @@ jq . ~/.openclaw/openclaw.json > /dev/null
 ### T5.3: Workspace Exists
 
 ```bash
-ls -la ~/.openclaw/workspace/
+ls -la ~/.autolab/workspace/
 # Expected: Workspace directory with files
 # Status:
 ```
@@ -182,7 +182,7 @@ ls -la ~/.openclaw/workspace/
 ### T5.4: Memory Files
 
 ```bash
-ls ~/.openclaw/workspace/memory/ | head -5
+ls ~/.autolab/workspace/memory/ | head -5
 # Expected: Memory files exist
 # Status:
 ```
@@ -218,10 +218,10 @@ grep '"bin":' /home/dan/autolab/package.json
 # Status:
 ```
 
-### T6.4: No "openclaw" in package.json
+### T6.4: No "autolab" in package.json
 
 ```bash
-grep -i openclaw /home/dan/autolab/package.json
+grep -i autolab /home/dan/autolab/package.json
 # Expected: Only in comments/attribution, not functional fields
 # Status:
 ```
@@ -234,7 +234,7 @@ grep -i openclaw /home/dan/autolab/package.json
 
 ```bash
 # Check source uses correct config path
-grep -r "\.openclaw" /home/dan/autolab/src/ | wc -l
+grep -r "\.autolab" /home/dan/autolab/src/ | wc -l
 # Expected: 0 (or only in migration code)
 # Status:
 ```
@@ -242,8 +242,8 @@ grep -r "\.openclaw" /home/dan/autolab/src/ | wc -l
 ### T7.2: Brand Strings Updated
 
 ```bash
-# Check for "OpenClaw" brand references
-grep -r "OpenClaw" /home/dan/autolab/src/ | grep -v "// OpenClaw" | wc -l
+# Check for "AutoLab" brand references
+grep -r "AutoLab" /home/dan/autolab/src/ | grep -v "// AutoLab" | wc -l
 # Expected: 0 (excluding comments)
 # Status:
 ```
@@ -252,7 +252,7 @@ grep -r "OpenClaw" /home/dan/autolab/src/ | grep -v "// OpenClaw" | wc -l
 
 ```bash
 # Check CLI references
-grep -r "openclaw" /home/dan/autolab/src/ | grep -v "openclaw.json" | head -10
+grep -r "autolab" /home/dan/autolab/src/ | grep -v "autolab.json" | head -10
 # Expected: Minimal, only in necessary places
 # Status:
 ```
@@ -269,10 +269,10 @@ grep -i "AutoLab" /home/dan/autolab/README.md | head -1
 # Status:
 ```
 
-### T8.2: No Stale OpenClaw Refs
+### T8.2: No Stale AutoLab Refs
 
 ```bash
-grep -i "openclaw" /home/dan/autolab/README.md | grep -v "Based on OpenClaw" | wc -l
+grep -i "autolab" /home/dan/autolab/README.md | grep -v "Based on AutoLab" | wc -l
 # Expected: 0 (except attribution)
 # Status:
 ```
@@ -322,8 +322,8 @@ autolab cron list
 ### T10.1: Existing Workspace Intact
 
 ```bash
-ls ~/.openclaw/workspace/MEMORY.md
-ls ~/.openclaw/workspace/memory/2026-02-09.md
+ls ~/.autolab/workspace/MEMORY.md
+ls ~/.autolab/workspace/memory/2026-02-09.md
 # Expected: Files exist, not corrupted
 # Status:
 ```
@@ -354,7 +354,7 @@ curl -s http://10.23.19.102:8080/api/training/messages?limit=5 | jq 'length'
 - ✅ Gateway operates normally
 - ✅ Agents functional
 - ✅ Message board integration works
-- ✅ No "openclaw" branding in user-facing output
+- ✅ No "autolab" branding in user-facing output
 - ✅ Config backward compatible
 - ✅ Build succeeds
 - ✅ No regressions
@@ -375,10 +375,10 @@ curl -s http://10.23.19.102:8080/api/training/messages?limit=5 | jq 'length'
 
 ```
 Date: 2026-02-09 11:38 PST
-Status: OpenClaw working
+Status: AutoLab working
 Gateway: Running (pid 3534387)
 Agents: 3 active
-CLI: openclaw + autolab both work (shared gateway)
+CLI: autolab + autolab both work (shared gateway)
 ```
 
 ### Post-Rebrand Validation

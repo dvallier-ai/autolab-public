@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import AutoLabProtocol
 import SwiftUI
 
 extension ChannelsSettings {

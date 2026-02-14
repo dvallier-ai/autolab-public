@@ -1,13 +1,13 @@
 {
-  "name": "@openclaw/telegram",
+  "name": "@autolab/telegram",
   "version": "2026.2.9",
   "private": true,
-  "description": "OpenClaw Telegram channel plugin",
+  "description": "AutoLab Telegram channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "autolab": "workspace:*"
   },
-  "openclaw": {
+  "autolab": {
     "extensions": [
       "./index.ts"
     ]

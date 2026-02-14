@@ -1,8 +1,8 @@
-import OpenClawKit
+import AutoLabKit
 import Foundation
 import os
 import Testing
-@testable import OpenClaw
+@testable import AutoLab
 
 @Suite struct GatewayConnectionTests {
     private final class FakeWebSocketTask: WebSocketTasking, @unchecked Sendable {

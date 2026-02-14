@@ -23,13 +23,13 @@ echo ""
 echo "🔧 Updating user-facing config paths..."
 echo ""
 
-# 1. Update home directory paths (~/.openclaw → ~/.autolab)
+# 1. Update home directory paths (~/.autolab → ~/.autolab)
 echo "Step 1: Home directory references..."
 find "$REPO_ROOT/src" -type f \( -name "*.ts" -o -name "*.js" \) -print0 | while IFS= read -r -d '' file; do
     # Only replace home directory paths, not module paths
-    sed -i 's|~/\.openclaw|~/.autolab|g' "$file"
-    sed -i 's|process\.env\.HOME.*\.openclaw|process.env.HOME + "/.autolab"|g' "$file"
-    sed -i 's|homedir().*\.openclaw|homedir() + "/.autolab"|g' "$file"
+    sed -i 's|~/\.autolab|~/.autolab|g' "$file"
+    sed -i 's|process\.env\.HOME.*\.autolab|process.env.HOME + "/.autolab"|g' "$file"
+    sed -i 's|homedir().*\.autolab|homedir() + "/.autolab"|g' "$file"
 done
 echo "   ✓ Home directory paths updated"
 echo ""
@@ -38,9 +38,9 @@ echo ""
 echo "Step 2: User-facing config file references..."
 find "$REPO_ROOT/src" -type f \( -name "*.ts" -o -name "*.js" \) -print0 | while IFS= read -r -d '' file; do
     # Only in user-facing strings (in quotes)
-    sed -i 's|"openclaw\.json"|"autolab.json"|g' "$file"
-    sed -i "s|'openclaw\.json'|'autolab.json'|g" "$file"
-    sed -i 's|`openclaw\.json`|`autolab.json`|g' "$file"
+    sed -i 's|"autolab\.json"|"autolab.json"|g' "$file"
+    sed -i "s|'autolab\.json'|'autolab.json'|g" "$file"
+    sed -i 's|`autolab\.json`|`autolab.json`|g' "$file"
 done
 echo "   ✓ Config file name updated in strings"
 echo ""
@@ -48,9 +48,9 @@ echo ""
 # 3. Update brand strings in output
 echo "Step 3: Brand strings in user output..."
 find "$REPO_ROOT/src" -type f \( -name "*.ts" -o -name "*.js" \) -print0 | while IFS= read -r -d '' file; do
-    # Replace "OpenClaw" in user-facing strings (but not code/imports)
-    sed -i 's|"OpenClaw|"AutoLab|g' "$file"
-    sed -i "s|'OpenClaw|'AutoLab|g" "$file"
+    # Replace "AutoLab" in user-facing strings (but not code/imports)
+    sed -i 's|"AutoLab|"AutoLab|g' "$file"
+    sed -i "s|'AutoLab|'AutoLab|g" "$file"
 done
 echo "   ✓ Brand strings updated"
 echo ""
@@ -74,8 +74,8 @@ echo ""
 echo "✅ Careful migration complete!"
 echo ""
 echo "Changes made:"
-echo "  • ~/.openclaw → ~/.autolab (user paths)"
+echo "  • ~/.autolab → ~/.autolab (user paths)"
 echo "  • Config strings updated (user-facing)"
-echo "  • Brand strings updated (OpenClaw → AutoLab)"
+echo "  • Brand strings updated (AutoLab → AutoLab)"
 echo "  • Module imports PRESERVED (no breakage)"
 echo ""

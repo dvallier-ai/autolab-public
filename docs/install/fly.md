@@ -25,7 +25,7 @@ description: Deploy AutoLab on Fly.io
 
 ```bash
 # Clone the repo
-git clone https://github.com/openclaw/openclaw.git
+git clone https://github.com/autolab/autolab.git
 cd autolab
 
 # Create a new Fly app (pick your own name)

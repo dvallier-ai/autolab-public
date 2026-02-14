@@ -1,9 +1,9 @@
 import AppKit
-import OpenClawProtocol
+import AutoLabProtocol
 import SwiftUI
 import Testing
 
-@testable import OpenClaw
+@testable import AutoLab
 
 @Suite(.serialized)
 @MainActor

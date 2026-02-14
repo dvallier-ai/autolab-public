@@ -105,10 +105,10 @@ The **installer script** is the recommended way to install AutoLab. It handles N
 
     <Steps>
       <Step title="Clone and build">
-        Clone the [AutoLab repo](https://github.com/openclaw/openclaw) and build:
+        Clone the [AutoLab repo](https://github.com/autolab/autolab) and build:
 
         ```bash
-        git clone https://github.com/openclaw/openclaw.git
+        git clone https://github.com/autolab/autolab.git
         cd autolab
         pnpm install
         pnpm ui:build

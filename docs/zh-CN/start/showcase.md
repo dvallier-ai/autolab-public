@@ -1,5 +1,5 @@
 ---
-description: Real-world OpenClaw projects from the community
+description: Real-world AutoLab projects from the community
 summary: 社区构建的基于 AutoLab 的项目和集成
 title: 案例展示
 x-i18n:

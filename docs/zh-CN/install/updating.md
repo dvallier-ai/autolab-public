@@ -137,7 +137,7 @@ autolab health
 
 说明：
 
-- 当你运行打包的 `autolab` 二进制文件（[`autolab.mjs`](https://github.com/openclaw/openclaw/blob/main/autolab.mjs)）或使用 Node 运行 `dist/` 时，`pnpm build` 很重要。
+- 当你运行打包的 `autolab` 二进制文件（[`autolab.mjs`](https://github.com/autolab/autolab/blob/main/autolab.mjs)）或使用 Node 运行 `dist/` 时，`pnpm build` 很重要。
 - 如果你从仓库 checkout 运行而没有全局安装，CLI 命令使用 `pnpm autolab ...`。
 - 如果你直接从 TypeScript 运行（`pnpm autolab ...`），通常不需要重新构建，但**配置迁移仍然适用** → 运行 doctor。
 - 在全局和 git 安装之间切换很容易：安装另一种方式，然后运行 `autolab doctor` 以便将 Gateway 网关服务入口点重写为当前安装。

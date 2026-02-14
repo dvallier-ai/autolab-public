@@ -1,7 +1,7 @@
-import OpenClawDiscovery
+import AutoLabDiscovery
 import SwiftUI
 import Testing
-@testable import OpenClaw
+@testable import AutoLab
 
 @Suite(.serialized)
 @MainActor

@@ -2,7 +2,7 @@
 
 **AutoLab** - Automation framework for Intel validation lab workflows.
 
-Forked from [OpenClaw](https://github.com/openclaw/openclaw) with customizations for Intel validation environments.
+Forked from [AutoLab](https://github.com/autolab/autolab) with customizations for Intel validation environments.
 
 ---
 
@@ -31,7 +31,7 @@ AutoLab is a multi-agent AI automation framework designed for Intel validation l
 - **Agent collaboration** - Multiple specialized agents working together
 - **Knowledge management** - Training boards and documentation
 
-Built on the OpenClaw foundation, customized for Intel's interoperability validation lab.
+Built on the AutoLab foundation, customized for Intel's interoperability validation lab.
 
 ---
 
@@ -72,7 +72,7 @@ Built on the OpenClaw foundation, customized for Intel's interoperability valida
 
 ## Documentation
 
-- `docs/` - Full documentation (being updated from OpenClaw)
+- `docs/` - Full documentation (being updated from AutoLab)
 - `AGENTS.md` - Agent system overview
 - `REBRAND-PLAN.md` - Fork and customization strategy
 
@@ -80,7 +80,7 @@ Built on the OpenClaw foundation, customized for Intel's interoperability valida
 
 ## Configuration
 
-Config location: `~/.autolab/` (migrating from `~/.openclaw/`)
+Config location: `~/.autolab/` (migrating from `~/.autolab/`)
 
 Key files:
 
@@ -104,13 +104,13 @@ autolab cron list           # List scheduled jobs
 
 ---
 
-## Migration from OpenClaw
+## Migration from AutoLab
 
-If you have existing OpenClaw configs:
+If you have existing AutoLab configs:
 
 ```bash
 # Backup original
-cp -r ~/.openclaw ~/.openclaw.backup
+cp -r ~/.autolab ~/.autolab.backup
 
 # AutoLab will create ~/.autolab/
 # You can manually copy configs if needed
@@ -122,11 +122,11 @@ Both can coexist during transition.
 
 ## Attribution
 
-**Based on OpenClaw**  
-https://github.com/openclaw/openclaw  
+**Based on AutoLab**  
+https://github.com/autolab/autolab  
 Licensed under MIT License
 
-AutoLab maintains compatibility with OpenClaw core while adding Intel validation-specific features.
+AutoLab maintains compatibility with AutoLab core while adding Intel validation-specific features.
 
 ---
 
@@ -168,7 +168,7 @@ Integrates with existing INOP Tool Suite (dashboard, network mapper).
 
 ## License
 
-MIT License (same as OpenClaw)
+MIT License (same as AutoLab)
 
 See `LICENSE` file for details.
 

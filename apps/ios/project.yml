@@ -1,6 +1,6 @@
-name: OpenClaw
+name: AutoLab
 options:
-  bundleIdPrefix: ai.openclaw
+  bundleIdPrefix: ai.autolab
   deploymentTarget:
     iOS: "18.0"
   xcodeVersion: "16.0"
@@ -10,33 +10,33 @@ settings:
     SWIFT_VERSION: "6.0"
 
 packages:
-  OpenClawKit:
-    path: ../shared/OpenClawKit
+  AutoLabKit:
+    path: ../shared/AutoLabKit
   Swabble:
     path: ../../Swabble
 
 schemes:
-  OpenClaw:
+  AutoLab:
     shared: true
     build:
       targets:
-        OpenClaw: all
+        AutoLab: all
     test:
       targets:
-        - OpenClawTests
+        - AutoLabTests
 
 targets:
-  OpenClaw:
+  AutoLab:
     type: application
     platform: iOS
     sources:
       - path: Sources
     dependencies:
-      - package: OpenClawKit
-      - package: OpenClawKit
-        product: OpenClawChatUI
-      - package: OpenClawKit
-        product: OpenClawProtocol
+      - package: AutoLabKit
+      - package: AutoLabKit
+        product: AutoLabChatUI
+      - package: AutoLabKit
+        product: AutoLabProtocol
       - package: Swabble
         product: SwabbleKit
       - sdk: AppIntents.framework
@@ -71,15 +71,15 @@ targets:
         CODE_SIGN_IDENTITY: "Apple Development"
         CODE_SIGN_STYLE: Manual
         DEVELOPMENT_TEAM: Y5PE65HELJ
-        PRODUCT_BUNDLE_IDENTIFIER: ai.openclaw.ios
-        PROVISIONING_PROFILE_SPECIFIER: "ai.openclaw.ios Development"
+        PRODUCT_BUNDLE_IDENTIFIER: ai.autolab.ios
+        PROVISIONING_PROFILE_SPECIFIER: "ai.autolab.ios Development"
         SWIFT_VERSION: "6.0"
         SWIFT_STRICT_CONCURRENCY: complete
         ENABLE_APPINTENTS_METADATA: NO
     info:
       path: Sources/Info.plist
       properties:
-        CFBundleDisplayName: OpenClaw
+        CFBundleDisplayName: AutoLab
         CFBundleIconName: AppIcon
         CFBundleShortVersionString: "2026.2.9"
         CFBundleVersion: "20260202"
@@ -88,16 +88,16 @@ targets:
           UIApplicationSupportsMultipleScenes: false
         UIBackgroundModes:
           - audio
-        NSLocalNetworkUsageDescription: OpenClaw discovers and connects to your OpenClaw gateway on the local network.
+        NSLocalNetworkUsageDescription: AutoLab discovers and connects to your AutoLab gateway on the local network.
         NSAppTransportSecurity:
           NSAllowsArbitraryLoadsInWebContent: true
         NSBonjourServices:
-          - _openclaw-gw._tcp
-        NSCameraUsageDescription: OpenClaw can capture photos or short video clips when requested via the gateway.
-        NSLocationWhenInUseUsageDescription: OpenClaw uses your location when you allow location sharing.
-        NSLocationAlwaysAndWhenInUseUsageDescription: OpenClaw can share your location in the background when you enable Always.
-        NSMicrophoneUsageDescription: OpenClaw needs microphone access for voice wake.
-        NSSpeechRecognitionUsageDescription: OpenClaw uses on-device speech recognition for voice wake.
+          - _autolab-gw._tcp
+        NSCameraUsageDescription: AutoLab can capture photos or short video clips when requested via the gateway.
+        NSLocationWhenInUseUsageDescription: AutoLab uses your location when you allow location sharing.
+        NSLocationAlwaysAndWhenInUseUsageDescription: AutoLab can share your location in the background when you enable Always.
+        NSMicrophoneUsageDescription: AutoLab needs microphone access for voice wake.
+        NSSpeechRecognitionUsageDescription: AutoLab uses on-device speech recognition for voice wake.
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
           - UIInterfaceOrientationPortraitUpsideDown
@@ -109,26 +109,26 @@ targets:
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
 
-  OpenClawTests:
+  AutoLabTests:
     type: bundle.unit-test
     platform: iOS
     sources:
       - path: Tests
     dependencies:
-      - target: OpenClaw
+      - target: AutoLab
       - package: Swabble
         product: SwabbleKit
       - sdk: AppIntents.framework
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: ai.openclaw.ios.tests
+        PRODUCT_BUNDLE_IDENTIFIER: ai.autolab.ios.tests
         SWIFT_VERSION: "6.0"
         SWIFT_STRICT_CONCURRENCY: complete
-        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/OpenClaw.app/OpenClaw"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/AutoLab.app/AutoLab"
         BUNDLE_LOADER: "$(TEST_HOST)"
     info:
       path: Tests/Info.plist
       properties:
-        CFBundleDisplayName: OpenClawTests
+        CFBundleDisplayName: AutoLabTests
         CFBundleShortVersionString: "2026.2.9"
         CFBundleVersion: "20260202"

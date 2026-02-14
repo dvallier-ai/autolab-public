@@ -1,37 +1,37 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { OpenClawConfig } from "./types.js";
+import type { AutoLabConfig } from "./types.js";
 import { expandHomePrefix, resolveRequiredHomeDir } from "../infra/home-dir.js";
 
 /**
- * Nix mode detection: When AUTOLAB_NIX_MODE=1 (or legacy OPENCLAW_NIX_MODE), the gateway is running under Nix.
+ * Nix mode detection: When AUTOLAB_NIX_MODE=1 (or legacy AUTOLAB_NIX_MODE), the gateway is running under Nix.
  * In this mode:
  * - No auto-install flows should be attempted
  * - Missing dependencies should produce actionable Nix-specific error messages
  * - Config is managed externally (read-only from Nix perspective)
  */
 export function resolveIsNixMode(env: NodeJS.ProcessEnv = process.env): boolean {
-  return env.AUTOLAB_NIX_MODE === "1" || env.OPENCLAW_NIX_MODE === "1";
+  return env.AUTOLAB_NIX_MODE === "1" || env.AUTOLAB_NIX_MODE === "1";
 }
 
 export const isNixMode = resolveIsNixMode();
 
-const LEGACY_STATE_DIRNAMES = [".clawdbot", ".moltbot", ".moldbot", ".openclaw"] as const;
+const LEGACY_STATE_DIRNAMES = [".clawdbot", ".moltbot", ".moldbot", ".autolab"] as const;
 const NEW_STATE_DIRNAME = ".autolab";
 const CONFIG_FILENAME = "autolab.json";
 const LEGACY_CONFIG_FILENAMES = [
   "clawdbot.json",
   "moltbot.json",
   "moldbot.json",
-  "openclaw.json",
+  "autolab.json",
 ] as const;
 
 function resolveDefaultHomeDir(): string {
   return resolveRequiredHomeDir(process.env, os.homedir);
 }
 
-/** Build a homedir thunk that respects AUTOLAB_HOME or legacy OPENCLAW_HOME for the given env. */
+/** Build a homedir thunk that respects AUTOLAB_HOME or legacy AUTOLAB_HOME for the given env. */
 function envHomedir(env: NodeJS.ProcessEnv): () => string {
   return () => resolveRequiredHomeDir(env, os.homedir);
 }
@@ -58,8 +58,8 @@ export function resolveNewStateDir(homedir: () => string = resolveDefaultHomeDir
 
 /**
  * State directory for mutable data (sessions, logs, caches).
- * Can be overridden via AUTOLAB_STATE_DIR (preferred) or legacy OPENCLAW_STATE_DIR/CLAWDBOT_STATE_DIR.
- * Default: ~/.autolab (checks for existing ~/.openclaw for backward compatibility)
+ * Can be overridden via AUTOLAB_STATE_DIR (preferred) or legacy AUTOLAB_STATE_DIR/CLAWDBOT_STATE_DIR.
+ * Default: ~/.autolab (checks for existing ~/.autolab for backward compatibility)
  */
 export function resolveStateDir(
   env: NodeJS.ProcessEnv = process.env,
@@ -68,7 +68,7 @@ export function resolveStateDir(
   const effectiveHomedir = () => resolveRequiredHomeDir(env, homedir);
   const override =
     env.AUTOLAB_STATE_DIR?.trim() ||
-    env.OPENCLAW_STATE_DIR?.trim() ||
+    env.AUTOLAB_STATE_DIR?.trim() ||
     env.CLAWDBOT_STATE_DIR?.trim();
   if (override) {
     return resolveUserPath(override, env, effectiveHomedir);
@@ -116,7 +116,7 @@ export const STATE_DIR = resolveStateDir();
 
 /**
  * Config file path (JSON5).
- * Can be overridden via AUTOLAB_CONFIG_PATH (preferred) or legacy OPENCLAW_CONFIG_PATH/CLAWDBOT_CONFIG_PATH.
+ * Can be overridden via AUTOLAB_CONFIG_PATH (preferred) or legacy AUTOLAB_CONFIG_PATH/CLAWDBOT_CONFIG_PATH.
  * Default: ~/.autolab/autolab.json (or $AUTOLAB_STATE_DIR/autolab.json)
  */
 export function resolveCanonicalConfigPath(
@@ -125,7 +125,7 @@ export function resolveCanonicalConfigPath(
 ): string {
   const override =
     env.AUTOLAB_CONFIG_PATH?.trim() ||
-    env.OPENCLAW_CONFIG_PATH?.trim() ||
+    env.AUTOLAB_CONFIG_PATH?.trim() ||
     env.CLAWDBOT_CONFIG_PATH?.trim();
   if (override) {
     return resolveUserPath(override, env, envHomedir(env));
@@ -163,11 +163,11 @@ export function resolveConfigPath(
   stateDir: string = resolveStateDir(env, envHomedir(env)),
   homedir: () => string = envHomedir(env),
 ): string {
-  const override = env.AUTOLAB_CONFIG_PATH?.trim() || env.OPENCLAW_CONFIG_PATH?.trim();
+  const override = env.AUTOLAB_CONFIG_PATH?.trim() || env.AUTOLAB_CONFIG_PATH?.trim();
   if (override) {
     return resolveUserPath(override, env, homedir);
   }
-  const stateOverride = env.AUTOLAB_STATE_DIR?.trim() || env.OPENCLAW_STATE_DIR?.trim();
+  const stateOverride = env.AUTOLAB_STATE_DIR?.trim() || env.AUTOLAB_STATE_DIR?.trim();
   const candidates = [
     path.join(stateDir, CONFIG_FILENAME),
     ...LEGACY_CONFIG_FILENAMES.map((name) => path.join(stateDir, name)),
@@ -203,15 +203,15 @@ export function resolveDefaultConfigCandidates(
   homedir: () => string = envHomedir(env),
 ): string[] {
   const effectiveHomedir = () => resolveRequiredHomeDir(env, homedir);
-  const explicit = env.OPENCLAW_CONFIG_PATH?.trim() || env.CLAWDBOT_CONFIG_PATH?.trim();
+  const explicit = env.AUTOLAB_CONFIG_PATH?.trim() || env.CLAWDBOT_CONFIG_PATH?.trim();
   if (explicit) {
     return [resolveUserPath(explicit, env, effectiveHomedir)];
   }
 
   const candidates: string[] = [];
-  const openclawStateDir = env.OPENCLAW_STATE_DIR?.trim() || env.CLAWDBOT_STATE_DIR?.trim();
-  if (openclawStateDir) {
-    const resolved = resolveUserPath(openclawStateDir, env, effectiveHomedir);
+  const autolabStateDir = env.AUTOLAB_STATE_DIR?.trim() || env.CLAWDBOT_STATE_DIR?.trim();
+  if (autolabStateDir) {
+    const resolved = resolveUserPath(autolabStateDir, env, effectiveHomedir);
     candidates.push(path.join(resolved, CONFIG_FILENAME));
     candidates.push(...LEGACY_CONFIG_FILENAMES.map((name) => path.join(resolved, name)));
   }
@@ -228,12 +228,12 @@ export const DEFAULT_GATEWAY_PORT = 18789;
 
 /**
  * Gateway lock directory (ephemeral).
- * Default: os.tmpdir()/openclaw-<uid> (uid suffix when available).
+ * Default: os.tmpdir()/autolab-<uid> (uid suffix when available).
  */
 export function resolveGatewayLockDir(tmpdir: () => string = os.tmpdir): string {
   const base = tmpdir();
   const uid = typeof process.getuid === "function" ? process.getuid() : undefined;
-  const suffix = uid != null ? `openclaw-${uid}` : "openclaw";
+  const suffix = uid != null ? `autolab-${uid}` : "autolab";
   return path.join(base, suffix);
 }
 
@@ -243,14 +243,14 @@ const OAUTH_FILENAME = "oauth.json";
  * OAuth credentials storage directory.
  *
  * Precedence:
- * - `OPENCLAW_OAUTH_DIR` (explicit override)
+ * - `AUTOLAB_OAUTH_DIR` (explicit override)
  * - `$*_STATE_DIR/credentials` (canonical server/default)
  */
 export function resolveOAuthDir(
   env: NodeJS.ProcessEnv = process.env,
   stateDir: string = resolveStateDir(env, envHomedir(env)),
 ): string {
-  const override = env.OPENCLAW_OAUTH_DIR?.trim();
+  const override = env.AUTOLAB_OAUTH_DIR?.trim();
   if (override) {
     return resolveUserPath(override, env, envHomedir(env));
   }
@@ -265,12 +265,12 @@ export function resolveOAuthPath(
 }
 
 export function resolveGatewayPort(
-  cfg?: OpenClawConfig,
+  cfg?: AutoLabConfig,
   env: NodeJS.ProcessEnv = process.env,
 ): number {
   const envRaw =
     env.AUTOLAB_GATEWAY_PORT?.trim() ||
-    env.OPENCLAW_GATEWAY_PORT?.trim() ||
+    env.AUTOLAB_GATEWAY_PORT?.trim() ||
     env.CLAWDBOT_GATEWAY_PORT?.trim();
   if (envRaw) {
     const parsed = Number.parseInt(envRaw, 10);

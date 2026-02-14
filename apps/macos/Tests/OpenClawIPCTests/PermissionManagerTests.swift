@@ -1,7 +1,7 @@
-import OpenClawIPC
+import AutoLabIPC
 import CoreLocation
 import Testing
-@testable import OpenClaw
+@testable import AutoLab
 
 @Suite(.serialized)
 @MainActor

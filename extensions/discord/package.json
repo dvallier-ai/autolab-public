@@ -1,12 +1,12 @@
 {
-  "name": "@openclaw/discord",
+  "name": "@autolab/discord",
   "version": "2026.2.9",
-  "description": "OpenClaw Discord channel plugin",
+  "description": "AutoLab Discord channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "autolab": "workspace:*"
   },
-  "openclaw": {
+  "autolab": {
     "extensions": [
       "./index.ts"
     ]

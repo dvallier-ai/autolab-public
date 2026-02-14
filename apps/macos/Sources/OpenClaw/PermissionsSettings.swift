@@ -1,5 +1,5 @@
-import OpenClawIPC
-import OpenClawKit
+import AutoLabIPC
+import AutoLabKit
 import CoreLocation
 import SwiftUI
 
@@ -12,7 +12,7 @@ struct PermissionsSettings: View {
         VStack(alignment: .leading, spacing: 14) {
             SystemRunSettingsView()
 
-            Text("Allow these so OpenClaw can notify and capture when needed.")
+            Text("Allow these so AutoLab can notify and capture when needed.")
                 .padding(.top, 4)
 
             PermissionStatusList(status: self.status, refresh: self.refresh)
@@ -31,9 +31,9 @@ struct PermissionsSettings: View {
 }
 
 private struct LocationAccessSettings: View {
-    @AppStorage(locationModeKey) private var locationModeRaw: String = OpenClawLocationMode.off.rawValue
+    @AppStorage(locationModeKey) private var locationModeRaw: String = AutoLabLocationMode.off.rawValue
     @AppStorage(locationPreciseKey) private var locationPreciseEnabled: Bool = true
-    @State private var lastLocationModeRaw: String = OpenClawLocationMode.off.rawValue
+    @State private var lastLocationModeRaw: String = AutoLabLocationMode.off.rawValue
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -41,9 +41,9 @@ private struct LocationAccessSettings: View {
                 .font(.body)
 
             Picker("", selection: self.$locationModeRaw) {
-                Text("Off").tag(OpenClawLocationMode.off.rawValue)
-                Text("While Using").tag(OpenClawLocationMode.whileUsing.rawValue)
-                Text("Always").tag(OpenClawLocationMode.always.rawValue)
+                Text("Off").tag(AutoLabLocationMode.off.rawValue)
+                Text("While Using").tag(AutoLabLocationMode.whileUsing.rawValue)
+                Text("Always").tag(AutoLabLocationMode.always.rawValue)
             }
             .labelsHidden()
             .pickerStyle(.menu)
@@ -62,7 +62,7 @@ private struct LocationAccessSettings: View {
         .onChange(of: self.locationModeRaw) { _, newValue in
             let previous = self.lastLocationModeRaw
             self.lastLocationModeRaw = newValue
-            guard let mode = OpenClawLocationMode(rawValue: newValue) else { return }
+            guard let mode = AutoLabLocationMode(rawValue: newValue) else { return }
             Task {
                 let granted = await self.requestLocationAuthorization(mode: mode)
                 if !granted {
@@ -75,11 +75,11 @@ private struct LocationAccessSettings: View {
         }
     }
 
-    private var locationMode: OpenClawLocationMode {
-        OpenClawLocationMode(rawValue: self.locationModeRaw) ?? .off
+    private var locationMode: AutoLabLocationMode {
+        AutoLabLocationMode(rawValue: self.locationModeRaw) ?? .off
     }
 
-    private func requestLocationAuthorization(mode: OpenClawLocationMode) async -> Bool {
+    private func requestLocationAuthorization(mode: AutoLabLocationMode) async -> Bool {
         guard mode != .off else { return true }
         guard CLLocationManager.locationServicesEnabled() else {
             await MainActor.run { LocationPermissionHelper.openSettings() }

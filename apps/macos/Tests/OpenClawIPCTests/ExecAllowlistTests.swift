@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import OpenClaw
+@testable import AutoLab
 
 struct ExecAllowlistTests {
     @Test func matchUsesResolvedPath() {

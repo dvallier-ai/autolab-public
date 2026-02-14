@@ -132,11 +132,11 @@ export function buildSandboxCreateArgs(params: {
 }) {
   const createdAtMs = params.createdAtMs ?? Date.now();
   const args = ["create", "--name", params.name];
-  args.push("--label", "openclaw.sandbox=1");
-  args.push("--label", `openclaw.sessionKey=${params.scopeKey}`);
-  args.push("--label", `openclaw.createdAtMs=${createdAtMs}`);
+  args.push("--label", "autolab.sandbox=1");
+  args.push("--label", `autolab.sessionKey=${params.scopeKey}`);
+  args.push("--label", `autolab.createdAtMs=${createdAtMs}`);
   if (params.configHash) {
-    args.push("--label", `openclaw.configHash=${params.configHash}`);
+    args.push("--label", `autolab.configHash=${params.configHash}`);
   }
   for (const [key, value] of Object.entries(params.labels ?? {})) {
     if (key && value) {
@@ -259,7 +259,7 @@ async function readContainerConfigHash(containerName: string): Promise<string | 
     }
     return raw;
   };
-  return await readLabel("openclaw.configHash");
+  return await readLabel("autolab.configHash");
 }
 
 function formatSandboxRecreateHint(params: { scope: SandboxConfig["scope"]; sessionKey: string }) {
@@ -270,7 +270,7 @@ function formatSandboxRecreateHint(params: { scope: SandboxConfig["scope"]; sess
     const agentId = resolveSandboxAgentId(params.sessionKey) ?? "main";
     return formatCliCommand(`autolab sandbox recreate --agent ${agentId}`);
   }
-  return formatCliCommand("openclaw sandbox recreate --all");
+  return formatCliCommand("autolab sandbox recreate --all");
 }
 
 export async function ensureSandboxContainer(params: {

@@ -52,8 +52,8 @@ fi
 
 # T1.2: Help Output
 if autolab --help 2>&1 | grep -q "autolab"; then
-    if autolab --help 2>&1 | grep -qi "openclaw.*command"; then
-        fail "T1.2 Help contains 'openclaw' command references"
+    if autolab --help 2>&1 | grep -qi "autolab.*command"; then
+        fail "T1.2 Help contains 'autolab' command references"
     else
         pass "T1.2 Help output clean"
     fi
@@ -95,28 +95,28 @@ echo "⚙️  Category 3: Configuration"
 echo "-----------------------------"
 
 # T3.1: Config File Exists
-if [ -f ~/.openclaw/openclaw.json ]; then
+if [ -f ~/.autolab/autolab.json ]; then
     pass "T3.1 Config file exists"
 else
     fail "T3.1 Config file missing"
 fi
 
 # T3.2: Config Valid JSON
-if jq . ~/.openclaw/openclaw.json > /dev/null 2>&1; then
+if jq . ~/.autolab/autolab.json > /dev/null 2>&1; then
     pass "T3.2 Config valid JSON"
 else
     fail "T3.2 Config invalid JSON"
 fi
 
 # T3.3: Workspace Exists
-if [ -d ~/.openclaw/workspace ]; then
+if [ -d ~/.autolab/workspace ]; then
     pass "T3.3 Workspace exists"
 else
     fail "T3.3 Workspace missing"
 fi
 
 # T3.4: Memory Files
-if ls ~/.openclaw/workspace/memory/*.md > /dev/null 2>&1; then
+if ls ~/.autolab/workspace/memory/*.md > /dev/null 2>&1; then
     pass "T3.4 Memory files exist"
 else
     skip "T3.4 Memory files (none found)"
@@ -149,12 +149,12 @@ else
     fail "T4.3 Build artifacts missing"
 fi
 
-# T4.4: No OpenClaw in Functional Fields
-OPENCLAW_IN_PKG=$(grep -i '"openclaw"' "$REPO_ROOT/package.json" | grep -v "Based on OpenClaw" | wc -l)
-if [ "$OPENCLAW_IN_PKG" -eq 0 ]; then
-    pass "T4.4 No 'openclaw' in package.json functional fields"
+# T4.4: No AutoLab in Functional Fields
+AUTOLAB_IN_PKG=$(grep -i '"autolab"' "$REPO_ROOT/package.json" | grep -v "Based on AutoLab" | wc -l)
+if [ "$AUTOLAB_IN_PKG" -eq 0 ]; then
+    pass "T4.4 No 'autolab' in package.json functional fields"
 else
-    fail "T4.4 Found 'openclaw' in package.json ($OPENCLAW_IN_PKG occurrences)"
+    fail "T4.4 Found 'autolab' in package.json ($AUTOLAB_IN_PKG occurrences)"
 fi
 
 echo ""
@@ -164,27 +164,27 @@ echo "💻 Category 5: Source Code"
 echo "---------------------------"
 
 # T5.1: Config Paths (should use .autolab)
-OPENCLAW_PATHS=$(grep -r "\.openclaw" "$REPO_ROOT/src" 2>/dev/null | grep -v ".autolab" | wc -l)
-if [ "$OPENCLAW_PATHS" -eq 0 ]; then
+AUTOLAB_PATHS=$(grep -r "\.autolab" "$REPO_ROOT/src" 2>/dev/null | grep -v ".autolab" | wc -l)
+if [ "$AUTOLAB_PATHS" -eq 0 ]; then
     pass "T5.1 Config paths updated to .autolab"
 else
-    fail "T5.1 Found .openclaw paths in source ($OPENCLAW_PATHS occurrences)"
+    fail "T5.1 Found .autolab paths in source ($AUTOLAB_PATHS occurrences)"
 fi
 
 # T5.2: Config File References
-OPENCLAW_JSON=$(grep -r "openclaw\.json" "$REPO_ROOT/src" 2>/dev/null | wc -l)
-if [ "$OPENCLAW_JSON" -eq 0 ]; then
+AUTOLAB_JSON=$(grep -r "autolab\.json" "$REPO_ROOT/src" 2>/dev/null | wc -l)
+if [ "$AUTOLAB_JSON" -eq 0 ]; then
     pass "T5.2 Config file references updated to autolab.json"
 else
-    fail "T5.2 Found openclaw.json references ($OPENCLAW_JSON occurrences)"
+    fail "T5.2 Found autolab.json references ($AUTOLAB_JSON occurrences)"
 fi
 
-# T5.3: Brand Strings (OpenClaw in UI/messages)
-OPENCLAW_BRAND=$(grep -r "OpenClaw" "$REPO_ROOT/src" 2>/dev/null | grep -v "// " | grep -v "Based on OpenClaw" | wc -l)
-if [ "$OPENCLAW_BRAND" -lt 10 ]; then
-    pass "T5.3 Brand strings mostly updated ($OPENCLAW_BRAND remaining)"
+# T5.3: Brand Strings (AutoLab in UI/messages)
+AUTOLAB_BRAND=$(grep -r "AutoLab" "$REPO_ROOT/src" 2>/dev/null | grep -v "// " | grep -v "Based on AutoLab" | wc -l)
+if [ "$AUTOLAB_BRAND" -lt 10 ]; then
+    pass "T5.3 Brand strings mostly updated ($AUTOLAB_BRAND remaining)"
 else
-    fail "T5.3 Too many OpenClaw brand strings ($OPENCLAW_BRAND found)"
+    fail "T5.3 Too many AutoLab brand strings ($AUTOLAB_BRAND found)"
 fi
 
 echo ""
@@ -208,10 +208,10 @@ else
 fi
 
 # T6.3: Attribution Present
-if grep -qi "Based on OpenClaw" "$REPO_ROOT/README.md"; then
-    pass "T6.3 OpenClaw attribution present"
+if grep -qi "Based on AutoLab" "$REPO_ROOT/README.md"; then
+    pass "T6.3 AutoLab attribution present"
 else
-    fail "T6.3 OpenClaw attribution missing"
+    fail "T6.3 AutoLab attribution missing"
 fi
 
 echo ""

@@ -1,11 +1,11 @@
 import Foundation
 
-public enum OpenClawCalendarCommand: String, Codable, Sendable {
+public enum AutoLabCalendarCommand: String, Codable, Sendable {
     case events = "calendar.events"
     case add = "calendar.add"
 }
 
-public struct OpenClawCalendarEventsParams: Codable, Sendable, Equatable {
+public struct AutoLabCalendarEventsParams: Codable, Sendable, Equatable {
     public var startISO: String?
     public var endISO: String?
     public var limit: Int?
@@ -17,7 +17,7 @@ public struct OpenClawCalendarEventsParams: Codable, Sendable, Equatable {
     }
 }
 
-public struct OpenClawCalendarAddParams: Codable, Sendable, Equatable {
+public struct AutoLabCalendarAddParams: Codable, Sendable, Equatable {
     public var title: String
     public var startISO: String
     public var endISO: String
@@ -48,7 +48,7 @@ public struct OpenClawCalendarAddParams: Codable, Sendable, Equatable {
     }
 }
 
-public struct OpenClawCalendarEventPayload: Codable, Sendable, Equatable {
+public struct AutoLabCalendarEventPayload: Codable, Sendable, Equatable {
     public var identifier: String
     public var title: String
     public var startISO: String
@@ -76,18 +76,18 @@ public struct OpenClawCalendarEventPayload: Codable, Sendable, Equatable {
     }
 }
 
-public struct OpenClawCalendarEventsPayload: Codable, Sendable, Equatable {
-    public var events: [OpenClawCalendarEventPayload]
+public struct AutoLabCalendarEventsPayload: Codable, Sendable, Equatable {
+    public var events: [AutoLabCalendarEventPayload]
 
-    public init(events: [OpenClawCalendarEventPayload]) {
+    public init(events: [AutoLabCalendarEventPayload]) {
         self.events = events
     }
 }
 
-public struct OpenClawCalendarAddPayload: Codable, Sendable, Equatable {
-    public var event: OpenClawCalendarEventPayload
+public struct AutoLabCalendarAddPayload: Codable, Sendable, Equatable {
+    public var event: AutoLabCalendarEventPayload
 
-    public init(event: OpenClawCalendarEventPayload) {
+    public init(event: AutoLabCalendarEventPayload) {
         self.event = event
     }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-public enum OpenClawNodeErrorCode: String, Codable, Sendable {
+public enum AutoLabNodeErrorCode: String, Codable, Sendable {
     case notPaired = "NOT_PAIRED"
     case unauthorized = "UNAUTHORIZED"
     case backgroundUnavailable = "NODE_BACKGROUND_UNAVAILABLE"
@@ -8,14 +8,14 @@ public enum OpenClawNodeErrorCode: String, Codable, Sendable {
     case unavailable = "UNAVAILABLE"
 }
 
-public struct OpenClawNodeError: Error, Codable, Sendable, Equatable {
-    public var code: OpenClawNodeErrorCode
+public struct AutoLabNodeError: Error, Codable, Sendable, Equatable {
+    public var code: AutoLabNodeErrorCode
     public var message: String
     public var retryable: Bool?
     public var retryAfterMs: Int?
 
     public init(
-        code: OpenClawNodeErrorCode,
+        code: AutoLabNodeErrorCode,
         message: String,
         retryable: Bool? = nil,
         retryAfterMs: Int? = nil)

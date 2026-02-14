@@ -1,6 +1,6 @@
 #!/bin/bash
 # AutoLab Complete Rebrand - Phase 2: Deep Source Cleanup
-# Renames all "openclaw" references to "autolab" with validation
+# Renames all "autolab" references to "autolab" with validation
 
 set -e  # Exit on error
 
@@ -19,7 +19,7 @@ if [ ! -f "$REPO_ROOT/package.json" ]; then
     exit 1
 fi
 
-# Check we're in autolab, not openclaw
+# Check we're in autolab, not autolab
 if ! grep -q "@danv-intel/autolab" "$REPO_ROOT/package.json"; then
     echo "❌ Error: package.json doesn't show AutoLab. Run Phase 1 first."
     exit 1
@@ -39,44 +39,44 @@ echo ""
 
 # Test 1: Record baseline
 echo "📊 Test 1: Recording baseline state..."
-BEFORE_COUNT=$(grep -r "openclaw" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null | wc -l || echo "0")
-echo "   Found $BEFORE_COUNT 'openclaw' references in src/"
+BEFORE_COUNT=$(grep -r "autolab" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null | wc -l || echo "0")
+echo "   Found $BEFORE_COUNT 'autolab' references in src/"
 echo ""
 
 # Step 1: Update config paths in source
-echo "🔧 Step 1: Update config paths (.openclaw → .autolab)..."
+echo "🔧 Step 1: Update config paths (.autolab → .autolab)..."
 
-# Find files with .openclaw references
-FILES_TO_UPDATE=$(grep -rl "\.openclaw" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null || true)
+# Find files with .autolab references
+FILES_TO_UPDATE=$(grep -rl "\.autolab" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null || true)
 
 if [ -n "$FILES_TO_UPDATE" ]; then
     echo "$FILES_TO_UPDATE" | while read -r file; do
         if [ -f "$file" ]; then
-            # Replace .openclaw with .autolab
-            sed -i 's/\.openclaw/.autolab/g' "$file"
+            # Replace .autolab with .autolab
+            sed -i 's/\.autolab/.autolab/g' "$file"
             echo "   ✓ Updated: $(basename $file)"
         fi
     done
 else
-    echo "   ℹ️  No .openclaw paths found in src/"
+    echo "   ℹ️  No .autolab paths found in src/"
 fi
 
 echo ""
 
-# Step 2: Update openclaw.json references
-echo "🔧 Step 2: Update config file references (openclaw.json → autolab.json)..."
+# Step 2: Update autolab.json references
+echo "🔧 Step 2: Update config file references (autolab.json → autolab.json)..."
 
-FILES_WITH_CONFIG=$(grep -rl "openclaw\.json" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null || true)
+FILES_WITH_CONFIG=$(grep -rl "autolab\.json" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null || true)
 
 if [ -n "$FILES_WITH_CONFIG" ]; then
     echo "$FILES_WITH_CONFIG" | while read -r file; do
         if [ -f "$file" ]; then
-            sed -i 's/openclaw\.json/autolab.json/g' "$file"
+            sed -i 's/autolab\.json/autolab.json/g' "$file"
             echo "   ✓ Updated: $(basename $file)"
         fi
     done
 else
-    echo "   ℹ️  No openclaw.json references found"
+    echo "   ℹ️  No autolab.json references found"
 fi
 
 echo ""
@@ -84,13 +84,13 @@ echo ""
 # Step 3: Update CLI command references
 echo "🔧 Step 3: Update CLI command references..."
 
-# Update 'openclaw' command references (but keep careful not to break imports)
+# Update 'autolab' command references (but keep careful not to break imports)
 # Only update in help text, messages, documentation strings
 
-FILES_WITH_CLI=$(grep -rl "openclaw" "$REPO_ROOT/src" --exclude-dir=node_modules --include="*.ts" --include="*.js" 2>/dev/null || true)
+FILES_WITH_CLI=$(grep -rl "autolab" "$REPO_ROOT/src" --exclude-dir=node_modules --include="*.ts" --include="*.js" 2>/dev/null || true)
 
 if [ -n "$FILES_WITH_CLI" ]; then
-    echo "   Found files with 'openclaw' references"
+    echo "   Found files with 'autolab' references"
     echo "   Manual review required for CLI references"
     echo "   (Automated replacement too risky for code logic)"
 fi
@@ -99,7 +99,7 @@ echo ""
 
 # Test 2: Check reduction
 echo "📊 Test 2: Measuring reduction..."
-AFTER_COUNT=$(grep -r "openclaw" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null | wc -l || echo "0")
+AFTER_COUNT=$(grep -r "autolab" "$REPO_ROOT/src" --exclude-dir=node_modules 2>/dev/null | wc -l || echo "0")
 REDUCED=$((BEFORE_COUNT - AFTER_COUNT))
 echo "   Before: $BEFORE_COUNT references"
 echo "   After:  $AFTER_COUNT references"
@@ -171,14 +171,14 @@ echo ""
 echo "✅ Phase 2 Complete!"
 echo ""
 echo "📋 Summary:"
-echo "   • Config paths updated: .openclaw → .autolab"
-echo "   • Config files updated: openclaw.json → autolab.json"
+echo "   • Config paths updated: .autolab → .autolab"
+echo "   • Config files updated: autolab.json → autolab.json"
 echo "   • Build validated: ✅"
 echo "   • CLI installed: ✅"
 echo "   • CLI execution: ✅"
 echo "   • References reduced: $REDUCED"
 echo ""
-echo "⚠️  Note: Some 'openclaw' references remain in:"
+echo "⚠️  Note: Some 'autolab' references remain in:"
 echo "   • Comments (intentional)"
 echo "   • Backward compatibility code (intentional)"
 echo "   • Import paths (safe to keep)"

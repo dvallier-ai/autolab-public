@@ -1,4 +1,4 @@
-import OpenClawDiscovery
+import AutoLabDiscovery
 import SwiftUI
 
 #if DEBUG
@@ -14,7 +14,7 @@ extension OnboardingView {
             tailnetDns: "gateway.ts.net",
             sshPort: 2222,
             gatewayPort: 18789,
-            cliPath: "/usr/local/bin/openclaw",
+            cliPath: "/usr/local/bin/autolab",
             stableID: "gateway-1",
             debugID: "gateway-1",
             isLocal: false)
@@ -28,14 +28,14 @@ extension OnboardingView {
         view.localGatewayProbe = LocalGatewayProbe(
             port: GatewayEnvironment.gatewayPort(),
             pid: 123,
-            command: "openclaw-gateway",
+            command: "autolab-gateway",
             expected: true)
         view.showAdvancedConnection = true
         view.preferredGatewayID = gateway.stableID
         view.cliInstalled = true
-        view.cliInstallLocation = "/usr/local/bin/openclaw"
+        view.cliInstallLocation = "/usr/local/bin/autolab"
         view.cliStatus = "Installed"
-        view.workspacePath = "/tmp/openclaw"
+        view.workspacePath = "/tmp/autolab"
         view.workspaceStatus = "Saved workspace"
         view.anthropicAuthPKCE = AnthropicOAuth.PKCE(verifier: "verifier", challenge: "challenge")
         view.anthropicAuthCode = "code#state"

@@ -1,13 +1,13 @@
 {
-  "name": "@openclaw/mattermost",
+  "name": "@autolab/mattermost",
   "version": "2026.2.9",
   "private": true,
-  "description": "OpenClaw Mattermost channel plugin",
+  "description": "AutoLab Mattermost channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "autolab": "workspace:*"
   },
-  "openclaw": {
+  "autolab": {
     "extensions": [
       "./index.ts"
     ],
@@ -21,7 +21,7 @@
       "order": 65
     },
     "install": {
-      "npmSpec": "@openclaw/mattermost",
+      "npmSpec": "@autolab/mattermost",
       "localPath": "extensions/mattermost",
       "defaultChoice": "npm"
     }

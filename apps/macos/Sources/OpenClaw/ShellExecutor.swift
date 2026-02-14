@@ -1,4 +1,4 @@
-import OpenClawIPC
+import AutoLabIPC
 import Foundation
 
 enum ShellExecutor {

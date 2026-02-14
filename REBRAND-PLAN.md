@@ -1,10 +1,10 @@
 # ASS (Autonomous Support Structure) Rebrand Plan
 
 **Date:** 2026-02-09  
-**From:** OpenClaw  
+**From:** AutoLab  
 **To:** ASS (Autonomous Support Structure)  
 **Repository:** https://github.com/danv-intel/ass  
-**Upstream:** https://github.com/openclaw/openclaw
+**Upstream:** https://github.com/autolab/autolab
 
 ---
 
@@ -13,20 +13,20 @@
 ### Package Identity
 - **Name:** `@danv-intel/ass` (scoped npm package)
 - **CLI Command:** `ass`
-- **Config Path:** `~/.ass/` (from `~/.openclaw/`)
-- **Binary:** `ass` (from `openclaw`)
+- **Config Path:** `~/.ass/` (from `~/.autolab/`)
+- **Binary:** `ass` (from `autolab`)
 
 ### What Changes
 1. **Package.json** - name, bin, description
-2. **CLI Entry** - `openclaw.mjs` → `ass.mjs`
+2. **CLI Entry** - `autolab.mjs` → `ass.mjs`
 3. **Documentation** - README, docs/, all references
-4. **Config Paths** - All `~/.openclaw` → `~/.ass`
-5. **Source Code** - String references to "openclaw"
+4. **Config Paths** - All `~/.autolab` → `~/.ass`
+5. **Source Code** - String references to "autolab"
 6. **Branding** - Logo, colors, tagline
 
 ### What Stays Same
 1. **Core functionality** - All features preserved
-2. **MIT License** - With attribution to OpenClaw
+2. **MIT License** - With attribution to AutoLab
 3. **Git history** - Full history maintained
 4. **Architecture** - No structural changes
 
@@ -41,7 +41,7 @@
 **Files to change:**
 ```
 package.json          → name, bin, description
-openclaw.mjs          → rename to ass.mjs
+autolab.mjs          → rename to ass.mjs
 README.md             → rebrand header, description
 docs/                 → update all references
 src/                  → config paths, branding strings
@@ -58,19 +58,19 @@ ass status
 
 ### Phase 2: Config Migration
 
-**Goal:** Seamlessly migrate existing `~/.openclaw` configs
+**Goal:** Seamlessly migrate existing `~/.autolab` configs
 
 **Create migration script:**
 ```bash
-# ~/.ass/migrate-from-openclaw.sh
+# ~/.ass/migrate-from-autolab.sh
 # Copies config, preserves both for safety
 ```
 
 **Config paths to update:**
-- `~/.openclaw/openclaw.json` → `~/.ass/ass.json`
-- `~/.openclaw/workspace` → `~/.ass/workspace`
-- `~/.openclaw/agents` → `~/.ass/agents`
-- `~/.openclaw/logs` → `~/.ass/logs`
+- `~/.autolab/autolab.json` → `~/.ass/ass.json`
+- `~/.autolab/workspace` → `~/.ass/workspace`
+- `~/.autolab/agents` → `~/.ass/agents`
+- `~/.autolab/logs` → `~/.ass/logs`
 
 ### Phase 3: Documentation Update
 
@@ -89,23 +89,23 @@ ass status
 
 ### Phase 4: Source Code Cleanup
 
-**Goal:** Remove all "openclaw" string references
+**Goal:** Remove all "autolab" string references
 
 **Search and replace:**
 ```bash
-grep -r "openclaw" --exclude-dir=node_modules --exclude-dir=.git
-grep -r "OpenClaw" --exclude-dir=node_modules --exclude-dir=.git
+grep -r "autolab" --exclude-dir=node_modules --exclude-dir=.git
+grep -r "AutoLab" --exclude-dir=node_modules --exclude-dir=.git
 grep -r "open-claw" --exclude-dir=node_modules --exclude-dir=.git
 ```
 
 **Replace patterns:**
-- `openclaw` → `ass`
-- `OpenClaw` → `ASS`
-- `.openclaw` → `.ass`
+- `autolab` → `ass`
+- `AutoLab` → `ASS`
+- `.autolab` → `.ass`
 
 ### Phase 5: Upstream Sync Testing
 
-**Goal:** Verify we can pull updates from openclaw/openclaw
+**Goal:** Verify we can pull updates from autolab/autolab
 
 **Test merge:**
 ```bash
@@ -127,39 +127,39 @@ git merge --abort
 ### 1. package.json
 
 ```diff
-- "name": "openclaw",
+- "name": "autolab",
 + "name": "@danv-intel/ass",
 - "description": "Multi-channel AI gateway with extensible messaging integrations",
 + "description": "Autonomous Support Structure - AI agent framework for Intel validation",
   "bin": {
--   "openclaw": "openclaw.mjs"
+-   "autolab": "autolab.mjs"
 +   "ass": "ass.mjs"
   },
 ```
 
-### 2. openclaw.mjs → ass.mjs
+### 2. autolab.mjs → ass.mjs
 
 ```bash
-mv openclaw.mjs ass.mjs
+mv autolab.mjs ass.mjs
 # Update internal references
 ```
 
 ### 3. README.md
 
 ```diff
-- # OpenClaw 🦞
+- # AutoLab 🦞
 + # ASS (Autonomous Support Structure) ⚙️
 - Your own personal AI assistant. Any OS. Any Platform. The lobster way.
 + Autonomous Support Structure for multi-agent AI systems. Built for Intel validation.
-- npm install -g openclaw
+- npm install -g autolab
 + npm install -g @danv-intel/ass
-- openclaw wizard
+- autolab wizard
 + ass wizard
 ```
 
 ### 4. src/ Config Paths
 
-**Search for:** `~/.openclaw`, `.openclaw`, `openclaw.json`
+**Search for:** `~/.autolab`, `.autolab`, `autolab.json`
 
 **Replace with:** `~/.ass`, `.ass`, `ass.json`
 
@@ -172,9 +172,9 @@ mv openclaw.mjs ass.mjs
 ### 5. docs/
 
 **Update all command examples:**
-- `openclaw status` → `ass status`
-- `openclaw wizard` → `ass wizard`
-- `~/.openclaw/` → `~/.ass/`
+- `autolab status` → `ass status`
+- `autolab wizard` → `ass wizard`
+- `~/.autolab/` → `~/.ass/`
 
 ---
 
@@ -183,11 +183,11 @@ mv openclaw.mjs ass.mjs
 ### Pre-Flight
 - [ ] Fork exists: https://github.com/danv-intel/ass ✅
 - [ ] Cloned locally: /home/dan/ass ✅
-- [ ] Upstream configured: openclaw/openclaw ✅
+- [ ] Upstream configured: autolab/autolab ✅
 
 ### Phase 1: Core Rebrand
 - [ ] Update package.json (name, bin, description)
-- [ ] Rename openclaw.mjs → ass.mjs
+- [ ] Rename autolab.mjs → ass.mjs
 - [ ] Update README.md header and install instructions
 - [ ] Test build: `pnpm build`
 - [ ] Test link: `npm link && ass --version`
@@ -196,7 +196,7 @@ mv openclaw.mjs ass.mjs
 - [ ] Update config path constants in src/
 - [ ] Create migration script for existing configs
 - [ ] Test fresh install
-- [ ] Test migration from openclaw
+- [ ] Test migration from autolab
 
 ### Phase 3: Documentation
 - [ ] Update all docs/ markdown files
@@ -205,7 +205,7 @@ mv openclaw.mjs ass.mjs
 - [ ] Update CHANGELOG.md
 
 ### Phase 4: Source Cleanup
-- [ ] Grep all "openclaw" references
+- [ ] Grep all "autolab" references
 - [ ] Update strings in src/
 - [ ] Update tests
 - [ ] Update scripts/
@@ -227,25 +227,25 @@ mv openclaw.mjs ass.mjs
 
 ## Risk Mitigation
 
-### Backup Original OpenClaw
+### Backup Original AutoLab
 ```bash
 # Keep original installation
-which openclaw  # Note path
-cp -r ~/.openclaw ~/.openclaw.backup
+which autolab  # Note path
+cp -r ~/.autolab ~/.autolab.backup
 ```
 
 ### Gradual Rollout
-1. Install ASS alongside OpenClaw initially
+1. Install ASS alongside AutoLab initially
 2. Test both work independently
 3. Migrate config after verification
-4. Deprecate OpenClaw once stable
+4. Deprecate AutoLab once stable
 
 ### Rollback Plan
 ```bash
-# If ASS breaks, revert to OpenClaw
+# If ASS breaks, revert to AutoLab
 npm uninstall -g @danv-intel/ass
-npm install -g openclaw
-cp -r ~/.openclaw.backup ~/.openclaw
+npm install -g autolab
+cp -r ~/.autolab.backup ~/.autolab
 ```
 
 ---
@@ -261,17 +261,17 @@ cp -r ~/.openclaw.backup ~/.openclaw
 
 **Full Rebrand Complete When:**
 - [ ] All docs updated
-- [ ] No "openclaw" strings in source (except attributions)
+- [ ] No "autolab" strings in source (except attributions)
 - [ ] Can pull upstream updates
 - [ ] Published to npm as @danv-intel/ass
-- [ ] Team using ASS instead of OpenClaw
+- [ ] Team using ASS instead of AutoLab
 
 ---
 
 ## Attribution
 
-**Based on OpenClaw:**  
-https://github.com/openclaw/openclaw  
+**Based on AutoLab:**  
+https://github.com/autolab/autolab  
 Licensed under MIT License
 
 **Changes:**

@@ -3,8 +3,8 @@ export type BrowserProfileConfig = {
   cdpPort?: number;
   /** CDP URL for this profile (use for remote Chrome). */
   cdpUrl?: string;
-  /** Profile driver (default: openclaw). */
-  driver?: "openclaw" | "extension";
+  /** Profile driver (default: autolab). */
+  driver?: "autolab" | "extension";
   /** Profile color (hex). Auto-assigned at creation. */
   color: string;
 };

@@ -27,10 +27,10 @@ async function withTempHome<T>(fn: (home: string) => Promise<T>): Promise<T> {
     },
     {
       env: {
-        OPENCLAW_AGENT_DIR: (home) => path.join(home, ".openclaw", "agent"),
-        PI_CODING_AGENT_DIR: (home) => path.join(home, ".openclaw", "agent"),
+        AUTOLAB_AGENT_DIR: (home) => path.join(home, ".autolab", "agent"),
+        PI_CODING_AGENT_DIR: (home) => path.join(home, ".autolab", "agent"),
       },
-      prefix: "openclaw-reply-",
+      prefix: "autolab-reply-",
     },
   );
 }
@@ -79,7 +79,7 @@ describe("directive behavior", () => {
           agents: {
             defaults: {
               model: "anthropic/claude-opus-4-5",
-              workspace: path.join(home, "openclaw"),
+              workspace: path.join(home, "autolab"),
               elevatedDefault: "on",
             },
           },
@@ -107,7 +107,7 @@ describe("directive behavior", () => {
           agents: {
             defaults: {
               model: "anthropic/claude-opus-4-5",
-              workspace: path.join(home, "openclaw"),
+              workspace: path.join(home, "autolab"),
               elevatedDefault: "on",
             },
           },
@@ -135,7 +135,7 @@ describe("directive behavior", () => {
         agents: {
           defaults: {
             model: "anthropic/claude-opus-4-5",
-            workspace: path.join(home, "openclaw"),
+            workspace: path.join(home, "autolab"),
             elevatedDefault: "on",
           },
         },
@@ -215,7 +215,7 @@ describe("directive behavior", () => {
           agents: {
             defaults: {
               model: "anthropic/claude-opus-4-5",
-              workspace: path.join(home, "openclaw"),
+              workspace: path.join(home, "autolab"),
             },
             list: [
               {

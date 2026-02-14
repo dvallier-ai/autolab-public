@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import AutoLabProtocol
 
 /// Server-push messages from the gateway websocket.
 ///

@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import AutoLabProtocol
 import Observation
 import SwiftUI
 
