@@ -5,22 +5,15 @@ read_when:
 title: "AutoLab"
 ---
 
-# AutoLab 🦞
-
 <p align="center">
     <img
-        src="/assets/autolab-logo-text-dark.png"
+        src="/assets/autolab-header.png"
         alt="AutoLab"
-        width="500"
-        class="dark:hidden"
-    />
-    <img
-        src="/assets/autolab-logo-text.png"
-        alt="AutoLab"
-        width="500"
-        class="hidden dark:block"
+        width="100%"
     />
 </p>
+
+# AutoLab 🦞
 
 > _"EXFOLIATE! EXFOLIATE!"_ — A space lobster, probably
 
