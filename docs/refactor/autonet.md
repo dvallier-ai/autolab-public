@@ -1,12 +1,12 @@
 ---
-summary: "Clawnet refactor: unify network protocol, roles, auth, approvals, identity"
+summary: "AutoNet refactor: unify network protocol, roles, auth, approvals, identity"
 read_when:
   - Planning a unified network protocol for nodes + operator clients
   - Reworking approvals, pairing, TLS, and presence across devices
-title: "Clawnet Refactor"
+title: "AutoNet Refactor"
 ---
 
-# Clawnet refactor (protocol + auth unification)
+# AutoNet refactor (protocol + auth unification)
 
 ## Hi
 
@@ -108,7 +108,7 @@ Single, rigorous document for:
 
 ---
 
-# Proposed new state (Clawnet)
+# Proposed new state (AutoNet)
 
 ## One protocol, two roles
 
@@ -285,7 +285,7 @@ Preferred:
 
 Human label only.
 
-- Example: `scarlet-claw`, `saltwave`, `mantis-pinch`.
+- Example: `scarlet-lab`, `saltwave`, `mantis-pinch`.
 - Stored in gateway registry, editable.
 - Collision handling: `-2`, `-3`.
 

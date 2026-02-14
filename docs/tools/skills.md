@@ -47,22 +47,22 @@ You can gate them via `metadata.autolab.requires.config` on the plugin’s confi
 entry. See [Plugins](/tools/plugin) for discovery/config and [Tools](/tools) for the
 tool surface those skills teach.
 
-## ClawHub (install + sync)
+## AutoHub (install + sync)
 
-ClawHub is the public skills registry for AutoLab. Browse at
-[https://clawhub.com](https://clawhub.com). Use it to discover, install, update, and back up skills.
-Full guide: [ClawHub](/tools/clawhub).
+AutoHub is the public skills registry for AutoLab. Browse at
+[https://autohub.com](https://autohub.com). Use it to discover, install, update, and back up skills.
+Full guide: [AutoHub](/tools/autohub).
 
 Common flows:
 
 - Install a skill into your workspace:
-  - `clawhub install <skill-slug>`
+  - `autohub install <skill-slug>`
 - Update all installed skills:
-  - `clawhub update --all`
+  - `autohub update --all`
 - Sync (scan + publish updates):
-  - `clawhub sync --all`
+  - `autohub sync --all`
 
-By default, `clawhub` installs into `./skills` under your current working
+By default, `autohub` installs into `./skills` under your current working
 directory (or falls back to the configured AutoLab workspace). AutoLab picks
 that up as `<workspace>/skills` on the next session.
 
@@ -295,6 +295,6 @@ See [Skills config](/tools/skills-config) for the full configuration schema.
 
 ## Looking for more skills?
 
-Browse [https://clawhub.com](https://clawhub.com).
+Browse [https://autohub.com](https://autohub.com).
 
 ---

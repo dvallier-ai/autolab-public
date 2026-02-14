@@ -251,28 +251,28 @@
       "destination": "/nodes/camera"
     },
     {
-      "source": "/clawd",
+      "source": "/autolab",
       "destination": "/start/autolab"
     },
     {
-      "source": "/start/clawd",
+      "source": "/start/autolab",
       "destination": "/start/autolab"
     },
     {
-      "source": "/start/clawd/",
+      "source": "/start/autolab/",
       "destination": "/start/autolab"
     },
     {
-      "source": "/clawhub",
-      "destination": "/tools/clawhub"
+      "source": "/autohub",
+      "destination": "/tools/autohub"
     },
     {
-      "source": "/clawdhub",
-      "destination": "/tools/clawhub"
+      "source": "/autohub",
+      "destination": "/tools/autohub"
     },
     {
-      "source": "/tools/clawdhub",
-      "destination": "/tools/clawhub"
+      "source": "/tools/autohub",
+      "destination": "/tools/autohub"
     },
     {
       "source": "/configuration",
@@ -968,7 +968,7 @@
                   "tools/slash-commands",
                   "tools/skills",
                   "tools/skills-config",
-                  "tools/clawhub",
+                  "tools/autohub",
                   "tools/plugin"
                 ]
               },
@@ -1477,7 +1477,7 @@
                   "zh-CN/tools/slash-commands",
                   "zh-CN/tools/skills",
                   "zh-CN/tools/skills-config",
-                  "zh-CN/tools/clawhub",
+                  "zh-CN/tools/autohub",
                   "zh-CN/tools/plugin"
                 ]
               },

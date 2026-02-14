@@ -1,28 +1,28 @@
 ---
 read_when:
-  - 向新用户介绍 ClawHub
+  - 向新用户介绍 AutoHub
   - 安装、搜索或发布 Skills
-  - 说明 ClawHub CLI 标志和同步行为
-summary: ClawHub 指南：公共 Skills 注册中心 + CLI 工作流
-title: ClawHub
+  - 说明 AutoHub CLI 标志和同步行为
+summary: AutoHub 指南：公共 Skills 注册中心 + CLI 工作流
+title: AutoHub
 x-i18n:
   generated_at: "2026-02-01T21:42:32Z"
   model: claude-opus-4-5
   provider: pi
   source_hash: 8b7f8fab80a34e409f37fa130a49ff5b487966755a7b0d214dfebf5207c7124c
-  source_path: tools/clawhub.md
+  source_path: tools/autohub.md
   workflow: 15
 ---
 
-# ClawHub
+# AutoHub
 
-ClawHub 是 **AutoLab 的公共 Skills 注册中心**。它是一项免费服务：所有 Skills 都是公开的、开放的，所有人都可以查看、共享和复用。Skills 就是一个包含 `SKILL.md` 文件（以及辅助文本文件）的文件夹。你可以在网页应用中浏览 Skills，也可以使用 CLI 来搜索、安装、更新和发布 Skills。
+AutoHub 是 **AutoLab 的公共 Skills 注册中心**。它是一项免费服务：所有 Skills 都是公开的、开放的，所有人都可以查看、共享和复用。Skills 就是一个包含 `SKILL.md` 文件（以及辅助文本文件）的文件夹。你可以在网页应用中浏览 Skills，也可以使用 CLI 来搜索、安装、更新和发布 Skills。
 
-网站：[clawhub.com](https://clawhub.com)
+网站：[autohub.com](https://autohub.com)
 
 ## 适用人群（新手友好）
 
-如果你想为 AutoLab 智能体添加新功能，ClawHub 是查找和安装 Skills 的最简单方式。你不需要了解后端的工作原理。你可以：
+如果你想为 AutoLab 智能体添加新功能，AutoHub 是查找和安装 Skills 的最简单方式。你不需要了解后端的工作原理。你可以：
 
 - 使用自然语言搜索 Skills。
 - 将 Skills 安装到你的工作区。
@@ -33,9 +33,9 @@ ClawHub 是 **AutoLab 的公共 Skills 注册中心**。它是一项免费服务
 
 1. 安装 CLI（参见下一节）。
 2. 搜索你需要的内容：
-   - `clawhub search "calendar"`
+   - `autohub search "calendar"`
 3. 安装一个 Skills：
-   - `clawhub install <skill-slug>`
+   - `autohub install <skill-slug>`
 4. 启动一个新的 AutoLab 会话，以加载新 Skills。
 
 ## 安装 CLI
@@ -43,16 +43,16 @@ ClawHub 是 **AutoLab 的公共 Skills 注册中心**。它是一项免费服务
 任选其一：
 
 ```bash
-npm i -g clawhub
+npm i -g autohub
 ```
 
 ```bash
-pnpm add -g clawhub
+pnpm add -g autohub
 ```
 
 ## 在 AutoLab 中的定位
 
-默认情况下，CLI 会将 Skills 安装到当前工作目录下的 `./skills`。如果已配置 AutoLab 工作区，`clawhub` 会回退到该工作区，除非你通过 `--workdir`（或 `CLAWHUB_WORKDIR`）进行覆盖。AutoLab 从 `<workspace>/skills` 加载工作区 Skills，并会在**下一个**会话中生效。如果你已经在使用 `~/.autolab/skills` 或内置 Skills，工作区 Skills 优先级更高。
+默认情况下，CLI 会将 Skills 安装到当前工作目录下的 `./skills`。如果已配置 AutoLab 工作区，`autohub` 会回退到该工作区，除非你通过 `--workdir`（或 `AUTOHUB_WORKDIR`）进行覆盖。AutoLab 从 `<workspace>/skills` 加载工作区 Skills，并会在**下一个**会话中生效。如果你已经在使用 `~/.autolab/skills` 或内置 Skills，工作区 Skills 优先级更高。
 
 有关 Skills 加载、共享和权限控制的更多详情，请参阅
 [Skills](/tools/skills)。
@@ -80,9 +80,9 @@ pnpm add -g clawhub
 
 认证：
 
-- `clawhub login`（浏览器流程）或 `clawhub login --token <token>`
-- `clawhub logout`
-- `clawhub whoami`
+- `autohub login`（浏览器流程）或 `autohub login --token <token>`
+- `autohub logout`
+- `autohub whoami`
 
 选项：
 
@@ -92,29 +92,29 @@ pnpm add -g clawhub
 
 搜索：
 
-- `clawhub search "query"`
+- `autohub search "query"`
 - `--limit <n>`：最大结果数。
 
 安装：
 
-- `clawhub install <slug>`
+- `autohub install <slug>`
 - `--version <version>`：安装指定版本。
 - `--force`：如果文件夹已存在则覆盖。
 
 更新：
 
-- `clawhub update <slug>`
-- `clawhub update --all`
+- `autohub update <slug>`
+- `autohub update --all`
 - `--version <version>`：更新到指定版本（仅限单个 slug）。
 - `--force`：当本地文件与任何已发布版本不匹配时强制覆盖。
 
 列表：
 
-- `clawhub list`（读取 `.clawhub/lock.json`）
+- `autohub list`（读取 `.autohub/lock.json`）
 
 发布：
 
-- `clawhub publish <path>`
+- `autohub publish <path>`
 - `--slug <slug>`：Skills 标识符。
 - `--name <name>`：显示名称。
 - `--version <version>`：语义化版本号。
@@ -123,12 +123,12 @@ pnpm add -g clawhub
 
 删除/恢复（仅所有者/管理员）：
 
-- `clawhub delete <slug> --yes`
-- `clawhub undelete <slug> --yes`
+- `autohub delete <slug> --yes`
+- `autohub undelete <slug> --yes`
 
 同步（扫描本地 Skills + 发布新增/更新的 Skills）：
 
-- `clawhub sync`
+- `autohub sync`
 - `--root <dir...>`：额外的扫描根目录。
 - `--all`：无提示上传所有内容。
 - `--dry-run`：显示将要上传的内容。
@@ -142,19 +142,19 @@ pnpm add -g clawhub
 ### 搜索 Skills
 
 ```bash
-clawhub search "postgres backups"
+autohub search "postgres backups"
 ```
 
 ### 下载新 Skills
 
 ```bash
-clawhub install my-skill-pack
+autohub install my-skill-pack
 ```
 
 ### 更新已安装的 Skills
 
 ```bash
-clawhub update --all
+autohub update --all
 ```
 
 ### 备份你的 Skills（发布或同步）
@@ -162,13 +162,13 @@ clawhub update --all
 对于单个 Skills 文件夹：
 
 ```bash
-clawhub publish ./my-skill --slug my-skill --name "My Skill" --version 1.0.0 --tags latest
+autohub publish ./my-skill --slug my-skill --name "My Skill" --version 1.0.0 --tags latest
 ```
 
 一次扫描并备份多个 Skills：
 
 ```bash
-clawhub sync --all
+autohub sync --all
 ```
 
 ## 高级详情（技术性）
@@ -185,25 +185,25 @@ clawhub sync --all
 
 ### 同步扫描和回退根目录
 
-`clawhub sync` 首先扫描当前工作目录。如果未找到 Skills，它会回退到已知的旧版位置（例如 `~/autolab/skills` 和 `~/.autolab/skills`）。这样设计是为了在不需要额外标志的情况下找到旧版 Skills 安装。
+`autohub sync` 首先扫描当前工作目录。如果未找到 Skills，它会回退到已知的旧版位置（例如 `~/autolab/skills` 和 `~/.autolab/skills`）。这样设计是为了在不需要额外标志的情况下找到旧版 Skills 安装。
 
 ### 存储和锁文件
 
-- 已安装的 Skills 记录在工作目录下的 `.clawhub/lock.json` 中。
-- 认证令牌存储在 ClawHub CLI 配置文件中（可通过 `CLAWHUB_CONFIG_PATH` 覆盖）。
+- 已安装的 Skills 记录在工作目录下的 `.autohub/lock.json` 中。
+- 认证令牌存储在 AutoHub CLI 配置文件中（可通过 `AUTOHUB_CONFIG_PATH` 覆盖）。
 
 ### 遥测（安装计数）
 
-当你在登录状态下运行 `clawhub sync` 时，CLI 会发送一个最小快照用于计算安装次数。你可以完全禁用此功能：
+当你在登录状态下运行 `autohub sync` 时，CLI 会发送一个最小快照用于计算安装次数。你可以完全禁用此功能：
 
 ```bash
-export CLAWHUB_DISABLE_TELEMETRY=1
+export AUTOHUB_DISABLE_TELEMETRY=1
 ```
 
 ## 环境变量
 
-- `CLAWHUB_SITE`：覆盖网站 URL。
-- `CLAWHUB_REGISTRY`：覆盖注册中心 API URL。
-- `CLAWHUB_CONFIG_PATH`：覆盖 CLI 存储令牌/配置的位置。
-- `CLAWHUB_WORKDIR`：覆盖默认工作目录。
-- `CLAWHUB_DISABLE_TELEMETRY=1`：禁用 `sync` 的遥测功能。
+- `AUTOHUB_SITE`：覆盖网站 URL。
+- `AUTOHUB_REGISTRY`：覆盖注册中心 API URL。
+- `AUTOHUB_CONFIG_PATH`：覆盖 CLI 存储令牌/配置的位置。
+- `AUTOHUB_WORKDIR`：覆盖默认工作目录。
+- `AUTOHUB_DISABLE_TELEMETRY=1`：禁用 `sync` 的遥测功能。

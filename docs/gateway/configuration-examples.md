@@ -29,7 +29,7 @@ Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
 ```json5
 {
   identity: {
-    name: "Clawd",
+    name: "Labby",
     theme: "helpful assistant",
     emoji: "🦞",
   },

@@ -702,7 +702,7 @@ autolab hooks info my-hook
 
 ```bash
 # macOS
-./scripts/clawlog.sh -f
+./scripts/autolog.sh -f
 
 # Other platforms
 tail -f ~/.autolab/gateway.log
@@ -825,7 +825,7 @@ autolab hooks info my-hook
 
 3. 检查 Gateway 网关日志中的错误：
    ```bash
-   ./scripts/clawlog.sh | grep hook
+   ./scripts/autolog.sh | grep hook
    ```
 
 ### 处理程序错误

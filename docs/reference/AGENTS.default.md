@@ -76,13 +76,13 @@ cp docs/reference/AGENTS.default.md ~/.autolab/workspace/AGENTS.md
 
 ## Backup tip (recommended)
 
-If you treat this workspace as Clawd’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
+If you treat this workspace as Labby’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
 
 ```bash
 cd ~/.autolab/workspace
 git init
 git add AGENTS.md
-git commit -m "Add Clawd workspace"
+git commit -m "Add Labby workspace"
 # Optional: add a private remote + push
 ```
 

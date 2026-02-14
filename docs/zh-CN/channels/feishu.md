@@ -519,14 +519,14 @@ autolab pairing list feishu
     list: [
       { id: "main" },
       {
-        id: "clawd-fan",
-        workspace: "/home/user/clawd-fan",
-        agentDir: "/home/user/.autolab/agents/clawd-fan/agent",
+        id: "labby-fan",
+        workspace: "/home/user/labby-fan",
+        agentDir: "/home/user/.autolab/agents/labby-fan/agent",
       },
       {
-        id: "clawd-xi",
-        workspace: "/home/user/clawd-xi",
-        agentDir: "/home/user/.autolab/agents/clawd-xi/agent",
+        id: "labby-xi",
+        workspace: "/home/user/labby-xi",
+        agentDir: "/home/user/.autolab/agents/labby-xi/agent",
       },
     ],
   },
@@ -540,16 +540,16 @@ autolab pairing list feishu
       },
     },
     {
-      // 用户 B 的私聊 → clawd-fan agent
-      agentId: "clawd-fan",
+      // 用户 B 的私聊 → labby-fan agent
+      agentId: "labby-fan",
       match: {
         channel: "feishu",
         peer: { kind: "dm", id: "ou_0fe6b1c9..." },
       },
     },
     {
-      // 某个群组 → clawd-xi agent
-      agentId: "clawd-xi",
+      // 某个群组 → labby-xi agent
+      agentId: "labby-xi",
       match: {
         channel: "feishu",
         peer: { kind: "group", id: "oc_xxx..." },
