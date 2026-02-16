@@ -19,7 +19,7 @@ AutoLab has two log “surfaces”:
 
 - Default rolling log file is under `/tmp/autolab/` (one file per day): `autolab-YYYY-MM-DD.log`
   - Date uses the gateway host's local timezone.
-- The log file path and level can be configured via `~/.autolab/autolab.json`:
+- The log file path and level can be configured via `~/.danv-intel/autolab.json`:
   - `logging.file`
   - `logging.level`
 

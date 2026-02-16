@@ -245,4 +245,63 @@ describe("readScheduledTaskCommand", () => {
       await fs.rm(tmpDir, { recursive: true, force: true });
     }
   });
+  it("parses command with Windows backslash paths", async () => {
+    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "autolab-schtasks-test-"));
+    try {
+      const scriptPath = path.join(tmpDir, ".autolab", "gateway.cmd");
+      await fs.mkdir(path.dirname(scriptPath), { recursive: true });
+      await fs.writeFile(
+        scriptPath,
+        [
+          "@echo off",
+          '"C:\\Program Files\\nodejs\\node.exe" C:\\Users\\test\\AppData\\Roaming\\npm\\node_modules\\autolab\\dist\\index.js gateway --port 18789',
+        ].join("\r\n"),
+        "utf8",
+      );
+
+      const env = { USERPROFILE: tmpDir, AUTOLAB_PROFILE: "default" };
+      const result = await readScheduledTaskCommand(env);
+      expect(result).toEqual({
+        programArguments: [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\Users\\test\\AppData\\Roaming\\npm\\node_modules\\autolab\\dist\\index.js",
+          "gateway",
+          "--port",
+          "18789",
+        ],
+      });
+    } finally {
+      await fs.rm(tmpDir, { recursive: true, force: true });
+    }
+  });
+
+  it("preserves UNC paths in command arguments", async () => {
+    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "autolab-schtasks-test-"));
+    try {
+      const scriptPath = path.join(tmpDir, ".autolab", "gateway.cmd");
+      await fs.mkdir(path.dirname(scriptPath), { recursive: true });
+      await fs.writeFile(
+        scriptPath,
+        [
+          "@echo off",
+          '"\\\\fileserver\\AutoLab Share\\node.exe" "\\\\fileserver\\AutoLab Share\\dist\\index.js" gateway --port 18789',
+        ].join("\r\n"),
+        "utf8",
+      );
+
+      const env = { USERPROFILE: tmpDir, AUTOLAB_PROFILE: "default" };
+      const result = await readScheduledTaskCommand(env);
+      expect(result).toEqual({
+        programArguments: [
+          "\\\\fileserver\\AutoLab Share\\node.exe",
+          "\\\\fileserver\\AutoLab Share\\dist\\index.js",
+          "gateway",
+          "--port",
+          "18789",
+        ],
+      });
+    } finally {
+      await fs.rm(tmpDir, { recursive: true, force: true });
+    }
+  });
 });

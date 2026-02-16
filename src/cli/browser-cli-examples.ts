@@ -24,7 +24,7 @@ export const browserActionExamples = [
   "autolab browser hover 44",
   "autolab browser drag 10 11",
   "autolab browser select 9 OptionA OptionB",
-  "autolab browser upload /tmp/file.pdf",
+  "autolab browser upload /tmp/autolab/uploads/file.pdf",
   'autolab browser fill --fields \'[{"ref":"1","value":"Ada"}]\'',
   "autolab browser dialog --accept",
   'autolab browser wait --text "Done"',

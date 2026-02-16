@@ -13,7 +13,7 @@ AutoLab runs a single embedded agent runtime derived from **pi-mono**.
 
 AutoLab uses a single agent workspace directory (`agents.defaults.workspace`) as the agent’s **only** working directory (`cwd`) for tools and context.
 
-Recommended: use `autolab setup` to create `~/.autolab/autolab.json` if missing and initialize the workspace files.
+Recommended: use `autolab setup` to create `~/.danv-intel/autolab.json` if missing and initialize the workspace files.
 
 Full workspace layout + backup guide: [Agent workspace](/concepts/agent-workspace)
 

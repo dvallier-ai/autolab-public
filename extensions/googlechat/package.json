@@ -1,6 +1,6 @@
 {
   "name": "@autolab/googlechat",
-  "version": "2026.2.9",
+  "version": "2026.2.15",
   "private": true,
   "description": "AutoLab Google Chat channel plugin",
   "type": "module",

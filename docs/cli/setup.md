@@ -8,7 +8,7 @@ title: "setup"
 
 # `autolab setup`
 
-Initialize `~/.autolab/autolab.json` and the agent workspace.
+Initialize `~/.danv-intel/autolab.json` and the agent workspace.
 
 Related:
 

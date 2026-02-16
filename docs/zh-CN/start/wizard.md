@@ -75,7 +75,7 @@ autolab agents add <name>
 ## 流程详情（本地）
 
 1. **现有配置检测**
-   - 如果 `~/.autolab/autolab.json` 存在，选择**保留 / 修改 / 重置**。
+   - 如果 `~/.danv-intel/autolab.json` 存在，选择**保留 / 修改 / 重置**。
    - 重新运行向导**不会**清除任何内容，除非你明确选择**重置**（或传递 `--reset`）。
    - 如果配置无效或包含遗留键名，向导会停止并要求你在继续之前运行 `autolab doctor`。
    - 重置使用 `trash`（永不使用 `rm`）并提供范围选项：
@@ -302,7 +302,7 @@ Gateway 网关通过 RPC 暴露向导流程（`wizard.start`、`wizard.next`、`
 
 ## 向导写入的内容
 
-`~/.autolab/autolab.json` 中的典型字段：
+`~/.danv-intel/autolab.json` 中的典型字段：
 
 - `agents.defaults.workspace`
 - `agents.defaults.model` / `models.providers`（如果选择了 Minimax）

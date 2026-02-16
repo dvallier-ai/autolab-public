@@ -23,7 +23,7 @@ If a skill name conflicts, precedence is:
 `<workspace>/skills` (highest) → `~/.autolab/skills` → bundled skills (lowest)
 
 Additionally, you can configure extra skill folders (lowest precedence) via
-`skills.load.extraDirs` in `~/.autolab/autolab.json`.
+`skills.load.extraDirs` in `~/.danv-intel/autolab.json`.
 
 ## Per-agent vs shared skills
 
@@ -47,22 +47,22 @@ You can gate them via `metadata.autolab.requires.config` on the plugin’s confi
 entry. See [Plugins](/tools/plugin) for discovery/config and [Tools](/tools) for the
 tool surface those skills teach.
 
-## AutoHub (install + sync)
+## ClawHub (install + sync)
 
-AutoHub is the public skills registry for AutoLab. Browse at
-[https://autohub.com](https://autohub.com). Use it to discover, install, update, and back up skills.
-Full guide: [AutoHub](/tools/autohub).
+ClawHub is the public skills registry for AutoLab. Browse at
+[https://clawhub.com](https://clawhub.com). Use it to discover, install, update, and back up skills.
+Full guide: [ClawHub](/tools/clawhub).
 
 Common flows:
 
 - Install a skill into your workspace:
-  - `autohub install <skill-slug>`
+  - `clawhub install <skill-slug>`
 - Update all installed skills:
-  - `autohub update --all`
+  - `clawhub update --all`
 - Sync (scan + publish updates):
-  - `autohub sync --all`
+  - `clawhub sync --all`
 
-By default, `autohub` installs into `./skills` under your current working
+By default, `clawhub` installs into `./skills` under your current working
 directory (or falls back to the configured AutoLab workspace). AutoLab picks
 that up as `<workspace>/skills` on the next session.
 
@@ -185,7 +185,7 @@ Notes:
 If no `metadata.autolab` is present, the skill is always eligible (unless
 disabled in config or blocked by `skills.allowBundled` for bundled skills).
 
-## Config overrides (`~/.autolab/autolab.json`)
+## Config overrides (`~/.danv-intel/autolab.json`)
 
 Bundled/managed skills can be toggled and supplied with env values:
 
@@ -295,6 +295,6 @@ See [Skills config](/tools/skills-config) for the full configuration schema.
 
 ## Looking for more skills?
 
-Browse [https://autohub.com](https://autohub.com).
+Browse [https://clawhub.com](https://clawhub.com).
 
 ---

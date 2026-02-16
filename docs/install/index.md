@@ -105,10 +105,10 @@ The **installer script** is the recommended way to install AutoLab. It handles N
 
     <Steps>
       <Step title="Clone and build">
-        Clone the [AutoLab repo](https://github.com/autolab/autolab) and build:
+        Clone the [AutoLab repo](https://github.com/danv-intel/autolab) and build:
 
         ```bash
-        git clone https://github.com/autolab/autolab.git
+        git clone https://github.com/danv-intel/autolab.git
         cd autolab
         pnpm install
         pnpm ui:build
@@ -141,6 +141,9 @@ The **installer script** is the recommended way to install AutoLab. It handles N
 <CardGroup cols={2}>
   <Card title="Docker" href="/install/docker" icon="container">
     Containerized or headless deployments.
+  </Card>
+  <Card title="Podman" href="/install/podman" icon="container">
+    Rootless container: run `setup-podman.sh` once, then the launch script.
   </Card>
   <Card title="Nix" href="/install/nix" icon="snowflake">
     Declarative install via Nix.

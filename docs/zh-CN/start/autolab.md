@@ -45,7 +45,7 @@ npm install -g autolab@latest
 从源代码（开发）：
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 pnpm install
 pnpm ui:build # 首次运行时自动安装 UI 依赖
@@ -88,7 +88,7 @@ autolab channels login
 autolab gateway --port 18789
 ```
 
-3. 在 `~/.autolab/autolab.json` 中放置最小配置：
+3. 在 `~/.danv-intel/autolab.json` 中放置最小配置：
 
 ```json5
 {

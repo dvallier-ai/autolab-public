@@ -18,6 +18,20 @@ Automatically saves session context to memory when you issue `/new`.
 autolab hooks enable session-memory
 ```
 
+### 📎 bootstrap-extra-files
+
+Injects extra bootstrap files (for example monorepo `AGENTS.md`/`TOOLS.md`) during prompt assembly.
+
+**Events**: `agent:bootstrap`
+**What it does**: Expands configured workspace glob/path patterns and appends matching bootstrap files to injected context.
+**Output**: No files written; context is modified in-memory only.
+
+**Enable**:
+
+```bash
+autolab hooks enable bootstrap-extra-files
+```
+
 ### 📝 command-logger
 
 Logs all command events to a centralized audit file.
@@ -30,21 +44,6 @@ Logs all command events to a centralized audit file.
 
 ```bash
 autolab hooks enable command-logger
-```
-
-### 😈 soul-evil
-
-Swaps injected `SOUL.md` content with `SOUL_EVIL.md` during a purge window or by random chance.
-
-**Events**: `agent:bootstrap`
-**What it does**: Overrides the injected SOUL content before the system prompt is built.
-**Output**: No files written; swaps happen in-memory only.
-**Docs**: https://docs.autolab.ai/hooks/soul-evil
-
-**Enable**:
-
-```bash
-autolab hooks enable soul-evil
 ```
 
 ### 🚀 boot-md
@@ -82,7 +81,7 @@ session-memory/
 ---
 name: my-hook
 description: "Short description"
-homepage: https://docs.autolab.ai/hooks#my-hook
+homepage: https://docs.autolab.ai/automation/hooks#my-hook
 metadata:
   { "autolab": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
@@ -141,7 +140,7 @@ autolab hooks disable command-logger
 
 ## Configuration
 
-Hooks can be configured in `~/.autolab/autolab.json`:
+Hooks can be configured in `~/.danv-intel/autolab.json`:
 
 ```json
 {
@@ -221,4 +220,4 @@ Test your hooks by:
 
 ## Documentation
 
-Full documentation: https://docs.autolab.ai/hooks
+Full documentation: https://docs.autolab.ai/automation/hooks

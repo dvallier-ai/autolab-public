@@ -1,7 +1,7 @@
-import AutoLabKit
-import AutoLabProtocol
 import CoreGraphics
 import Foundation
+import AutoLabKit
+import AutoLabProtocol
 import OSLog
 
 @MainActor

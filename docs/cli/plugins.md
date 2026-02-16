@@ -1,5 +1,5 @@
 ---
-summary: "CLI reference for `autolab plugins` (list, install, enable/disable, doctor)"
+summary: "CLI reference for `autolab plugins` (list, install, uninstall, enable/disable, doctor)"
 read_when:
   - You want to install or manage in-process Gateway plugins
   - You want to debug plugin load failures
@@ -23,6 +23,7 @@ autolab plugins list
 autolab plugins info <id>
 autolab plugins enable <id>
 autolab plugins disable <id>
+autolab plugins uninstall <id>
 autolab plugins doctor
 autolab plugins update <id>
 autolab plugins update --all
@@ -43,6 +44,9 @@ autolab plugins install <path-or-spec>
 
 Security note: treat plugin installs like running code. Prefer pinned versions.
 
+Npm specs are **registry-only** (package name + optional version/tag). Git/URL/file
+specs are rejected. Dependency installs run with `--ignore-scripts` for safety.
+
 Supported archives: `.zip`, `.tgz`, `.tar.gz`, `.tar`.
 
 Use `--link` to avoid copying a local directory (adds to `plugins.load.paths`):
@@ -50,6 +54,24 @@ Use `--link` to avoid copying a local directory (adds to `plugins.load.paths`):
 ```bash
 autolab plugins install -l ./my-plugin
 ```
+
+### Uninstall
+
+```bash
+autolab plugins uninstall <id>
+autolab plugins uninstall <id> --dry-run
+autolab plugins uninstall <id> --keep-files
+```
+
+`uninstall` removes plugin records from `plugins.entries`, `plugins.installs`,
+the plugin allowlist, and linked `plugins.load.paths` entries when applicable.
+For active memory plugins, the memory slot resets to `memory-core`.
+
+By default, uninstall also removes the plugin install directory under the active
+state dir extensions root (`$AUTOLAB_STATE_DIR/extensions/<id>`). Use
+`--keep-files` to keep files on disk.
+
+`--keep-config` is supported as a deprecated alias for `--keep-files`.
 
 ### Update
 

@@ -48,12 +48,11 @@ hooks 系统允许你：
 
 ### 捆绑的 Hooks
 
-AutoLab 附带四个自动发现的捆绑 hooks：
+AutoLab 附带三个自动发现的捆绑 hooks：
 
 - **💾 session-memory**：当你发出 `/new` 时将会话上下文保存到智能体工作区（默认 `~/.autolab/workspace/memory/`）
 - **📝 command-logger**：将所有命令事件记录到 `~/.autolab/logs/commands.log`
 - **🚀 boot-md**：当 Gateway 网关启动时运行 `BOOT.md`（需要启用内部 hooks）
-- **😈 soul-evil**：在清除窗口期间或随机机会下将注入的 `SOUL.md` 内容替换为 `SOUL_EVIL.md`
 
 列出可用的 hooks：
 
@@ -134,7 +133,7 @@ Hook 包可以附带依赖；它们将安装在 `~/.autolab/hooks/<id>` 下。
 ---
 name: my-hook
 description: "Short description of what this hook does"
-homepage: https://docs.autolab.ai/hooks#my-hook
+homepage: https://docs.autolab.ai/automation/hooks#my-hook
 metadata:
   { "autolab": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
@@ -533,42 +532,6 @@ grep '"action":"new"' ~/.autolab/logs/commands.log | jq .
 autolab hooks enable command-logger
 ```
 
-### soul-evil
-
-在清除窗口期间或随机机会下将注入的 `SOUL.md` 内容替换为 `SOUL_EVIL.md`。
-
-**事件**：`agent:bootstrap`
-
-**文档**：[SOUL Evil Hook](/hooks/soul-evil)
-
-**输出**：不写入文件；替换仅在内存中发生。
-
-**启用**：
-
-```bash
-autolab hooks enable soul-evil
-```
-
-**配置**：
-
-```json
-{
-  "hooks": {
-    "internal": {
-      "enabled": true,
-      "entries": {
-        "soul-evil": {
-          "enabled": true,
-          "file": "SOUL_EVIL.md",
-          "chance": 0.1,
-          "purge": { "at": "21:00", "duration": "15m" }
-        }
-      }
-    }
-  }
-}
-```
-
 ### boot-md
 
 当 Gateway 网关启动时运行 `BOOT.md`（在渠道启动之后）。
@@ -702,7 +665,7 @@ autolab hooks info my-hook
 
 ```bash
 # macOS
-./scripts/autolog.sh -f
+./scripts/clawlog.sh -f
 
 # Other platforms
 tail -f ~/.autolab/gateway.log
@@ -825,7 +788,7 @@ autolab hooks info my-hook
 
 3. 检查 Gateway 网关日志中的错误：
    ```bash
-   ./scripts/autolog.sh | grep hook
+   ./scripts/clawlog.sh | grep hook
    ```
 
 ### 处理程序错误
@@ -914,6 +877,6 @@ node -e "import('./path/to/handler.ts').then(console.log)"
 ## 另请参阅
 
 - [CLI 参考：hooks](/cli/hooks)
-- [捆绑 Hooks README](https://github.com/autolab/autolab/tree/main/src/hooks/bundled)
+- [捆绑 Hooks README](https://github.com/danv-intel/autolab/tree/main/src/hooks/bundled)
 - [Webhook Hooks](/automation/webhook)
 - [配置](/gateway/configuration#hooks)

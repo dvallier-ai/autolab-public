@@ -21,7 +21,7 @@ struct GatewayEndpoint {
 func loadGatewayConfig() -> GatewayConfig {
     let home = FileManager().homeDirectoryForCurrentUser
     let candidates = [
-        home.appendingPathComponent(".autolab/autolab.json"),
+        home.appendingPathComponent(".danv-intel/autolab.json"),
     ]
     let url = candidates.first { FileManager().isReadableFile(atPath: $0.path) } ?? candidates[0]
     guard let data = try? Data(contentsOf: url) else { return GatewayConfig() }

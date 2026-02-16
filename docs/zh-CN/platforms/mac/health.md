@@ -38,4 +38,4 @@ x-i18n:
 
 ## 有疑问时
 
-- 你仍然可以使用 [Gateway 网关健康](/gateway/health) 中的 CLI 流程（`autolab status`、`autolab status --deep`、`autolab health --json`），并在 `/tmp/autolab/autolab-*.log` 中跟踪 `web-heartbeat` / `web-reconnect`。
+- 你仍然可以使用 [Gateway 网关健康](/gateway/health) 中的 CLI 流程（`autolab status`、`autolab status --deep`、`autolab health --json`），并在 `/tmp/danv-intel/autolab-*.log` 中跟踪 `web-heartbeat` / `web-reconnect`。

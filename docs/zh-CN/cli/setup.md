@@ -15,7 +15,7 @@ x-i18n:
 
 # `autolab setup`
 
-初始化 `~/.autolab/autolab.json` 和智能体工作区。
+初始化 `~/.danv-intel/autolab.json` 和智能体工作区。
 
 相关内容：
 

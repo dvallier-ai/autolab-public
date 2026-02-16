@@ -19,7 +19,9 @@
     "useDefineForClassFields": false,
     "paths": {
       "*": ["./*"],
-      "autolab/plugin-sdk": ["./src/plugin-sdk/index.ts"]
+      "autolab/plugin-sdk": ["./src/plugin-sdk/index.ts"],
+      "autolab/plugin-sdk/*": ["./src/plugin-sdk/*.ts"],
+      "autolab/plugin-sdk/account-id": ["./src/plugin-sdk/account-id.ts"]
     }
   },
   "include": ["src/**/*", "ui/**/*", "extensions/**/*"],

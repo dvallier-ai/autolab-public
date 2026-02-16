@@ -16,7 +16,7 @@ AutoLab pulls environment variables from multiple sources. The rule is **never o
 1. **Process environment** (what the Gateway process already has from the parent shell/daemon).
 2. **`.env` in the current working directory** (dotenv default; does not override).
 3. **Global `.env`** at `~/.autolab/.env` (aka `$AUTOLAB_STATE_DIR/.env`; does not override).
-4. **Config `env` block** in `~/.autolab/autolab.json` (applied only if missing).
+4. **Config `env` block** in `~/.danv-intel/autolab.json` (applied only if missing).
 5. **Optional login-shell import** (`env.shellEnv.enabled` or `AUTOLAB_LOAD_SHELL_ENV=1`), applied only for missing expected keys.
 
 If the config file is missing entirely, step 4 is skipped; shell import still runs if enabled.
@@ -76,11 +76,11 @@ See [Configuration: Env var substitution](/gateway/configuration#env-var-substit
 
 ## Path-related env vars
 
-| Variable              | Purpose                                                                                                                                                                        |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Variable               | Purpose                                                                                                                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AUTOLAB_HOME`        | Override the home directory used for all internal path resolution (`~/.autolab/`, agent dirs, sessions, credentials). Useful when running AutoLab as a dedicated service user. |
-| `AUTOLAB_STATE_DIR`   | Override the state directory (default `~/.autolab`).                                                                                                                           |
-| `AUTOLAB_CONFIG_PATH` | Override the config file path (default `~/.autolab/autolab.json`).                                                                                                             |
+| `AUTOLAB_STATE_DIR`   | Override the state directory (default `~/.autolab`).                                                                                                                            |
+| `AUTOLAB_CONFIG_PATH` | Override the config file path (default `~/.danv-intel/autolab.json`).                                                                                                             |
 
 ### `AUTOLAB_HOME`
 

@@ -1,6 +1,6 @@
-import AutoLabKit
 import CoreLocation
 import Foundation
+import AutoLabKit
 
 @MainActor
 protocol MacNodeRuntimeMainActorServices: Sendable {

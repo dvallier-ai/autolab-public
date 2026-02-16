@@ -26,7 +26,7 @@ inside a sandbox workspace under `~/.autolab/sandboxes`, not your host workspace
 - Default: `~/.autolab/workspace`
 - If `AUTOLAB_PROFILE` is set and not `"default"`, the default becomes
   `~/.autolab/workspace-<profile>`.
-- Override in `~/.autolab/autolab.json`:
+- Override in `~/.danv-intel/autolab.json`:
 
 ```json5
 {
@@ -124,7 +124,7 @@ files.
 
 These live under `~/.autolab/` and should NOT be committed to the workspace repo:
 
-- `~/.autolab/autolab.json` (config)
+- `~/.danv-intel/autolab.json` (config)
 - `~/.autolab/credentials/` (OAuth tokens, API keys)
 - `~/.autolab/agents/<agentId>/sessions/` (session transcripts + metadata)
 - `~/.autolab/skills/` (managed skills)
@@ -220,7 +220,7 @@ Suggested `.gitignore` starter:
 ## Moving the workspace to a new machine
 
 1. Clone the repo to the desired path (default `~/.autolab/workspace`).
-2. Set `agents.defaults.workspace` to that path in `~/.autolab/autolab.json`.
+2. Set `agents.defaults.workspace` to that path in `~/.danv-intel/autolab.json`.
 3. Run `autolab setup --workspace <path>` to seed any missing files.
 4. If you need sessions, copy `~/.autolab/agents/<agentId>/sessions/` from the
    old machine separately.

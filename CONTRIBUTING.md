@@ -4,7 +4,7 @@ Welcome to the lobster tank! 🦞
 
 ## Quick Links
 
-- **GitHub:** https://github.com/autolab/autolab
+- **GitHub:** https://github.com/danv-intel/autolab
 - **Discord:** https://discord.gg/qkhbAGHRBT
 - **X/Twitter:** [@steipete](https://x.com/steipete) / [@autolab](https://x.com/autolab)
 
@@ -13,11 +13,26 @@ Welcome to the lobster tank! 🦞
 - **Peter Steinberger** - Benevolent Dictator
   - GitHub: [@steipete](https://github.com/steipete) · X: [@steipete](https://x.com/steipete)
 
-- **Shadow** - Discord + Slack subsystem
+- **Shadow** - Discord subsystem, Discord admin
   - GitHub: [@thewilloftheshadow](https://github.com/thewilloftheshadow) · X: [@4shad0wed](https://x.com/4shad0wed)
+
+- **Vignesh** - Memory (QMD), formal modeling, TUI, IRC, and Lobster
+  - GitHub: [@vignesh07](https://github.com/vignesh07) · X: [@\_vgnsh](https://x.com/_vgnsh)
 
 - **Jos** - Telegram, API, Nix mode
   - GitHub: [@joshp123](https://github.com/joshp123) · X: [@jjpcodes](https://x.com/jjpcodes)
+
+- **Ayaan Zaidi** - Telegram subsystem, iOS app
+  - GitHub: [@obviyus](https://github.com/obviyus) · X: [@0bviyus](https://x.com/0bviyus)
+
+- **Tyler Yust** - Agents/subagents, cron, BlueBubbles, macOS app
+  - GitHub: [@tyler6204](https://github.com/tyler6204) · X: [@tyleryust](https://x.com/tyleryust)
+
+- **Mariano Belinky** - iOS app, Security
+  - GitHub: [@mbelinky](https://github.com/mbelinky) · X: [@belimad](https://x.com/belimad)
+
+- **Seb Slight** - Docs, Agent Reliability, Runtime Hardening
+  - GitHub: [@sebslight](https://github.com/sebslight) · X: [@sebslig](https://x.com/sebslig)
 
 - **Christoph Nakazawa** - JS Infra
   - GitHub: [@cpojer](https://github.com/cpojer) · X: [@cnakazawa](https://x.com/cnakazawa)
@@ -28,13 +43,14 @@ Welcome to the lobster tank! 🦞
 ## How to Contribute
 
 1. **Bugs & small fixes** → Open a PR!
-2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/autolab/autolab/discussions) or ask in Discord first
+2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/danv-intel/autolab/discussions) or ask in Discord first
 3. **Questions** → Discord #setup-help
 
 ## Before You PR
 
 - Test locally with your AutoLab instance
 - Run tests: `pnpm build && pnpm check && pnpm test`
+- Ensure CI checks pass
 - Keep PRs focused (one thing per PR)
 - Describe what & why
 
@@ -72,7 +88,33 @@ We are currently prioritizing:
 
 - **Stability**: Fixing edge cases in channel connections (WhatsApp/Telegram).
 - **UX**: Improving the onboarding wizard and error messages.
-- **Skills**: Expanding the library of bundled skills and improving the Skill Creation developer experience.
+- **Skills**: For skill contributions, head to [ClawHub](https://clawhub.ai/) — the community hub for AutoLab skills.
 - **Performance**: Optimizing token usage and compaction logic.
 
-Check the [GitHub Issues](https://github.com/autolab/autolab/issues) for "good first issue" labels!
+Check the [GitHub Issues](https://github.com/danv-intel/autolab/issues) for "good first issue" labels!
+
+## Report a Vulnerability
+
+We take security reports seriously. Report vulnerabilities directly to the repository where the issue lives:
+
+- **Core CLI and gateway** — [danv-intel/autolab](https://github.com/danv-intel/autolab)
+- **macOS desktop app** — [danv-intel/autolab](https://github.com/danv-intel/autolab) (apps/macos)
+- **iOS app** — [danv-intel/autolab](https://github.com/danv-intel/autolab) (apps/ios)
+- **Android app** — [danv-intel/autolab](https://github.com/danv-intel/autolab) (apps/android)
+- **ClawHub** — [autolab/clawhub](https://github.com/autolab/clawhub)
+- **Trust and threat model** — [autolab/trust](https://github.com/autolab/trust)
+
+For issues that don't fit a specific repo, or if you're unsure, email **security@autolab.ai** and we'll route it.
+
+### Required in Reports
+
+1. **Title**
+2. **Severity Assessment**
+3. **Impact**
+4. **Affected Component**
+5. **Technical Reproduction**
+6. **Demonstrated Impact**
+7. **Environment**
+8. **Remediation Advice**
+
+Reports without reproduction steps, demonstrated impact, and remediation advice will be deprioritized. Given the volume of AI-generated scanner findings, we must ensure we're receiving vetted reports from researchers who understand the issues.

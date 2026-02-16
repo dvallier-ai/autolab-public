@@ -1,6 +1,6 @@
 {
   "name": "@autolab/google-antigravity-auth",
-  "version": "2026.2.9",
+  "version": "2026.2.15",
   "private": true,
   "description": "AutoLab Google Antigravity OAuth provider plugin",
   "type": "module",

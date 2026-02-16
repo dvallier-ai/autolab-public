@@ -1,6 +1,6 @@
 {
   "name": "@autolab/bluebubbles",
-  "version": "2026.2.9",
+  "version": "2026.2.15",
   "description": "AutoLab BlueBubbles channel plugin",
   "type": "module",
   "devDependencies": {

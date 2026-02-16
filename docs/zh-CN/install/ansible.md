@@ -16,17 +16,17 @@ x-i18n:
 
 # Ansible 安装
 
-将 AutoLab 部署到生产服务器的推荐方式是通过 **[autolab-ansible](https://github.com/autolab/autolab-ansible)** — 一个安全优先架构的自动化安装程序。
+将 AutoLab 部署到生产服务器的推荐方式是通过 **[autolab-ansible](https://github.com/danv-intel/autolab-ansible)** — 一个安全优先架构的自动化安装程序。
 
 ## 快速开始
 
 一条命令安装：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/autolab/autolab-ansible/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/danv-intel/autolab-ansible/main/install.sh | bash
 ```
 
-> **📦 完整指南：[github.com/autolab/autolab-ansible](https://github.com/autolab/autolab-ansible)**
+> **📦 完整指南：[github.com/danv-intel/autolab-ansible](https://github.com/danv-intel/autolab-ansible)**
 >
 > autolab-ansible 仓库是 Ansible 部署的权威来源。本页是快速概述。
 
@@ -125,7 +125,7 @@ Docker 用于**智能体沙箱**（隔离的工具执行），而不是用于运
 sudo apt update && sudo apt install -y ansible git
 
 # 2. 克隆仓库
-git clone https://github.com/autolab/autolab-ansible.git
+git clone https://github.com/danv-intel/autolab-ansible.git
 cd autolab-ansible
 
 # 3. 安装 Ansible collections
@@ -186,7 +186,7 @@ sudo systemctl status docker
 sudo docker images | grep autolab-sandbox
 
 # 如果缺失则构建沙箱镜像
-cd /opt/autolab/autolab
+cd /opt/danv-intel/autolab
 sudo -u autolab ./scripts/sandbox-setup.sh
 ```
 
@@ -203,13 +203,13 @@ autolab channels login
 
 详细的安全架构和故障排除：
 
-- [安全架构](https://github.com/autolab/autolab-ansible/blob/main/docs/security.md)
-- [技术详情](https://github.com/autolab/autolab-ansible/blob/main/docs/architecture.md)
-- [故障排除指南](https://github.com/autolab/autolab-ansible/blob/main/docs/troubleshooting.md)
+- [安全架构](https://github.com/danv-intel/autolab-ansible/blob/main/docs/security.md)
+- [技术详情](https://github.com/danv-intel/autolab-ansible/blob/main/docs/architecture.md)
+- [故障排除指南](https://github.com/danv-intel/autolab-ansible/blob/main/docs/troubleshooting.md)
 
 ## 相关内容
 
-- [autolab-ansible](https://github.com/autolab/autolab-ansible) — 完整部署指南
+- [autolab-ansible](https://github.com/danv-intel/autolab-ansible) — 完整部署指南
 - [Docker](/install/docker) — 容器化 Gateway 网关设置
 - [沙箱隔离](/gateway/sandboxing) — 智能体沙箱配置
 - [多智能体沙箱与工具](/tools/multi-agent-sandbox-tools) — 每个智能体的隔离

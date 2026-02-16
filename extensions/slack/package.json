@@ -1,6 +1,6 @@
 {
   "name": "@autolab/slack",
-  "version": "2026.2.9",
+  "version": "2026.2.15",
   "private": true,
   "description": "AutoLab Slack channel plugin",
   "type": "module",

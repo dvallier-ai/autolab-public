@@ -1,7 +1,7 @@
-import AutoLabKit
-import AutoLabProtocol
 import Foundation
 import Observation
+import AutoLabKit
+import AutoLabProtocol
 import OSLog
 
 @MainActor

@@ -25,7 +25,7 @@ The macOS app surfaces AutoLab skills via the gateway; it does not parse skills 
 
 ## Env/API keys
 
-- The app stores keys in `~/.autolab/autolab.json` under `skills.entries.<skillKey>`.
+- The app stores keys in `~/.danv-intel/autolab.json` under `skills.entries.<skillKey>`.
 - `skills.update` patches `enabled`, `apiKey`, and `env`.
 
 ## Remote mode

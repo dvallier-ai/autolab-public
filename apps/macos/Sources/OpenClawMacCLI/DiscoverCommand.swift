@@ -1,5 +1,5 @@
-import AutoLabDiscovery
 import Foundation
+import AutoLabDiscovery
 
 struct DiscoveryOptions {
     var timeoutMs: Int = 2000

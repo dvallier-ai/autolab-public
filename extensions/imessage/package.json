@@ -1,6 +1,6 @@
 {
   "name": "@autolab/imessage",
-  "version": "2026.2.9",
+  "version": "2026.2.15",
   "private": true,
   "description": "AutoLab iMessage channel plugin",
   "type": "module",

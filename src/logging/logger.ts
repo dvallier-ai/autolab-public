@@ -4,13 +4,12 @@ import path from "node:path";
 import { Logger as TsLogger } from "tslog";
 import type { AutoLabConfig } from "../config/types.js";
 import type { ConsoleStyle } from "./console.js";
+import { resolvePreferredAutoLabTmpDir } from "../infra/tmp-autolab-dir.js";
 import { readLoggingConfig } from "./config.js";
 import { type LogLevel, levelToMinLevel, normalizeLogLevel } from "./levels.js";
 import { loggingState } from "./state.js";
 
-// Pin to /tmp so mac Debug UI and docs match; os.tmpdir() can be a per-user
-// randomized path on macOS which made the “Open log” button a no-op.
-export const DEFAULT_LOG_DIR = "/tmp/autolab";
+export const DEFAULT_LOG_DIR = resolvePreferredAutoLabTmpDir();
 export const DEFAULT_LOG_FILE = path.join(DEFAULT_LOG_DIR, "autolab.log"); // legacy single-file path
 
 const LOG_PREFIX = "autolab";
@@ -64,7 +63,9 @@ function resolveSettings(): ResolvedSettings {
       cfg = undefined;
     }
   }
-  const level = normalizeLogLevel(cfg?.level, "info");
+  const defaultLevel =
+    process.env.VITEST === "true" && process.env.AUTOLAB_TEST_FILE_LOG !== "1" ? "silent" : "info";
+  const level = normalizeLogLevel(cfg?.level, defaultLevel);
   const file = cfg?.file ?? defaultRollingPathForToday();
   return { level, file };
 }

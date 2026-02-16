@@ -16,7 +16,7 @@ const report: HookStatusReport = {
       handlerPath: "/tmp/hooks/session-memory/handler.js",
       hookKey: "session-memory",
       emoji: "💾",
-      homepage: "https://docs.autolab.ai/hooks#session-memory",
+      homepage: "https://docs.autolab.ai/automation/hooks#session-memory",
       events: ["command:new"],
       always: false,
       disabled: false,

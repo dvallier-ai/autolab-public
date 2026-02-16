@@ -118,7 +118,7 @@ curl -fsSL https://autolab.ai/install.sh | bash
 ### Option B: Hackable Install (For tinkering)
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 npm install
 npm run build

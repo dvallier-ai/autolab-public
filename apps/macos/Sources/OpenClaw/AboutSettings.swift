@@ -10,7 +10,7 @@ struct AboutSettings: View {
         VStack(spacing: 8) {
             let appIcon = NSApplication.shared.applicationIconImage ?? CritterIconRenderer.makeIcon(blink: 0)
             Button {
-                if let url = URL(string: "https://github.com/autolab/autolab") {
+                if let url = URL(string: "https://github.com/danv-intel/autolab") {
                     NSWorkspace.shared.open(url)
                 }
             } label: {
@@ -49,7 +49,7 @@ struct AboutSettings: View {
                 AboutLinkRow(
                     icon: "chevron.left.slash.chevron.right",
                     title: "GitHub",
-                    url: "https://github.com/autolab/autolab")
+                    url: "https://github.com/danv-intel/autolab")
                 AboutLinkRow(icon: "globe", title: "Website", url: "https://autolab.ai")
                 AboutLinkRow(icon: "bird", title: "Twitter", url: "https://twitter.com/steipete")
                 AboutLinkRow(icon: "envelope", title: "Email", url: "mailto:peter@steipete.me")
@@ -110,8 +110,8 @@ struct AboutSettings: View {
     private var buildTimestamp: String? {
         guard
             let raw =
-                (Bundle.main.object(forInfoDictionaryKey: "AutoLabBuildTimestamp") as? String) ??
-                (Bundle.main.object(forInfoDictionaryKey: "AutoLabBuildTimestamp") as? String)
+            (Bundle.main.object(forInfoDictionaryKey: "AutoLabBuildTimestamp") as? String) ??
+            (Bundle.main.object(forInfoDictionaryKey: "AutoLabBuildTimestamp") as? String)
         else { return nil }
         let parser = ISO8601DateFormatter()
         parser.formatOptions = [.withInternetDateTime]

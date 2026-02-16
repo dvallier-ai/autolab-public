@@ -37,7 +37,7 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt --fix-broken install -y  # if there are dependency errors
 ```
 
-Then update your AutoLab config (`~/.autolab/autolab.json`):
+Then update your AutoLab config (`~/.danv-intel/autolab.json`):
 
 ```json
 {

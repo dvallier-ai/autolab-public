@@ -1,5 +1,5 @@
-import AutoLabProtocol
 import Foundation
+import AutoLabProtocol
 
 extension ChannelsStore {
     func start() {

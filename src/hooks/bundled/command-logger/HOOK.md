@@ -1,7 +1,7 @@
 ---
 name: command-logger
 description: "Log all command events to a centralized audit file"
-homepage: https://docs.autolab.ai/hooks#command-logger
+homepage: https://docs.autolab.ai/automation/hooks#command-logger
 metadata:
   {
     "autolab":

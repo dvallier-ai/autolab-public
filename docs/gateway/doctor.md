@@ -53,7 +53,7 @@ Scan system services for extra gateway installs (launchd/systemd/schtasks).
 If you want to review changes before writing, open the config file first:
 
 ```bash
-cat ~/.autolab/autolab.json
+cat ~/.danv-intel/autolab.json
 ```
 
 ## What it does (summary)
@@ -104,7 +104,7 @@ Doctor will:
 
 - Explain which legacy keys were found.
 - Show the migration it applied.
-- Rewrite `~/.autolab/autolab.json` with the updated schema.
+- Rewrite `~/.danv-intel/autolab.json` with the updated schema.
 
 The Gateway also auto-runs doctor migrations on startup when it detects a
 legacy config format, so stale configs are repaired without manual intervention.
@@ -173,7 +173,7 @@ Doctor checks:
   split between installs).
 - **Remote mode reminder**: if `gateway.mode=remote`, doctor reminds you to run
   it on the remote host (the state lives there).
-- **Config file permissions**: warns if `~/.autolab/autolab.json` is
+- **Config file permissions**: warns if `~/.danv-intel/autolab.json` is
   group/world readable and offers to tighten to `600`.
 
 ### 5) Model auth health (OAuth expiry)

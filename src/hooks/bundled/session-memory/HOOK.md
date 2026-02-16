@@ -1,7 +1,7 @@
 ---
 name: session-memory
 description: "Save session context to memory when /new command is issued"
-homepage: https://docs.autolab.ai/hooks#session-memory
+homepage: https://docs.autolab.ai/automation/hooks#session-memory
 metadata:
   {
     "autolab":

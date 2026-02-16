@@ -1,6 +1,6 @@
 {
   "name": "@autolab/voice-call",
-  "version": "2026.2.9",
+  "version": "2026.2.15",
   "description": "AutoLab voice-call plugin",
   "type": "module",
   "dependencies": {

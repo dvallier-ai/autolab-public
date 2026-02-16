@@ -2,7 +2,8 @@ import { randomUUID } from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
+import { discoverAutoLabPlugins } from "./discovery.js";
 
 const tempDirs: string[] = [];
 
@@ -18,7 +19,6 @@ async function withStateDir<T>(stateDir: string, fn: () => Promise<T>) {
   const prevBundled = process.env.AUTOLAB_BUNDLED_PLUGINS_DIR;
   process.env.AUTOLAB_STATE_DIR = stateDir;
   process.env.AUTOLAB_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
-  vi.resetModules();
   try {
     return await fn();
   } finally {
@@ -32,7 +32,6 @@ async function withStateDir<T>(stateDir: string, fn: () => Promise<T>) {
     } else {
       process.env.AUTOLAB_BUNDLED_PLUGINS_DIR = prevBundled;
     }
-    vi.resetModules();
   }
 }
 
@@ -60,7 +59,6 @@ describe("discoverAutoLabPlugins", () => {
     fs.writeFileSync(path.join(workspaceExt, "beta.ts"), "export default function () {}", "utf-8");
 
     const { candidates } = await withStateDir(stateDir, async () => {
-      const { discoverAutoLabPlugins } = await import("./discovery.js");
       return discoverAutoLabPlugins({ workspaceDir });
     });
 
@@ -94,7 +92,6 @@ describe("discoverAutoLabPlugins", () => {
     );
 
     const { candidates } = await withStateDir(stateDir, async () => {
-      const { discoverAutoLabPlugins } = await import("./discovery.js");
       return discoverAutoLabPlugins({});
     });
 
@@ -123,7 +120,6 @@ describe("discoverAutoLabPlugins", () => {
     );
 
     const { candidates } = await withStateDir(stateDir, async () => {
-      const { discoverAutoLabPlugins } = await import("./discovery.js");
       return discoverAutoLabPlugins({});
     });
 
@@ -147,7 +143,6 @@ describe("discoverAutoLabPlugins", () => {
     fs.writeFileSync(path.join(packDir, "index.js"), "module.exports = {}", "utf-8");
 
     const { candidates } = await withStateDir(stateDir, async () => {
-      const { discoverAutoLabPlugins } = await import("./discovery.js");
       return discoverAutoLabPlugins({ extraPaths: [packDir] });
     });
 

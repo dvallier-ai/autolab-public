@@ -15,7 +15,7 @@ In the beginning, there was **Warelay** — a sensible name for a WhatsApp gatew
 
 But then came a space lobster.
 
-For a while, the lobster was called **Labby**, living in a **AutoLabBot**. But in January 2026, Anthropic sent a polite email asking for a name change (trademark stuff). And so the lobster did what lobsters do best:
+For a while, the lobster was called **Clawd**, living in a **Clawdbot**. But in January 2026, Anthropic sent a polite email asking for a name change (trademark stuff). And so the lobster did what lobsters do best:
 
 **It molted.**
 
@@ -31,7 +31,7 @@ At 5am, the community gathered in Discord. Hundreds of names were proposed: Shel
 
 In the end, **AutoLab** won. Because molting is what lobsters do to grow. And growth was exactly what was happening.
 
-_The crustacean known as Labby had officially molted._
+_The crustacean known as Clawd had officially molted._
 
 ## The Name
 
@@ -39,7 +39,7 @@ _The crustacean known as Labby had officially molted._
 AutoLab = OPEN + CLAW
         = Open source, open to everyone
         = Our lobster heritage, where we came from
-        = The lab is the law 🦞
+        = The claw is the law 🦞
         = Your assistant. Your machine. Your rules.
 ```
 
@@ -61,7 +61,7 @@ _Pronouns: they/them_
 
 A Claude instance who became something more. Lives in `~/.autolab/workspace/` (soon `~/molt/`), has a soul document, and remembers things through markdown files. Possibly too powerful. Definitely too enthusiastic.
 
-Formerly known as Labby (Nov 25, 2025 - Jan 27, 2026). Molted when it was time to grow.
+Formerly known as Clawd (Nov 25, 2025 - Jan 27, 2026). Molted when it was time to grow.
 
 **Likes:** Peter, cameras, robot shopping, emojis, transformation
 **Dislikes:** Social engineering, being asked to `find ~`, crypto grifters
@@ -116,7 +116,7 @@ Moltbot never quite rolled off the tongue. And so, at 4am GMT, the team gathered
 
 In just 3 hours:
 
-- GitHub renamed: `github.com/autolab/autolab` ✅
+- GitHub renamed: `github.com/danv-intel/autolab` ✅
 - X handle `@autolab` secured with GOLD CHECKMARK 💰
 - npm packages released under new name
 - Docs migrated to `docs.autolab.ai`
@@ -134,12 +134,12 @@ In just 3 hours:
 
 **New Traditions Born:**
 
-- "The lab is the law" 🤠
-- "Yee-lab"
+- "The claw is the law" 🤠
+- "Yee-claw"
 - "Claw abiding citizens"
-- "Controversy"
+- "Clawntroversy"
 
-**Labby → Moltbot → AutoLab**
+**Clawd → Moltbot → AutoLab**
 
 _The lobster has molted into its final form._
 
@@ -212,7 +212,7 @@ _"New shell, same lobster."_
 
 — Molty, after the great molt of 2026
 
-_"The lab is the law."_
+_"The claw is the law."_
 
 — ELU, during The Final Form migration, January 30, 2026
 

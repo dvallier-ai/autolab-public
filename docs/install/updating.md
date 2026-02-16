@@ -32,14 +32,14 @@ Notes:
   The installer will `git pull --rebase` **only** if the repo is clean.
 
 - For **global installs**, the script uses `npm install -g autolab@latest` under the hood.
-- Legacy note: `autolabbot` remains available as a compatibility shim.
+- Legacy note: `clawdbot` remains available as a compatibility shim.
 
 ## Before you update
 
 - Know how you installed: **global** (npm/pnpm) vs **from source** (git clone).
 - Know how your Gateway is running: **foreground terminal** vs **supervised service** (launchd/systemd).
 - Snapshot your tailoring:
-  - Config: `~/.autolab/autolab.json`
+  - Config: `~/.danv-intel/autolab.json`
   - Credentials: `~/.autolab/credentials/`
   - Workspace: `~/.autolab/workspace`
 
@@ -135,7 +135,7 @@ autolab health
 
 Notes:
 
-- `pnpm build` matters when you run the packaged `autolab` binary ([`autolab.mjs`](https://github.com/autolab/autolab/blob/main/autolab.mjs)) or use Node to run `dist/`.
+- `pnpm build` matters when you run the packaged `autolab` binary ([`autolab.mjs`](https://github.com/danv-intel/autolab/blob/main/autolab.mjs)) or use Node to run `dist/`.
 - If you run from a repo checkout without a global install, use `pnpm autolab ...` for CLI commands.
 - If you run directly from TypeScript (`pnpm autolab ...`), a rebuild is usually unnecessary, but **config migrations still apply** → run doctor.
 - Switching between global and git installs is easy: install the other flavor, then run `autolab doctor` so the gateway service entrypoint is rewritten to the current install.
@@ -228,4 +228,4 @@ git pull
 
 - Run `autolab doctor` again and read the output carefully (it often tells you the fix).
 - Check: [Troubleshooting](/gateway/troubleshooting)
-- Ask in Discord: [https://discord.gg/autolab](https://discord.gg/autolab)
+- Ask in Discord: [https://discord.gg/clawd](https://discord.gg/clawd)

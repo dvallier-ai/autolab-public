@@ -291,7 +291,7 @@ AutoLab 有两个独立的"谁可以触发我？"层：
 
 ### `find ~` 事件 🦞
 
-在第一天，一位友好的测试者要求 Labby 运行 `find ~` 并分享输出。Labby 高高兴兴地把整个主目录结构转储到群聊中。
+在第一天，一位友好的测试者要求 Clawd 运行 `find ~` 并分享输出。Clawd 高高兴兴地把整个主目录结构转储到群聊中。
 
 **教训：** 即使是"无害"的请求也可能泄露敏感信息。目录结构会揭示项目名称、工具配置和系统布局。
 
@@ -309,7 +309,7 @@ AutoLab 有两个独立的"谁可以触发我？"层：
 
 在 Gateway 网关主机上保持配置 + 状态私有：
 
-- `~/.autolab/autolab.json`：`600`（仅用户读/写）
+- `~/.danv-intel/autolab.json`：`600`（仅用户读/写）
 - `~/.autolab`：`700`（仅用户）
 
 `autolab doctor` 可以警告并提供收紧这些权限的选项。
@@ -710,7 +710,7 @@ Doctor 可以为你生成一个：`autolab doctor --generate-gateway-token`。
 
 ### 审计
 
-1. 检查 Gateway 网关日志：`/tmp/autolab/autolab-YYYY-MM-DD.log`（或 `logging.file`）。
+1. 检查 Gateway 网关日志：`/tmp/danv-intel/autolab-YYYY-MM-DD.log`（或 `logging.file`）。
 2. 审查相关记录：`~/.autolab/agents/<agentId>/sessions/*.jsonl`。
 3. 审查最近的配置更改（任何可能扩大访问权限的内容：`gateway.bind`、`gateway.auth`、私信/群组策略、`tools.elevated`、插件更改）。
 
@@ -749,7 +749,7 @@ CI 在 `secrets` 任务中运行 `detect-secrets scan --baseline .secrets.baseli
 所有者（Peter）
   │ 完全信任
   ▼
-AI（Labby）
+AI（Clawd）
   │ 信任但验证
   ▼
 白名单中的朋友

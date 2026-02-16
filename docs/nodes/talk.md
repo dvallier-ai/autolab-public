@@ -47,7 +47,7 @@ Supported keys:
 - `seed`, `normalize`, `lang`, `output_format`, `latency_tier`
 - `once`
 
-## Config (`~/.autolab/autolab.json`)
+## Config (`~/.danv-intel/autolab.json`)
 
 ```json5
 {

@@ -44,9 +44,9 @@ The hooks system allows you to:
 AutoLab ships with four bundled hooks that are automatically discovered:
 
 - **💾 session-memory**: Saves session context to your agent workspace (default `~/.autolab/workspace/memory/`) when you issue `/new`
+- **📎 bootstrap-extra-files**: Injects additional workspace bootstrap files from configured glob/path patterns during `agent:bootstrap`
 - **📝 command-logger**: Logs all command events to `~/.autolab/logs/commands.log`
 - **🚀 boot-md**: Runs `BOOT.md` when the gateway starts (requires internal hooks enabled)
-- **😈 soul-evil**: Swaps injected `SOUL.md` content with `SOUL_EVIL.md` during a purge window or by random chance
 
 List available hooks:
 
@@ -103,6 +103,8 @@ Hook packs are standard npm packages that export one or more hooks via `autolab.
 autolab hooks install <path-or-spec>
 ```
 
+Npm specs are registry-only (package name + optional version/tag). Git/URL/file specs are rejected.
+
 Example `package.json`:
 
 ```json
@@ -118,6 +120,10 @@ Example `package.json`:
 Each entry points to a hook directory containing `HOOK.md` and `handler.ts` (or `index.ts`).
 Hook packs can ship dependencies; they will be installed under `~/.autolab/hooks/<id>`.
 
+Security note: `autolab hooks install` installs dependencies with `npm install --ignore-scripts`
+(no lifecycle scripts). Keep hook pack dependency trees "pure JS/TS" and avoid packages that rely
+on `postinstall` builds.
+
 ## Hook Structure
 
 ### HOOK.md Format
@@ -128,7 +134,7 @@ The `HOOK.md` file contains metadata in YAML frontmatter plus Markdown documenta
 ---
 name: my-hook
 description: "Short description of what this hook does"
-homepage: https://docs.autolab.ai/hooks#my-hook
+homepage: https://docs.autolab.ai/automation/hooks#my-hook
 metadata:
   { "autolab": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
@@ -394,6 +400,8 @@ The old config format still works for backwards compatibility:
 }
 ```
 
+Note: `module` must be a workspace-relative path. Absolute paths and traversal outside the workspace are rejected.
+
 **Migration**: Use the new discovery-based system for new hooks. Legacy handlers are loaded after directory-based hooks.
 
 ## CLI Commands
@@ -485,6 +493,47 @@ Saves session context to memory when you issue `/new`.
 autolab hooks enable session-memory
 ```
 
+### bootstrap-extra-files
+
+Injects additional bootstrap files (for example monorepo-local `AGENTS.md` / `TOOLS.md`) during `agent:bootstrap`.
+
+**Events**: `agent:bootstrap`
+
+**Requirements**: `workspace.dir` must be configured
+
+**Output**: No files written; bootstrap context is modified in-memory only.
+
+**Config**:
+
+```json
+{
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "bootstrap-extra-files": {
+          "enabled": true,
+          "paths": ["packages/*/AGENTS.md", "packages/*/TOOLS.md"]
+        }
+      }
+    }
+  }
+}
+```
+
+**Notes**:
+
+- Paths are resolved relative to workspace.
+- Files must stay inside workspace (realpath-checked).
+- Only recognized bootstrap basenames are loaded.
+- Subagent allowlist is preserved (`AGENTS.md` and `TOOLS.md` only).
+
+**Enable**:
+
+```bash
+autolab hooks enable bootstrap-extra-files
+```
+
 ### command-logger
 
 Logs all command events to a centralized audit file.
@@ -525,42 +574,6 @@ grep '"action":"new"' ~/.autolab/logs/commands.log | jq .
 
 ```bash
 autolab hooks enable command-logger
-```
-
-### soul-evil
-
-Swaps injected `SOUL.md` content with `SOUL_EVIL.md` during a purge window or by random chance.
-
-**Events**: `agent:bootstrap`
-
-**Docs**: [SOUL Evil Hook](/hooks/soul-evil)
-
-**Output**: No files written; swaps happen in-memory only.
-
-**Enable**:
-
-```bash
-autolab hooks enable soul-evil
-```
-
-**Config**:
-
-```json
-{
-  "hooks": {
-    "internal": {
-      "enabled": true,
-      "entries": {
-        "soul-evil": {
-          "enabled": true,
-          "file": "SOUL_EVIL.md",
-          "chance": 0.1,
-          "purge": { "at": "21:00", "duration": "15m" }
-        }
-      }
-    }
-  }
-}
 ```
 
 ### boot-md
@@ -655,6 +668,7 @@ The gateway logs hook loading at startup:
 
 ```
 Registered hook: session-memory -> command:new
+Registered hook: bootstrap-extra-files -> agent:bootstrap
 Registered hook: command-logger -> command
 Registered hook: boot-md -> gateway:startup
 ```
@@ -696,7 +710,7 @@ Monitor gateway logs to see hook execution:
 
 ```bash
 # macOS
-./scripts/autolog.sh -f
+./scripts/clawlog.sh -f
 
 # Other platforms
 tail -f ~/.autolab/gateway.log
@@ -821,7 +835,7 @@ Look for missing:
 3. Check gateway logs for errors:
 
    ```bash
-   ./scripts/autolog.sh | grep hook
+   ./scripts/clawlog.sh | grep hook
    ```
 
 ### Handler Errors
@@ -911,6 +925,6 @@ node -e "import('./path/to/handler.ts').then(console.log)"
 ## See Also
 
 - [CLI Reference: hooks](/cli/hooks)
-- [Bundled Hooks README](https://github.com/autolab/autolab/tree/main/src/hooks/bundled)
+- [Bundled Hooks README](https://github.com/danv-intel/autolab/tree/main/src/hooks/bundled)
 - [Webhook Hooks](/automation/webhook)
 - [Configuration](/gateway/configuration#hooks)

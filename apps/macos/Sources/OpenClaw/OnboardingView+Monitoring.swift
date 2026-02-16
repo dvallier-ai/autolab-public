@@ -1,5 +1,5 @@
-import AutoLabIPC
 import Foundation
+import AutoLabIPC
 
 extension OnboardingView {
     @MainActor

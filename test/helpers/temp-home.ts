@@ -9,6 +9,7 @@ type EnvSnapshot = {
   userProfile: string | undefined;
   homeDrive: string | undefined;
   homePath: string | undefined;
+  autolabHome: string | undefined;
   stateDir: string | undefined;
 };
 
@@ -18,6 +19,7 @@ function snapshotEnv(): EnvSnapshot {
     userProfile: process.env.USERPROFILE,
     homeDrive: process.env.HOMEDRIVE,
     homePath: process.env.HOMEPATH,
+    autolabHome: process.env.AUTOLAB_HOME,
     stateDir: process.env.AUTOLAB_STATE_DIR,
   };
 }
@@ -34,6 +36,7 @@ function restoreEnv(snapshot: EnvSnapshot) {
   restoreKey("USERPROFILE", snapshot.userProfile);
   restoreKey("HOMEDRIVE", snapshot.homeDrive);
   restoreKey("HOMEPATH", snapshot.homePath);
+  restoreKey("AUTOLAB_HOME", snapshot.autolabHome);
   restoreKey("AUTOLAB_STATE_DIR", snapshot.stateDir);
 }
 
@@ -58,6 +61,8 @@ function restoreExtraEnv(snapshot: Record<string, string | undefined>) {
 function setTempHome(base: string) {
   process.env.HOME = base;
   process.env.USERPROFILE = base;
+  // Ensure tests using HOME isolation aren't affected by leaked AUTOLAB_HOME.
+  delete process.env.AUTOLAB_HOME;
   process.env.AUTOLAB_STATE_DIR = path.join(base, ".autolab");
 
   if (process.platform !== "win32") {
@@ -104,12 +109,19 @@ export async function withTempHome<T>(
     restoreExtraEnv(envSnapshot);
     restoreEnv(snapshot);
     try {
-      await fs.rm(base, {
-        recursive: true,
-        force: true,
-        maxRetries: 10,
-        retryDelay: 50,
-      });
+      if (process.platform === "win32") {
+        await fs.rm(base, {
+          recursive: true,
+          force: true,
+          maxRetries: 10,
+          retryDelay: 50,
+        });
+      } else {
+        await fs.rm(base, {
+          recursive: true,
+          force: true,
+        });
+      }
     } catch {
       // ignore cleanup failures in tests
     }

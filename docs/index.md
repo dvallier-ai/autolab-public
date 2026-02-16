@@ -5,15 +5,22 @@ read_when:
 title: "AutoLab"
 ---
 
+# AutoLab 🦞
+
 <p align="center">
     <img
-        src="/assets/autolab-header.png"
+        src="/assets/autolab-logo-text-dark.png"
         alt="AutoLab"
-        width="100%"
+        width="500"
+        class="dark:hidden"
+    />
+    <img
+        src="/assets/autolab-logo-text.png"
+        alt="AutoLab"
+        width="500"
+        class="hidden dark:block"
     />
 </p>
-
-# AutoLab 🦞
 
 > _"EXFOLIATE! EXFOLIATE!"_ — A space lobster, probably
 
@@ -122,7 +129,7 @@ Open the browser Control UI after the Gateway starts.
 
 ## Configuration (optional)
 
-Config lives at `~/.autolab/autolab.json`.
+Config lives at `~/.danv-intel/autolab.json`.
 
 - If you **do nothing**, AutoLab uses the bundled Pi binary in RPC mode with per-sender sessions.
 - If you want to lock it down, start with `channels.whatsapp.allowFrom` and (for groups) mention rules.

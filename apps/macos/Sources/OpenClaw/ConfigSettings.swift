@@ -45,7 +45,9 @@ extension ConfigSettings {
         let help: String?
         let node: ConfigSchemaNode
 
-        var id: String { self.key }
+        var id: String {
+            self.key
+        }
     }
 
     private struct ConfigSubsection: Identifiable {
@@ -55,7 +57,9 @@ extension ConfigSettings {
         let node: ConfigSchemaNode
         let path: ConfigPath
 
-        var id: String { self.key }
+        var id: String {
+            self.key
+        }
     }
 
     private var sections: [ConfigSection] {
@@ -153,7 +157,7 @@ extension ConfigSettings {
             .font(.title3.weight(.semibold))
         Text(self.isNixMode
             ? "This tab is read-only in Nix mode. Edit config via Nix and rebuild."
-            : "Edit ~/.autolab/autolab.json using the schema-driven form.")
+            : "Edit ~/.danv-intel/autolab.json using the schema-driven form.")
             .font(.callout)
             .foregroundStyle(.secondary)
     }

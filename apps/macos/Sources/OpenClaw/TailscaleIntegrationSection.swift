@@ -5,7 +5,9 @@ private enum GatewayTailscaleMode: String, CaseIterable, Identifiable {
     case serve
     case funnel
 
-    var id: String { self.rawValue }
+    var id: String {
+        self.rawValue
+    }
 
     var label: String {
         switch self {
@@ -234,7 +236,7 @@ struct TailscaleIntegrationSection: View {
             .textFieldStyle(.roundedBorder)
             .frame(maxWidth: 240)
             .onSubmit { Task { await self.applySettings() } }
-        Text("Stored in ~/.autolab/autolab.json. Prefer AUTOLAB_GATEWAY_PASSWORD for production.")
+        Text("Stored in ~/.danv-intel/autolab.json. Prefer AUTOLAB_GATEWAY_PASSWORD for production.")
             .font(.caption)
             .foregroundStyle(.secondary)
         Button("Update password") { Task { await self.applySettings() } }
@@ -293,9 +295,9 @@ struct TailscaleIntegrationSection: View {
         }
 
         if self.connectionMode == .local, !self.isPaused {
-            self.statusMessage = "Saved to ~/.autolab/autolab.json. Restarting gateway…"
+            self.statusMessage = "Saved to ~/.danv-intel/autolab.json. Restarting gateway…"
         } else {
-            self.statusMessage = "Saved to ~/.autolab/autolab.json. Restart the gateway to apply."
+            self.statusMessage = "Saved to ~/.danv-intel/autolab.json. Restart the gateway to apply."
         }
         self.restartGatewayIfNeeded()
     }

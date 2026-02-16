@@ -21,4 +21,8 @@ autolab logs
 autolab logs --follow
 autolab logs --json
 autolab logs --limit 500
+autolab logs --local-time
+autolab logs --follow --local-time
 ```
+
+Use `--local-time` to render timestamps in your local timezone.

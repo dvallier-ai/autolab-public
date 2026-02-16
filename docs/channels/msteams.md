@@ -143,7 +143,7 @@ Example:
 2. Create an **Azure Bot** (App ID + secret + tenant ID).
 3. Build a **Teams app package** that references the bot and includes the RSC permissions below.
 4. Upload/install the Teams app into a team (or personal scope for DMs).
-5. Configure `msteams` in `~/.autolab/autolab.json` (or env vars) and start the gateway.
+5. Configure `msteams` in `~/.danv-intel/autolab.json` (or env vars) and start the gateway.
 6. The gateway listens for Bot Framework webhook traffic on `/api/messages` by default.
 
 ## Azure Bot Setup (Prerequisites)
@@ -155,14 +155,14 @@ Before configuring AutoLab, you need to create an Azure Bot resource.
 1. Go to [Create Azure Bot](https://portal.azure.com/#create/Microsoft.AzureBot)
 2. Fill in the **Basics** tab:
 
-   | Field              | Value                                                   |
-   | ------------------ | ------------------------------------------------------- |
+   | Field              | Value                                                    |
+   | ------------------ | -------------------------------------------------------- |
    | **Bot handle**     | Your bot name, e.g., `autolab-msteams` (must be unique) |
-   | **Subscription**   | Select your Azure subscription                          |
-   | **Resource group** | Create new or use existing                              |
-   | **Pricing tier**   | **Free** for dev/testing                                |
-   | **Type of App**    | **Single Tenant** (recommended - see note below)        |
-   | **Creation type**  | **Create new Microsoft App ID**                         |
+   | **Subscription**   | Select your Azure subscription                           |
+   | **Resource group** | Create new or use existing                               |
+   | **Pricing tier**   | **Free** for dev/testing                                 |
+   | **Type of App**    | **Single Tenant** (recommended - see note below)         |
+   | **Creation type**  | **Create new Microsoft App ID**                          |
 
 > **Deprecation notice:** Creation of new multi-tenant bots was deprecated after 2025-07-31. Use **Single Tenant** for new bots.
 
@@ -422,6 +422,8 @@ If you need images/files in **channels** or want to fetch **message history**, y
 2. **Grant admin consent** for the tenant.
 3. Bump the Teams app **manifest version**, re-upload, and **reinstall the app in Teams**.
 4. **Fully quit and relaunch Teams** to clear cached app metadata.
+
+**Additional permission for user mentions:** User @mentions work out of the box for users in the conversation. However, if you want to dynamically search and mention users who are **not in the current conversation**, add `User.Read.All` (Application) permission and grant admin consent.
 
 ## Known Limitations
 

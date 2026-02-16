@@ -55,7 +55,7 @@ autolab browser --browser-profile autolab snapshot
 
 ## 配置
 
-浏览器设置位于 `~/.autolab/autolab.json`。
+浏览器设置位于 `~/.danv-intel/autolab.json`。
 
 ```json5
 {

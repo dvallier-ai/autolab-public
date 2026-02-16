@@ -1,5 +1,5 @@
 import type { ChannelOnboardingAdapter, AutoLabConfig, WizardPrompter } from "autolab/plugin-sdk";
-import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "autolab/plugin-sdk";
+import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "autolab/plugin-sdk/account-id";
 import {
   listMattermostAccountIds,
   resolveDefaultMattermostAccountId,

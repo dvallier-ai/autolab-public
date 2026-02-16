@@ -1,6 +1,6 @@
-import AutoLabProtocol
 import Foundation
 import Observation
+import AutoLabProtocol
 
 struct ChannelsStatusSnapshot: Codable {
     struct WhatsAppSelf: Codable {

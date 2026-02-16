@@ -30,7 +30,7 @@ Use `session.dmScope` to control how **direct messages** are grouped:
 **The fix:** Set `dmScope` to isolate sessions per user:
 
 ```json5
-// ~/.autolab/autolab.json
+// ~/.danv-intel/autolab.json
 {
   session: {
     // Secure DM mode: isolate DM context per channel + sender.
@@ -123,6 +123,8 @@ Block delivery for specific session types without listing individual ids.
       rules: [
         { action: "deny", match: { channel: "discord", chatType: "group" } },
         { action: "deny", match: { keyPrefix: "cron:" } },
+        // Match the raw session key (including the `agent:<id>:` prefix).
+        { action: "deny", match: { rawKeyPrefix: "agent:main:discord:" } },
       ],
       default: "allow",
     },
@@ -140,7 +142,7 @@ Runtime override (owner only):
 ## Configuration (optional rename example)
 
 ```json5
-// ~/.autolab/autolab.json
+// ~/.danv-intel/autolab.json
 {
   session: {
     scope: "per-sender", // keep group keys separate

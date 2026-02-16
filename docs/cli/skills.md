@@ -14,7 +14,7 @@ Related:
 
 - Skills system: [Skills](/tools/skills)
 - Skills config: [Skills config](/tools/skills-config)
-- AutoHub installs: [AutoHub](/tools/autohub)
+- ClawHub installs: [ClawHub](/tools/clawhub)
 
 ## Commands
 

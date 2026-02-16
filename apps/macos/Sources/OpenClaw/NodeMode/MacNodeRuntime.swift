@@ -1,7 +1,7 @@
 import AppKit
+import Foundation
 import AutoLabIPC
 import AutoLabKit
-import Foundation
 
 actor MacNodeRuntime {
     private let cameraCapture = CameraCaptureService()

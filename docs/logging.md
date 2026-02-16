@@ -21,11 +21,11 @@ levels and formats.
 
 By default, the Gateway writes a rolling log file under:
 
-`/tmp/autolab/autolab-YYYY-MM-DD.log`
+`/tmp/danv-intel/autolab-YYYY-MM-DD.log`
 
 The date uses the gateway host's local timezone.
 
-You can override this in `~/.autolab/autolab.json`:
+You can override this in `~/.danv-intel/autolab.json`:
 
 ```json
 {
@@ -98,13 +98,13 @@ Console formatting is controlled by `logging.consoleStyle`.
 
 ## Configuring logging
 
-All logging configuration lives under `logging` in `~/.autolab/autolab.json`.
+All logging configuration lives under `logging` in `~/.danv-intel/autolab.json`.
 
 ```json
 {
   "logging": {
     "level": "info",
-    "file": "/tmp/autolab/autolab-YYYY-MM-DD.log",
+    "file": "/tmp/danv-intel/autolab-YYYY-MM-DD.log",
     "consoleLevel": "info",
     "consoleStyle": "pretty",
     "redactSensitive": "tools",

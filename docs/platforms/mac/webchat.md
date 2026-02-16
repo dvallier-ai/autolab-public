@@ -24,7 +24,7 @@ agent (with a session switcher for other sessions).
   dist/AutoLab.app/Contents/MacOS/AutoLab --webchat
   ```
 
-- Logs: `./scripts/autolog.sh` (subsystem `bot.molt`, category `WebChatSwiftUI`).
+- Logs: `./scripts/clawlog.sh` (subsystem `bot.molt`, category `WebChatSwiftUI`).
 
 ## How it’s wired
 

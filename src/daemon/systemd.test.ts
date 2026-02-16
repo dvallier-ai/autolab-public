@@ -1,5 +1,44 @@
-import { describe, expect, it } from "vitest";
-import { parseSystemdShow, resolveSystemdUserUnitPath } from "./systemd.js";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+const execFileMock = vi.hoisted(() => vi.fn());
+
+vi.mock("node:child_process", () => ({
+  execFile: execFileMock,
+}));
+
+import { splitArgsPreservingQuotes } from "./arg-split.js";
+import { parseSystemdExecStart } from "./systemd-unit.js";
+import {
+  isSystemdUserServiceAvailable,
+  parseSystemdShow,
+  resolveSystemdUserUnitPath,
+} from "./systemd.js";
+
+describe("systemd availability", () => {
+  beforeEach(() => {
+    execFileMock.mockReset();
+  });
+
+  it("returns true when systemctl --user succeeds", async () => {
+    execFileMock.mockImplementation((_cmd, _args, _opts, cb) => {
+      cb(null, "", "");
+    });
+    await expect(isSystemdUserServiceAvailable()).resolves.toBe(true);
+  });
+
+  it("returns false when systemd user bus is unavailable", async () => {
+    execFileMock.mockImplementation((_cmd, _args, _opts, cb) => {
+      const err = new Error("Failed to connect to bus") as Error & {
+        stderr?: string;
+        code?: number;
+      };
+      err.stderr = "Failed to connect to bus";
+      err.code = 1;
+      cb(err, "", "");
+    });
+    await expect(isSystemdUserServiceAvailable()).resolves.toBe(false);
+  });
+});
 
 describe("systemd runtime parsing", () => {
   it("parses active state details", () => {
@@ -91,5 +130,74 @@ describe("resolveSystemdUserUnitPath", () => {
     expect(resolveSystemdUserUnitPath(env)).toBe(
       "/home/test/.config/systemd/user/autolab-gateway-myprofile.service",
     );
+  });
+});
+
+describe("splitArgsPreservingQuotes", () => {
+  it("splits on whitespace outside quotes", () => {
+    expect(splitArgsPreservingQuotes('/usr/bin/autolab gateway start --name "My Bot"')).toEqual([
+      "/usr/bin/autolab",
+      "gateway",
+      "start",
+      "--name",
+      "My Bot",
+    ]);
+  });
+
+  it("supports systemd-style backslash escaping", () => {
+    expect(
+      splitArgsPreservingQuotes('autolab --name "My \\"Bot\\"" --foo bar', {
+        escapeMode: "backslash",
+      }),
+    ).toEqual(["autolab", "--name", 'My "Bot"', "--foo", "bar"]);
+  });
+
+  it("supports schtasks-style escaped quotes while preserving other backslashes", () => {
+    expect(
+      splitArgsPreservingQuotes('autolab --path "C:\\\\Program Files\\\\AutoLab"', {
+        escapeMode: "backslash-quote-only",
+      }),
+    ).toEqual(["autolab", "--path", "C:\\\\Program Files\\\\AutoLab"]);
+
+    expect(
+      splitArgsPreservingQuotes('autolab --label "My \\"Quoted\\" Name"', {
+        escapeMode: "backslash-quote-only",
+      }),
+    ).toEqual(["autolab", "--label", 'My "Quoted" Name']);
+  });
+});
+
+describe("parseSystemdExecStart", () => {
+  it("splits on whitespace outside quotes", () => {
+    const execStart = "/usr/bin/autolab gateway start --foo bar";
+    expect(parseSystemdExecStart(execStart)).toEqual([
+      "/usr/bin/autolab",
+      "gateway",
+      "start",
+      "--foo",
+      "bar",
+    ]);
+  });
+
+  it("preserves quoted arguments", () => {
+    const execStart = '/usr/bin/autolab gateway start --name "My Bot"';
+    expect(parseSystemdExecStart(execStart)).toEqual([
+      "/usr/bin/autolab",
+      "gateway",
+      "start",
+      "--name",
+      "My Bot",
+    ]);
+  });
+
+  it("parses path arguments", () => {
+    const execStart = "/usr/bin/autolab gateway start --path /tmp/autolab";
+    expect(parseSystemdExecStart(execStart)).toEqual([
+      "/usr/bin/autolab",
+      "gateway",
+      "start",
+      "--path",
+      "/tmp/autolab",
+    ]);
   });
 });

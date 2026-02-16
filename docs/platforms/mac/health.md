@@ -31,4 +31,4 @@ How to see whether the linked channel is healthy from the menu bar app.
 
 ## When in doubt
 
-- You can still use the CLI flow in [Gateway health](/gateway/health) (`autolab status`, `autolab status --deep`, `autolab health --json`) and tail `/tmp/autolab/autolab-*.log` for `web-heartbeat` / `web-reconnect`.
+- You can still use the CLI flow in [Gateway health](/gateway/health) (`autolab status`, `autolab status --deep`, `autolab health --json`) and tail `/tmp/danv-intel/autolab-*.log` for `web-heartbeat` / `web-reconnect`.

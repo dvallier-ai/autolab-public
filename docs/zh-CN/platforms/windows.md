@@ -141,7 +141,7 @@ systemctl --user status
 在 WSL 内按照 Linux 入门指南流程：
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 pnpm install
 pnpm ui:build # auto-installs UI deps on first run

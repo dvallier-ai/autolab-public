@@ -20,7 +20,7 @@ AutoLab 运行一个源自 **pi-mono** 的嵌入式智能体运行时。
 
 AutoLab 使用单一智能体工作区目录（`agents.defaults.workspace`）作为智能体**唯一**的工作目录（`cwd`），用于工具和上下文。
 
-建议：使用 `autolab setup` 在缺失时创建 `~/.autolab/autolab.json` 并初始化工作区文件。
+建议：使用 `autolab setup` 在缺失时创建 `~/.danv-intel/autolab.json` 并初始化工作区文件。
 
 完整工作区布局 + 备份指南：[智能体工作区](/concepts/agent-workspace)
 

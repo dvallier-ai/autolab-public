@@ -29,7 +29,7 @@ Skills 从**三个**位置加载：
 
 `<workspace>/skills`（最高）→ `~/.autolab/skills` → 内置 Skills（最低）
 
-此外，你可以通过 `~/.autolab/autolab.json` 中的 `skills.load.extraDirs` 配置额外的 Skills 文件夹（最低优先级）。
+此外，你可以通过 `~/.danv-intel/autolab.json` 中的 `skills.load.extraDirs` 配置额外的 Skills 文件夹（最低优先级）。
 
 ## 单智能体 vs 共享 Skills
 
@@ -45,20 +45,20 @@ Skills 从**三个**位置加载：
 
 插件可以通过在 `autolab.plugin.json` 中列出 `skills` 目录（相对于插件根目录的路径）来发布自己的 Skills。插件 Skills 在插件启用时加载，并参与正常的 Skills 优先级规则。你可以通过插件配置条目上的 `metadata.autolab.requires.config` 对它们进行门控。参见[插件](/tools/plugin)了解发现/配置，以及[工具](/tools)了解这些 Skills 所教授的工具接口。
 
-## AutoHub（安装 + 同步）
+## ClawHub（安装 + 同步）
 
-AutoHub 是 AutoLab 的公共 Skills 注册表。浏览 https://autohub.com。使用它来发现、安装、更新和备份 Skills。完整指南：[AutoHub](/tools/autohub)。
+ClawHub 是 AutoLab 的公共 Skills 注册表。浏览 https://clawhub.com。使用它来发现、安装、更新和备份 Skills。完整指南：[ClawHub](/tools/clawhub)。
 
 常见流程：
 
 - 将 Skills 安装到你的工作区：
-  - `autohub install <skill-slug>`
+  - `clawhub install <skill-slug>`
 - 更新所有已安装的 Skills：
-  - `autohub update --all`
+  - `clawhub update --all`
 - 同步（扫描 + 发布更新）：
-  - `autohub sync --all`
+  - `clawhub sync --all`
 
-默认情况下，`autohub` 安装到当前工作目录下的 `./skills`（或回退到配置的 AutoLab 工作区）。AutoLab 在下一个会话中将其识别为 `<workspace>/skills`。
+默认情况下，`clawhub` 安装到当前工作目录下的 `./skills`（或回退到配置的 AutoLab 工作区）。AutoLab 在下一个会话中将其识别为 `<workspace>/skills`。
 
 ## 安全注意事项
 
@@ -170,7 +170,7 @@ metadata:
 
 如果没有 `metadata.autolab`，该 Skills 始终有资格（除非在配置中禁用或被 `skills.allowBundled` 阻止用于内置 Skills）。
 
-## 配置覆盖（`~/.autolab/autolab.json`）
+## 配置覆盖（`~/.danv-intel/autolab.json`）
 
 内置/托管 Skills 可以被切换并提供环境变量值：
 
@@ -274,6 +274,6 @@ AutoLab 作为安装的一部分（npm 包或 AutoLab.app）发布一组基线 S
 
 ## 寻找更多 Skills？
 
-浏览 https://autohub.com。
+浏览 https://clawhub.com。
 
 ---

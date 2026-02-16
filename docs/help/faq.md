@@ -238,7 +238,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
    If RPC is down, fall back to:
 
    ```bash
-   tail -f "$(ls -t /tmp/autolab/autolab-*.log | head -1)"
+   tail -f "$(ls -t /tmp/danv-intel/autolab-*.log | head -1)"
    ```
 
    File logs are separate from service logs; see [Logging](/logging) and [Troubleshooting](/gateway/troubleshooting).
@@ -287,8 +287,8 @@ Tip: ask the agent to **plan and supervise** the fix (step-by-step), then execut
 necessary commands. That keeps changes small and easier to audit.
 
 If you discover a real bug or fix, please file a GitHub issue or send a PR:
-[https://github.com/autolab/autolab/issues](https://github.com/autolab/autolab/issues)
-[https://github.com/autolab/autolab/pulls](https://github.com/autolab/autolab/pulls)
+[https://github.com/danv-intel/autolab/issues](https://github.com/danv-intel/autolab/issues)
+[https://github.com/danv-intel/autolab/pulls](https://github.com/danv-intel/autolab/pulls)
 
 Start with these commands (share outputs when asking for help):
 
@@ -324,7 +324,7 @@ The wizard can also build UI assets automatically. After onboarding, you typical
 From source (contributors/dev):
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 pnpm install
 pnpm build
@@ -434,7 +434,7 @@ Related: [Migrating](/install/migrating), [Where things live on disk](/help/faq#
 ### Where do I see what is new in the latest version
 
 Check the GitHub changelog:
-[https://github.com/autolab/autolab/blob/main/CHANGELOG.md](https://github.com/autolab/autolab/blob/main/CHANGELOG.md)
+[https://github.com/danv-intel/autolab/blob/main/CHANGELOG.md](https://github.com/danv-intel/autolab/blob/main/CHANGELOG.md)
 
 Newest entries are at the top. If the top section is marked **Unreleased**, the next dated
 section is the latest shipped version. Entries are grouped by **Highlights**, **Changes**, and
@@ -448,7 +448,7 @@ detail: [Troubleshooting](/help/troubleshooting#docsautolabai-shows-an-ssl-error
 Please help us unblock it by reporting here: [https://spa.xfinity.com/check_url_status](https://spa.xfinity.com/check_url_status).
 
 If you still can't reach the site, the docs are mirrored on GitHub:
-[https://github.com/autolab/autolab/tree/main/docs](https://github.com/autolab/autolab/tree/main/docs)
+[https://github.com/danv-intel/autolab/tree/main/docs](https://github.com/danv-intel/autolab/tree/main/docs)
 
 ### What's the difference between stable and beta
 
@@ -462,7 +462,7 @@ that same version to `latest`**. That's why beta and stable can point at the
 **same version**.
 
 See what changed:
-[https://github.com/autolab/autolab/blob/main/CHANGELOG.md](https://github.com/autolab/autolab/blob/main/CHANGELOG.md)
+[https://github.com/danv-intel/autolab/blob/main/CHANGELOG.md](https://github.com/danv-intel/autolab/blob/main/CHANGELOG.md)
 
 ### How do I install the beta version and whats the difference between beta and dev
 
@@ -517,7 +517,7 @@ That gives you a local repo you can edit, then update via git.
 If you prefer a clean clone manually, use:
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 pnpm install
 pnpm build
@@ -544,6 +544,15 @@ For a hackable (git) install:
 
 ```bash
 curl -fsSL https://autolab.ai/install.sh | bash -s -- --install-method git --verbose
+```
+
+Windows (PowerShell) equivalent:
+
+```powershell
+# install.ps1 has no dedicated -Verbose flag yet.
+Set-PSDebug -Trace 1
+& ([scriptblock]::Create((iwr -useb https://autolab.ai/install.ps1))) -NoOnboard
+Set-PSDebug -Trace 0
 ```
 
 More options: [Installer flags](/install/installer).
@@ -785,7 +794,9 @@ without WhatsApp/Telegram.
 
 ### Telegram what goes in allowFrom
 
-`channels.telegram.allowFrom` is **the human sender's Telegram user ID** (numeric, recommended) or `@username`. It is not the bot username.
+`channels.telegram.allowFrom` is **the human sender's Telegram user ID** (numeric). It is not the bot username.
+
+The onboarding wizard accepts `@username` input and resolves it to a numeric ID, but AutoLab authorization uses numeric IDs only.
 
 Safer (no third-party bot):
 
@@ -841,7 +852,7 @@ This **does not delete your data** - it only changes the AutoLab code install. Y
 From npm → git:
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 pnpm install
 pnpm build
@@ -998,11 +1009,11 @@ Showcase: [https://autolab.ai/showcase](https://autolab.ai/showcase)
 
 ### How do I customize skills without keeping the repo dirty
 
-Use managed overrides instead of editing the repo copy. Put your changes in `~/.autolab/skills/<name>/SKILL.md` (or add a folder via `skills.load.extraDirs` in `~/.autolab/autolab.json`). Precedence is `<workspace>/skills` > `~/.autolab/skills` > bundled, so managed overrides win without touching git. Only upstream-worthy edits should live in the repo and go out as PRs.
+Use managed overrides instead of editing the repo copy. Put your changes in `~/.autolab/skills/<name>/SKILL.md` (or add a folder via `skills.load.extraDirs` in `~/.danv-intel/autolab.json`). Precedence is `<workspace>/skills` > `~/.autolab/skills` > bundled, so managed overrides win without touching git. Only upstream-worthy edits should live in the repo and go out as PRs.
 
 ### Can I load skills from a custom folder
 
-Yes. Add extra directories via `skills.load.extraDirs` in `~/.autolab/autolab.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.autolab/skills` → bundled → `skills.load.extraDirs`. `autohub` installs into `./skills` by default, which AutoLab treats as `<workspace>/skills`.
+Yes. Add extra directories via `skills.load.extraDirs` in `~/.danv-intel/autolab.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.autolab/skills` → bundled → `skills.load.extraDirs`. `clawhub` installs into `./skills` by default, which AutoLab treats as `<workspace>/skills`.
 
 ### How can I use different models for different tasks
 
@@ -1049,17 +1060,17 @@ Docs: [Cron jobs](/automation/cron-jobs), [Cron vs Heartbeat](/automation/cron-v
 
 ### How do I install skills on Linux
 
-Use **AutoHub** (CLI) or drop skills into your workspace. The macOS Skills UI isn't available on Linux.
-Browse skills at [https://autohub.com](https://autohub.com).
+Use **ClawHub** (CLI) or drop skills into your workspace. The macOS Skills UI isn't available on Linux.
+Browse skills at [https://clawhub.com](https://clawhub.com).
 
-Install the AutoHub CLI (pick one package manager):
+Install the ClawHub CLI (pick one package manager):
 
 ```bash
-npm i -g autohub
+npm i -g clawhub
 ```
 
 ```bash
-pnpm add -g autohub
+pnpm add -g clawhub
 ```
 
 ### Can AutoLab run tasks on a schedule or continuously in the background
@@ -1129,11 +1140,11 @@ targeting those APIs.
 Install skills:
 
 ```bash
-autohub install <skill-slug>
-autohub update --all
+clawhub install <skill-slug>
+clawhub update --all
 ```
 
-AutoHub installs into `./skills` under your current directory (or falls back to your configured AutoLab workspace); AutoLab treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.autolab/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [AutoHub](/tools/autohub).
+ClawHub installs into `./skills` under your current directory (or falls back to your configured AutoLab workspace); AutoLab treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.autolab/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [ClawHub](/tools/clawhub).
 
 ### How do I install the Chrome extension for browser takeover
 
@@ -1256,9 +1267,9 @@ Related: [Agent workspace](/concepts/agent-workspace), [Memory](/concepts/memory
 
 Everything lives under `$AUTOLAB_STATE_DIR` (default: `~/.autolab`):
 
-| Path                                                           | Purpose                                                      |
-| -------------------------------------------------------------- | ------------------------------------------------------------ |
-| `$AUTOLAB_STATE_DIR/autolab.json`                              | Main config (JSON5)                                          |
+| Path                                                            | Purpose                                                      |
+| --------------------------------------------------------------- | ------------------------------------------------------------ |
+| `$AUTOLAB_STATE_DIR/autolab.json`                             | Main config (JSON5)                                          |
 | `$AUTOLAB_STATE_DIR/credentials/oauth.json`                    | Legacy OAuth import (copied into auth profiles on first use) |
 | `$AUTOLAB_STATE_DIR/agents/<agentId>/agent/auth-profiles.json` | Auth profiles (OAuth + API keys)                             |
 | `$AUTOLAB_STATE_DIR/agents/<agentId>/agent/auth.json`          | Runtime auth cache (managed automatically)                   |
@@ -1343,7 +1354,7 @@ Session state is owned by the **gateway host**. If you're in remote mode, the se
 
 ### What format is the config Where is it
 
-AutoLab reads an optional **JSON5** config from `$AUTOLAB_CONFIG_PATH` (default: `~/.autolab/autolab.json`):
+AutoLab reads an optional **JSON5** config from `$AUTOLAB_CONFIG_PATH` (default: `~/.danv-intel/autolab.json`):
 
 ```
 $AUTOLAB_CONFIG_PATH
@@ -1591,7 +1602,7 @@ else is removed.
 
 Recover:
 
-- Restore from backup (git or a copied `~/.autolab/autolab.json`).
+- Restore from backup (git or a copied `~/.danv-intel/autolab.json`).
 - If you have no backup, re-run `autolab doctor` and reconfigure channels/models.
 - If this was unexpected, file a bug and include your last known config or any backup.
 - A local coding agent can often reconstruct a working config from logs or history.
@@ -1995,7 +2006,7 @@ Safe options:
 - `/model` in chat (quick, per-session)
 - `autolab models set ...` (updates just model config)
 - `autolab configure --section model` (interactive)
-- edit `agents.defaults.model` in `~/.autolab/autolab.json`
+- edit `agents.defaults.model` in `~/.danv-intel/autolab.json`
 
 Avoid `config.apply` with a partial object unless you intend to replace the whole config.
 If you did overwrite config, restore from backup or re-run `autolab doctor` to repair.
@@ -2476,7 +2487,7 @@ Protocol details: [Gateway protocol](/gateway/protocol).
 File logs (structured):
 
 ```
-/tmp/autolab/autolab-YYYY-MM-DD.log
+/tmp/danv-intel/autolab-YYYY-MM-DD.log
 ```
 
 You can set a stable path via `logging.file`. File log level is controlled by `logging.level`. Console verbosity is controlled by `--verbose` and `logging.consoleLevel`.
@@ -2845,4 +2856,4 @@ You can add options like `debounce:2s cap:25 drop:summarize` for followup modes.
 
 ---
 
-Still stuck? Ask in [Discord](https://discord.com/invite/autolab) or open a [GitHub discussion](https://github.com/autolab/autolab/discussions).
+Still stuck? Ask in [Discord](https://discord.com/invite/clawd) or open a [GitHub discussion](https://github.com/danv-intel/autolab/discussions).

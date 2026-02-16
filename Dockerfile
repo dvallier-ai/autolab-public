@@ -24,7 +24,7 @@ COPY scripts ./scripts
 RUN pnpm install --frozen-lockfile
 
 COPY . .
-RUN AUTOLAB_A2UI_SKIP_MISSING=1 pnpm build
+RUN pnpm build
 # Force pnpm for UI build (Bun may fail on ARM/Synology architectures)
 ENV AUTOLAB_PREFER_PNPM=1
 RUN pnpm ui:build

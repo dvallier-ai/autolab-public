@@ -53,7 +53,7 @@ Set `browser.defaultProfile: "autolab"` if you want managed mode by default.
 
 ## Configuration
 
-Browser settings live in `~/.autolab/autolab.json`.
+Browser settings live in `~/.danv-intel/autolab.json`.
 
 ```json5
 {
@@ -192,6 +192,7 @@ Notes:
 Key ideas:
 
 - Browser control is loopback-only; access flows through the Gateway’s auth or node pairing.
+- If browser control is enabled and no auth is configured, AutoLab auto-generates `gateway.auth.token` on startup and persists it to config.
 - Keep the Gateway and any node hosts on a private network (Tailscale); avoid public exposure.
 - Treat remote CDP URLs/tokens as secrets; prefer env vars or a secrets manager.
 
@@ -315,6 +316,11 @@ For local integrations only, the Gateway exposes a small loopback HTTP API:
 
 All endpoints accept `?profile=<name>`.
 
+If gateway auth is configured, browser HTTP routes require auth too:
+
+- `Authorization: Bearer <gateway token>`
+- `x-autolab-password: <gateway password>` or HTTP Basic auth with that password
+
 ### Playwright requirement
 
 Some features (navigate/act/AI snapshot/role snapshot, element screenshots, PDF) require
@@ -403,9 +409,9 @@ Actions:
 - `autolab browser scrollintoview e12`
 - `autolab browser drag 10 11`
 - `autolab browser select 9 OptionA OptionB`
-- `autolab browser download e12 /tmp/report.pdf`
-- `autolab browser waitfordownload /tmp/report.pdf`
-- `autolab browser upload /tmp/file.pdf`
+- `autolab browser download e12 report.pdf`
+- `autolab browser waitfordownload report.pdf`
+- `autolab browser upload /tmp/autolab/uploads/file.pdf`
 - `autolab browser fill --fields '[{"ref":"1","type":"text","value":"Ada"}]'`
 - `autolab browser dialog --accept`
 - `autolab browser wait --text "Done"`
@@ -438,6 +444,11 @@ Notes:
 
 - `upload` and `dialog` are **arming** calls; run them before the click/press
   that triggers the chooser/dialog.
+- Download and trace output paths are constrained to AutoLab temp roots:
+  - traces: `/tmp/autolab` (fallback: `${os.tmpdir()}/autolab`)
+  - downloads: `/tmp/autolab/downloads` (fallback: `${os.tmpdir()}/autolab/downloads`)
+- Upload paths are constrained to an AutoLab temp uploads root:
+  - uploads: `/tmp/autolab/uploads` (fallback: `${os.tmpdir()}/autolab/uploads`)
 - `upload` can also set file inputs directly via `--input-ref` or `--element`.
 - `snapshot`:
   - `--format ai` (default when Playwright is installed): returns an AI snapshot with numeric refs (`aria-ref="<n>"`).

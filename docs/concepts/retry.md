@@ -38,7 +38,7 @@ title: "Retry Policy"
 
 ## Configuration
 
-Set retry policy per provider in `~/.autolab/autolab.json`:
+Set retry policy per provider in `~/.danv-intel/autolab.json`:
 
 ```json5
 {

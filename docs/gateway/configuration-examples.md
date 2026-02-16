@@ -22,14 +22,14 @@ Examples below are aligned with the current config schema. For the exhaustive re
 }
 ```
 
-Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
+Save to `~/.danv-intel/autolab.json` and you can DM the bot from that number.
 
 ### Recommended starter
 
 ```json5
 {
   identity: {
-    name: "Labby",
+    name: "Clawd",
     theme: "helpful assistant",
     emoji: "🦞",
   },
@@ -67,7 +67,11 @@ Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
   // Auth profile metadata (secrets live in auth-profiles.json)
   auth: {
     profiles: {
-      "anthropic:me@example.com": { provider: "anthropic", mode: "oauth", email: "me@example.com" },
+      "anthropic:me@example.com": {
+        provider: "anthropic",
+        mode: "oauth",
+        email: "me@example.com",
+      },
       "anthropic:work": { provider: "anthropic", mode: "api_key" },
       "openai:default": { provider: "openai", mode: "api_key" },
       "openai-codex:default": { provider: "openai-codex", mode: "oauth" },
@@ -89,7 +93,7 @@ Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
   // Logging
   logging: {
     level: "info",
-    file: "/tmp/autolab/autolab.log",
+    file: "/tmp/danv-intel/autolab.log",
     consoleLevel: "info",
     consoleStyle: "pretty",
     redactSensitive: "tools",
@@ -160,6 +164,12 @@ Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
     },
     resetTriggers: ["/new", "/reset"],
     store: "~/.autolab/agents/default/sessions/sessions.json",
+    maintenance: {
+      mode: "warn",
+      pruneAfter: "30d",
+      maxEntries: 500,
+      rotateBytes: "10mb",
+    },
     typingIntervalSeconds: 5,
     sendPolicy: {
       default: "allow",
@@ -344,6 +354,7 @@ Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
     enabled: true,
     store: "~/.autolab/cron/cron.json",
     maxConcurrentRuns: 2,
+    sessionRetention: "24h",
   },
 
   // Webhooks
@@ -352,7 +363,7 @@ Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
     path: "/hooks",
     token: "shared-secret",
     presets: ["gmail"],
-    transformsDir: "~/.autolab/hooks",
+    transformsDir: "~/.autolab/hooks/transforms",
     mappings: [
       {
         id: "gmail-hook",
@@ -368,7 +379,10 @@ Save to `~/.autolab/autolab.json` and you can DM the bot from that number.
         to: "+15555550123",
         thinking: "low",
         timeoutSeconds: 300,
-        transform: { module: "./transforms/gmail.js", export: "transformGmail" },
+        transform: {
+          module: "gmail.js",
+          export: "transformGmail",
+        },
       },
     ],
     gmail: {

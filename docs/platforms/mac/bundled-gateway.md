@@ -49,7 +49,7 @@ Behavior:
 
 Logging:
 
-- launchd stdout/err: `/tmp/autolab/autolab-gateway.log`
+- launchd stdout/err: `/tmp/danv-intel/autolab-gateway.log`
 
 ## Version compatibility
 

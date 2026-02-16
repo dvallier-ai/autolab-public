@@ -6,7 +6,7 @@ import Testing
     @Test func configGetSnapshotMainKeyFallsBackToMainWhenMissing() throws {
         let json = """
         {
-          "path": "/Users/pete/.autolab/autolab.json",
+          "path": "/Users/pete/.danv-intel/autolab.json",
           "exists": true,
           "raw": null,
           "parsed": {},
@@ -22,7 +22,7 @@ import Testing
     @Test func configGetSnapshotMainKeyTrimsAndUsesValue() throws {
         let json = """
         {
-          "path": "/Users/pete/.autolab/autolab.json",
+          "path": "/Users/pete/.danv-intel/autolab.json",
           "exists": true,
           "raw": null,
           "parsed": {},

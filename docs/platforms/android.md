@@ -48,7 +48,7 @@ Confirm in logs you see something like:
 
 For tailnet-only setups (recommended for Vienna ⇄ London), bind the gateway to the tailnet IP:
 
-- Set `gateway.bind: "tailnet"` in `~/.autolab/autolab.json` on the gateway host.
+- Set `gateway.bind: "tailnet"` in `~/.danv-intel/autolab.json` on the gateway host.
 - Restart the Gateway / macOS menubar app.
 
 ### 2) Verify discovery (optional)
@@ -123,20 +123,20 @@ The Android node’s Chat sheet uses the gateway’s **primary session key** (`m
 
 If you want the node to show real HTML/CSS/JS that the agent can edit on disk, point the node at the Gateway canvas host.
 
-Note: nodes use the standalone canvas host on `canvasHost.port` (default `18793`).
+Note: nodes load canvas from the Gateway HTTP server (same port as `gateway.port`, default `18789`).
 
 1. Create `~/.autolab/workspace/canvas/index.html` on the gateway host.
 
 2. Navigate the node to it (LAN):
 
 ```bash
-autolab nodes invoke --node "<Android Node>" --command canvas.navigate --params '{"url":"http://<gateway-hostname>.local:18793/__autolab__/canvas/"}'
+autolab nodes invoke --node "<Android Node>" --command canvas.navigate --params '{"url":"http://<gateway-hostname>.local:18789/__autolab__/canvas/"}'
 ```
 
-Tailnet (optional): if both devices are on Tailscale, use a MagicDNS name or tailnet IP instead of `.local`, e.g. `http://<gateway-magicdns>:18793/__autolab__/canvas/`.
+Tailnet (optional): if both devices are on Tailscale, use a MagicDNS name or tailnet IP instead of `.local`, e.g. `http://<gateway-magicdns>:18789/__autolab__/canvas/`.
 
 This server injects a live-reload client into HTML and reloads on file changes.
-The A2UI host lives at `http://<gateway-host>:18793/__autolab__/a2ui/`.
+The A2UI host lives at `http://<gateway-host>:18789/__autolab__/a2ui/`.
 
 Canvas commands (foreground only):
 

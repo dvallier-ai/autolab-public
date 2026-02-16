@@ -144,6 +144,10 @@ describe("argv helpers", () => {
     expect(shouldMigrateState(["node", "autolab", "status"])).toBe(false);
     expect(shouldMigrateState(["node", "autolab", "health"])).toBe(false);
     expect(shouldMigrateState(["node", "autolab", "sessions"])).toBe(false);
+    expect(shouldMigrateState(["node", "autolab", "config", "get", "update"])).toBe(false);
+    expect(shouldMigrateState(["node", "autolab", "config", "unset", "update"])).toBe(false);
+    expect(shouldMigrateState(["node", "autolab", "models", "list"])).toBe(false);
+    expect(shouldMigrateState(["node", "autolab", "models", "status"])).toBe(false);
     expect(shouldMigrateState(["node", "autolab", "memory", "status"])).toBe(false);
     expect(shouldMigrateState(["node", "autolab", "agent", "--message", "hi"])).toBe(false);
     expect(shouldMigrateState(["node", "autolab", "agents", "list"])).toBe(true);
@@ -152,6 +156,8 @@ describe("argv helpers", () => {
 
   it("reuses command path for migrate state decisions", () => {
     expect(shouldMigrateStateFromPath(["status"])).toBe(false);
+    expect(shouldMigrateStateFromPath(["config", "get"])).toBe(false);
+    expect(shouldMigrateStateFromPath(["models", "status"])).toBe(false);
     expect(shouldMigrateStateFromPath(["agents", "list"])).toBe(true);
   });
 });

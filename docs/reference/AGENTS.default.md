@@ -1,4 +1,5 @@
 ---
+title: "Default AGENTS.md"
 summary: "Default AutoLab agent instructions and skills roster for the personal assistant setup"
 read_when:
   - Starting a new AutoLab agent session
@@ -76,13 +77,13 @@ cp docs/reference/AGENTS.default.md ~/.autolab/workspace/AGENTS.md
 
 ## Backup tip (recommended)
 
-If you treat this workspace as Labby’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
+If you treat this workspace as Clawd’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
 
 ```bash
 cd ~/.autolab/workspace
 git init
 git add AGENTS.md
-git commit -m "Add Labby workspace"
+git commit -m "Add Clawd workspace"
 # Optional: add a private remote + push
 ```
 

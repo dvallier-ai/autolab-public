@@ -15,7 +15,7 @@ x-i18n:
 
 # 系统提示词
 
-AutoLab 为每次智能体运行构建自定义系统提示词。该提示词由 **AutoLab 拥有**，不使用 p-coding-agent 默认提示词。
+AutoLab 为每次智能体运行构建自定义系统提示词。该提示词由 **AutoLab 拥有**，不使用 pi-coding-agent 默认提示词。
 
 该提示词由 AutoLab 组装并注入到每次智能体运行中。
 
@@ -98,4 +98,4 @@ AutoLab 可以为子智能体渲染更小的系统提示词。运行时为每次
 
 ## 文档
 
-如果可用，系统提示词包含一个 **Documentation** 部分，指向本地 AutoLab 文档目录（仓库工作区中的 `docs/` 或打包的 npm 包文档），并注明公共镜像、源仓库、社区 Discord 和 AutoHub (https://autohub.com) 用于 Skills 发现。提示词指示模型首先查阅本地文档了解 AutoLab 行为、命令、配置或架构，并尽可能自己运行 `autolab status`（仅在无法访问时询问用户）。
+如果可用，系统提示词包含一个 **Documentation** 部分，指向本地 AutoLab 文档目录（仓库工作区中的 `docs/` 或打包的 npm 包文档），并注明公共镜像、源仓库、社区 Discord 和 ClawHub (https://clawhub.com) 用于 Skills 发现。提示词指示模型首先查阅本地文档了解 AutoLab 行为、命令、配置或架构，并尽可能自己运行 `autolab status`（仅在无法访问时询问用户）。

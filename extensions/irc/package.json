@@ -1,0 +1,14 @@
+{
+  "name": "@autolab/irc",
+  "version": "2026.2.15",
+  "description": "AutoLab IRC channel plugin",
+  "type": "module",
+  "devDependencies": {
+    "autolab": "workspace:*"
+  },
+  "autolab": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

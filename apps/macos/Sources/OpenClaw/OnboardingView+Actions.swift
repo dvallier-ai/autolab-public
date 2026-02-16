@@ -1,7 +1,7 @@
 import AppKit
+import Foundation
 import AutoLabDiscovery
 import AutoLabIPC
-import Foundation
 import SwiftUI
 
 extension OnboardingView {
@@ -35,7 +35,9 @@ extension OnboardingView {
                 user: user,
                 host: host,
                 port: gateway.sshPort)
-            AutoLabConfigFile.setRemoteGatewayUrl(host: host, port: gateway.gatewayPort)
+            AutoLabConfigFile.setRemoteGatewayUrl(
+                host: gateway.serviceHost ?? host,
+                port: gateway.servicePort ?? gateway.gatewayPort)
         }
         self.state.remoteCliPath = gateway.cliPath ?? ""
 

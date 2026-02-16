@@ -1,7 +1,7 @@
 import AppKit
+import Foundation
 import AutoLabIPC
 import AutoLabKit
-import Foundation
 import WebKit
 
 final class CanvasA2UIActionMessageHandler: NSObject, WKScriptMessageHandler {

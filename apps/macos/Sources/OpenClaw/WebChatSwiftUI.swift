@@ -1,8 +1,8 @@
 import AppKit
+import Foundation
 import AutoLabChatUI
 import AutoLabKit
 import AutoLabProtocol
-import Foundation
 import OSLog
 import QuartzCore
 import SwiftUI

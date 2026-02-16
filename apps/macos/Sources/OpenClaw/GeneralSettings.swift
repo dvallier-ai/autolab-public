@@ -1,8 +1,8 @@
 import AppKit
+import Observation
 import AutoLabDiscovery
 import AutoLabIPC
 import AutoLabKit
-import Observation
 import SwiftUI
 
 struct GeneralSettings: View {
@@ -16,8 +16,13 @@ struct GeneralSettings: View {
     @State private var remoteStatus: RemoteStatus = .idle
     @State private var showRemoteAdvanced = false
     private let isPreview = ProcessInfo.processInfo.isPreview
-    private var isNixMode: Bool { ProcessInfo.processInfo.isNixMode }
-    private var remoteLabelWidth: CGFloat { 88 }
+    private var isNixMode: Bool {
+        ProcessInfo.processInfo.isNixMode
+    }
+
+    private var remoteLabelWidth: CGFloat {
+        88
+    }
 
     var body: some View {
         ScrollView(.vertical) {
@@ -683,7 +688,9 @@ extension GeneralSettings {
                 host: host,
                 port: gateway.sshPort)
             self.state.remoteCliPath = gateway.cliPath ?? ""
-            AutoLabConfigFile.setRemoteGatewayUrl(host: host, port: gateway.gatewayPort)
+            AutoLabConfigFile.setRemoteGatewayUrl(
+                host: gateway.serviceHost ?? host,
+                port: gateway.servicePort ?? gateway.gatewayPort)
         }
     }
 }

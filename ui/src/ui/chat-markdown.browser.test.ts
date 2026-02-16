@@ -1,31 +1,7 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { AutoLabApp } from "./app.ts";
+import { describe, expect, it } from "vitest";
+import { mountApp, registerAppMountHooks } from "./test-helpers/app-mount.ts";
 
-// oxlint-disable-next-line typescript/unbound-method
-const originalConnect = AutoLabApp.prototype.connect;
-
-function mountApp(pathname: string) {
-  window.history.replaceState({}, "", pathname);
-  const app = document.createElement("autolab-app") as AutoLabApp;
-  document.body.append(app);
-  return app;
-}
-
-beforeEach(() => {
-  AutoLabApp.prototype.connect = () => {
-    // no-op: avoid real gateway WS connections in browser tests
-  };
-  window.__AUTOLAB_CONTROL_UI_BASE_PATH__ = undefined;
-  localStorage.clear();
-  document.body.innerHTML = "";
-});
-
-afterEach(() => {
-  AutoLabApp.prototype.connect = originalConnect;
-  window.__AUTOLAB_CONTROL_UI_BASE_PATH__ = undefined;
-  localStorage.clear();
-  document.body.innerHTML = "";
-});
+registerAppMountHooks();
 
 describe("chat markdown rendering", () => {
   it("renders markdown inside tool output sidebar", async () => {

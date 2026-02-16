@@ -1,6 +1,6 @@
 {
   "name": "@autolab/line",
-  "version": "2026.2.9",
+  "version": "2026.2.15",
   "private": true,
   "description": "AutoLab LINE channel plugin",
   "type": "module",

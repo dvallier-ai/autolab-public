@@ -28,7 +28,7 @@ x-i18n:
 - 默认：`~/.autolab/workspace`
 - 如果设置了 `AUTOLAB_PROFILE` 且不是 `"default"`，默认值变为
   `~/.autolab/workspace-<profile>`。
-- 在 `~/.autolab/autolab.json` 中覆盖：
+- 在 `~/.danv-intel/autolab.json` 中覆盖：
 
 ```json5
 {
@@ -117,7 +117,7 @@ x-i18n:
 
 这些位于 `~/.autolab/` 下，不应提交到工作区仓库：
 
-- `~/.autolab/autolab.json`（配置）
+- `~/.danv-intel/autolab.json`（配置）
 - `~/.autolab/credentials/`（OAuth token、API 密钥）
 - `~/.autolab/agents/<agentId>/sessions/`（会话记录 + 元数据）
 - `~/.autolab/skills/`（托管的 Skills）
@@ -208,7 +208,7 @@ git push
 ## 将工作区迁移到新机器
 
 1. 将仓库克隆到所需路径（默认 `~/.autolab/workspace`）。
-2. 在 `~/.autolab/autolab.json` 中将 `agents.defaults.workspace` 设置为该路径。
+2. 在 `~/.danv-intel/autolab.json` 中将 `agents.defaults.workspace` 设置为该路径。
 3. 运行 `autolab setup --workspace <path>` 来填充任何缺失的文件。
 4. 如果你需要会话，请单独从旧机器复制 `~/.autolab/agents/<agentId>/sessions/`。
 

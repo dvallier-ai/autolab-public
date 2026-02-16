@@ -1,7 +1,7 @@
-import AutoLabKit
-import AutoLabProtocol
 import Foundation
 import Observation
+import AutoLabKit
+import AutoLabProtocol
 import SwiftUI
 
 struct ControlHeartbeatEvent: Codable {
@@ -15,7 +15,10 @@ struct ControlHeartbeatEvent: Codable {
 }
 
 struct ControlAgentEvent: Codable, Sendable, Identifiable {
-    var id: String { "\(self.runId)-\(self.seq)" }
+    var id: String {
+        "\(self.runId)-\(self.seq)"
+    }
+
     let runId: String
     let seq: Int
     let stream: String

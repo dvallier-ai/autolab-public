@@ -27,7 +27,7 @@ async function writeConfig(
 }
 
 describe("config io paths", () => {
-  it("uses ~/.autolab/autolab.json when config exists", async () => {
+  it("uses ~/.danv-intel/autolab.json when config exists", async () => {
     await withTempHome(async (home) => {
       const configPath = await writeConfig(home, ".autolab", 19001);
       const io = createConfigIO({
@@ -39,7 +39,7 @@ describe("config io paths", () => {
     });
   });
 
-  it("defaults to ~/.autolab/autolab.json when config is missing", async () => {
+  it("defaults to ~/.danv-intel/autolab.json when config is missing", async () => {
     await withTempHome(async (home) => {
       const io = createConfigIO({
         env: {} as NodeJS.ProcessEnv,

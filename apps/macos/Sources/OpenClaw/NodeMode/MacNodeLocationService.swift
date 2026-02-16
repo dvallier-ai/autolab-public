@@ -1,6 +1,6 @@
-import AutoLabKit
 import CoreLocation
 import Foundation
+import AutoLabKit
 
 @MainActor
 final class MacNodeLocationService: NSObject, CLLocationManagerDelegate {

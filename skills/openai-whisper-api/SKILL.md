@@ -39,7 +39,7 @@ Defaults:
 
 ## API key
 
-Set `OPENAI_API_KEY`, or configure it in `~/.autolab/autolab.json`:
+Set `OPENAI_API_KEY`, or configure it in `~/.danv-intel/autolab.json`:
 
 ```json5
 {

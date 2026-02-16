@@ -1,7 +1,7 @@
 ---
 name: boot-md
 description: "Run BOOT.md on gateway startup"
-homepage: https://docs.autolab.ai/hooks#boot-md
+homepage: https://docs.autolab.ai/automation/hooks#boot-md
 metadata:
   {
     "autolab":

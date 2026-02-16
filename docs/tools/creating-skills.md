@@ -51,4 +51,4 @@ Ask your agent to "refresh skills" or restart the gateway. AutoLab will discover
 
 ## Shared Skills
 
-You can also browse and contribute skills to [AutoHub](https://autohub.com).
+You can also browse and contribute skills to [ClawHub](https://clawhub.com).

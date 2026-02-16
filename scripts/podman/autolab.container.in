@@ -1,0 +1,26 @@
+# AutoLab gateway — Podman Quadlet (rootless)
+# Installed by setup-podman.sh into autolab's ~/.config/containers/systemd/
+# {{AUTOLAB_HOME}} is replaced at install time.
+
+[Unit]
+Description=AutoLab gateway (rootless Podman)
+
+[Container]
+Image=autolab:local
+ContainerName=autolab
+UserNS=keep-id
+Volume={{AUTOLAB_HOME}}/.autolab:/home/node/.autolab
+EnvironmentFile={{AUTOLAB_HOME}}/.autolab/.env
+Environment=HOME=/home/node
+Environment=TERM=xterm-256color
+PublishPort=18789:18789
+PublishPort=18790:18790
+Pull=never
+Exec=node dist/index.js gateway --bind lan --port 18789
+
+[Service]
+TimeoutStartSec=300
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

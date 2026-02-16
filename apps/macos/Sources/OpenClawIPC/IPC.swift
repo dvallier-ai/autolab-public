@@ -407,11 +407,10 @@ extension Request: Codable {
     }
 }
 
-// Shared transport settings
+/// Shared transport settings
 public let controlSocketPath: String = {
     let home = FileManager().homeDirectoryForCurrentUser
-    let preferred = home
+    return home
         .appendingPathComponent("Library/Application Support/AutoLab/control.sock")
         .path
-    return preferred
 }()

@@ -17,7 +17,7 @@ For a high-level overview, see [Onboarding Wizard](/start/wizard).
 
 <Steps>
   <Step title="Existing config detection">
-    - If `~/.autolab/autolab.json` exists, choose **Keep / Modify / Reset**.
+    - If `~/.danv-intel/autolab.json` exists, choose **Keep / Modify / Reset**.
     - Re-running the wizard does **not** wipe anything unless you explicitly choose **Reset**
       (or pass `--reset`).
     - If the config is invalid or contains legacy keys, the wizard stops and asks
@@ -238,7 +238,7 @@ Notes:
 
 ## What the wizard writes
 
-Typical fields in `~/.autolab/autolab.json`:
+Typical fields in `~/.danv-intel/autolab.json`:
 
 - `agents.defaults.workspace`
 - `agents.defaults.model` / `models.providers` (if Minimax chosen)

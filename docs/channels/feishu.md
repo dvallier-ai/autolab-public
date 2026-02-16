@@ -173,7 +173,7 @@ Choose **Feishu** and paste your App ID + App Secret.
 
 ### Configure via config file
 
-Edit `~/.autolab/autolab.json`:
+Edit `~/.danv-intel/autolab.json`:
 
 ```json5
 {
@@ -374,8 +374,8 @@ autolab pairing list feishu
 
 ## Gateway management commands
 
-| Command                   | Description                   |
-| ------------------------- | ----------------------------- |
+| Command                    | Description                   |
+| -------------------------- | ----------------------------- |
 | `autolab gateway status`  | Show gateway status           |
 | `autolab gateway install` | Install/start gateway service |
 | `autolab gateway stop`    | Stop gateway service          |
@@ -474,14 +474,14 @@ Use `bindings` to route Feishu DMs or groups to different agents.
     list: [
       { id: "main" },
       {
-        id: "labby-fan",
-        workspace: "/home/user/labby-fan",
-        agentDir: "/home/user/.autolab/agents/labby-fan/agent",
+        id: "clawd-fan",
+        workspace: "/home/user/clawd-fan",
+        agentDir: "/home/user/.autolab/agents/clawd-fan/agent",
       },
       {
-        id: "labby-xi",
-        workspace: "/home/user/labby-xi",
-        agentDir: "/home/user/.autolab/agents/labby-xi/agent",
+        id: "clawd-xi",
+        workspace: "/home/user/clawd-xi",
+        agentDir: "/home/user/.autolab/agents/clawd-xi/agent",
       },
     ],
   },
@@ -494,14 +494,14 @@ Use `bindings` to route Feishu DMs or groups to different agents.
       },
     },
     {
-      agentId: "labby-fan",
+      agentId: "clawd-fan",
       match: {
         channel: "feishu",
         peer: { kind: "direct", id: "ou_yyy" },
       },
     },
     {
-      agentId: "labby-xi",
+      agentId: "clawd-xi",
       match: {
         channel: "feishu",
         peer: { kind: "group", id: "oc_zzz" },

@@ -34,14 +34,14 @@ curl -fsSL https://autolab.ai/install.sh | bash
   ```
   安装程序**仅**在仓库干净时才会执行 `git pull --rebase`。
 - 对于**全局安装**，脚本底层使用 `npm install -g autolab@latest`。
-- 旧版说明：`autolabbot` 仍可作为兼容性垫片使用。
+- 旧版说明：`clawdbot` 仍可作为兼容性垫片使用。
 
 ## 更新之前
 
 - 了解你的安装方式：**全局**（npm/pnpm）还是**源码**（git clone）。
 - 了解你的 Gateway 网关运行方式：**前台终端**还是**受管理服务**（launchd/systemd）。
 - 快照你的定制内容：
-  - 配置：`~/.autolab/autolab.json`
+  - 配置：`~/.danv-intel/autolab.json`
   - 凭证：`~/.autolab/credentials/`
   - 工作区：`~/.autolab/workspace`
 
@@ -137,7 +137,7 @@ autolab health
 
 说明：
 
-- 当你运行打包的 `autolab` 二进制文件（[`autolab.mjs`](https://github.com/autolab/autolab/blob/main/autolab.mjs)）或使用 Node 运行 `dist/` 时，`pnpm build` 很重要。
+- 当你运行打包的 `autolab` 二进制文件（[`autolab.mjs`](https://github.com/danv-intel/autolab/blob/main/autolab.mjs)）或使用 Node 运行 `dist/` 时，`pnpm build` 很重要。
 - 如果你从仓库 checkout 运行而没有全局安装，CLI 命令使用 `pnpm autolab ...`。
 - 如果你直接从 TypeScript 运行（`pnpm autolab ...`），通常不需要重新构建，但**配置迁移仍然适用** → 运行 doctor。
 - 在全局和 git 安装之间切换很容易：安装另一种方式，然后运行 `autolab doctor` 以便将 Gateway 网关服务入口点重写为当前安装。
@@ -230,4 +230,4 @@ git pull
 
 - 再次运行 `autolab doctor` 并仔细阅读输出（它通常会告诉你修复方法）。
 - 查看：[故障排除](/gateway/troubleshooting)
-- 在 Discord 上提问：https://discord.gg/autolab
+- 在 Discord 上提问：https://discord.gg/clawd

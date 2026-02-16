@@ -9,17 +9,17 @@ title: "Ansible"
 
 # Ansible Installation
 
-The recommended way to deploy AutoLab to production servers is via **[autolab-ansible](https://github.com/autolab/autolab-ansible)** — an automated installer with security-first architecture.
+The recommended way to deploy AutoLab to production servers is via **[autolab-ansible](https://github.com/danv-intel/autolab-ansible)** — an automated installer with security-first architecture.
 
 ## Quick Start
 
 One-command install:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/autolab/autolab-ansible/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/danv-intel/autolab-ansible/main/install.sh | bash
 ```
 
-> **📦 Full guide: [github.com/autolab/autolab-ansible](https://github.com/autolab/autolab-ansible)**
+> **📦 Full guide: [github.com/danv-intel/autolab-ansible](https://github.com/danv-intel/autolab-ansible)**
 >
 > The autolab-ansible repo is the source of truth for Ansible deployment. This page is a quick overview.
 
@@ -118,7 +118,7 @@ If you prefer manual control over the automation:
 sudo apt update && sudo apt install -y ansible git
 
 # 2. Clone repository
-git clone https://github.com/autolab/autolab-ansible.git
+git clone https://github.com/danv-intel/autolab-ansible.git
 cd autolab-ansible
 
 # 3. Install Ansible collections
@@ -179,7 +179,7 @@ sudo systemctl status docker
 sudo docker images | grep autolab-sandbox
 
 # Build sandbox image if missing
-cd /opt/autolab/autolab
+cd /opt/danv-intel/autolab
 sudo -u autolab ./scripts/sandbox-setup.sh
 ```
 
@@ -196,13 +196,13 @@ autolab channels login
 
 For detailed security architecture and troubleshooting:
 
-- [Security Architecture](https://github.com/autolab/autolab-ansible/blob/main/docs/security.md)
-- [Technical Details](https://github.com/autolab/autolab-ansible/blob/main/docs/architecture.md)
-- [Troubleshooting Guide](https://github.com/autolab/autolab-ansible/blob/main/docs/troubleshooting.md)
+- [Security Architecture](https://github.com/danv-intel/autolab-ansible/blob/main/docs/security.md)
+- [Technical Details](https://github.com/danv-intel/autolab-ansible/blob/main/docs/architecture.md)
+- [Troubleshooting Guide](https://github.com/danv-intel/autolab-ansible/blob/main/docs/troubleshooting.md)
 
 ## Related
 
-- [autolab-ansible](https://github.com/autolab/autolab-ansible) — full deployment guide
+- [autolab-ansible](https://github.com/danv-intel/autolab-ansible) — full deployment guide
 - [Docker](/install/docker) — containerized gateway setup
 - [Sandboxing](/gateway/sandboxing) — agent sandbox configuration
 - [Multi-Agent Sandbox & Tools](/tools/multi-agent-sandbox-tools) — per-agent isolation

@@ -181,7 +181,7 @@ autolab channels add
 
 ### 通过配置文件配置
 
-编辑 `~/.autolab/autolab.json`：
+编辑 `~/.danv-intel/autolab.json`：
 
 ```json5
 {
@@ -382,8 +382,8 @@ autolab pairing list feishu
 
 在配置和使用飞书渠道时，您可能需要使用以下网关管理命令：
 
-| 命令                      | 说明              |
-| ------------------------- | ----------------- |
+| 命令                       | 说明              |
+| -------------------------- | ----------------- |
 | `autolab gateway status`  | 查看网关运行状态  |
 | `autolab gateway install` | 安装/启动网关服务 |
 | `autolab gateway stop`    | 停止网关服务      |
@@ -519,14 +519,14 @@ autolab pairing list feishu
     list: [
       { id: "main" },
       {
-        id: "labby-fan",
-        workspace: "/home/user/labby-fan",
-        agentDir: "/home/user/.autolab/agents/labby-fan/agent",
+        id: "clawd-fan",
+        workspace: "/home/user/clawd-fan",
+        agentDir: "/home/user/.autolab/agents/clawd-fan/agent",
       },
       {
-        id: "labby-xi",
-        workspace: "/home/user/labby-xi",
-        agentDir: "/home/user/.autolab/agents/labby-xi/agent",
+        id: "clawd-xi",
+        workspace: "/home/user/clawd-xi",
+        agentDir: "/home/user/.autolab/agents/clawd-xi/agent",
       },
     ],
   },
@@ -540,16 +540,16 @@ autolab pairing list feishu
       },
     },
     {
-      // 用户 B 的私聊 → labby-fan agent
-      agentId: "labby-fan",
+      // 用户 B 的私聊 → clawd-fan agent
+      agentId: "clawd-fan",
       match: {
         channel: "feishu",
         peer: { kind: "dm", id: "ou_0fe6b1c9..." },
       },
     },
     {
-      // 某个群组 → labby-xi agent
-      agentId: "labby-xi",
+      // 某个群组 → clawd-xi agent
+      agentId: "clawd-xi",
       match: {
         channel: "feishu",
         peer: { kind: "group", id: "oc_xxx..." },

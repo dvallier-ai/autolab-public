@@ -60,6 +60,10 @@ describe("sleep", () => {
 });
 
 describe("assertWebChannel", () => {
+  it("accepts valid channel", () => {
+    expect(() => assertWebChannel("web")).not.toThrow();
+  });
+
   it("throws for invalid channel", () => {
     expect(() => assertWebChannel("bad" as string)).toThrow();
   });
@@ -153,8 +157,8 @@ describe("shortenHomePath", () => {
     vi.stubEnv("AUTOLAB_HOME", "/srv/autolab-home");
     vi.stubEnv("HOME", "/home/other");
 
-    expect(shortenHomePath(`${path.resolve("/srv/autolab-home")}/.autolab/autolab.json`)).toBe(
-      "$AUTOLAB_HOME/.autolab/autolab.json",
+    expect(shortenHomePath(`${path.resolve("/srv/autolab-home")}/.danv-intel/autolab.json`)).toBe(
+      "$AUTOLAB_HOME/.danv-intel/autolab.json",
     );
 
     vi.unstubAllEnvs();
@@ -167,8 +171,8 @@ describe("shortenHomeInString", () => {
     vi.stubEnv("HOME", "/home/other");
 
     expect(
-      shortenHomeInString(`config: ${path.resolve("/srv/autolab-home")}/.autolab/autolab.json`),
-    ).toBe("config: $AUTOLAB_HOME/.autolab/autolab.json");
+      shortenHomeInString(`config: ${path.resolve("/srv/autolab-home")}/.danv-intel/autolab.json`),
+    ).toBe("config: $AUTOLAB_HOME/.danv-intel/autolab.json");
 
     vi.unstubAllEnvs();
   });

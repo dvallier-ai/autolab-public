@@ -19,7 +19,7 @@ x-i18n:
 ## 快速设置（新手）
 
 1. 如果可能，使用**单独的手机号码**（推荐）。
-2. 在 `~/.autolab/autolab.json` 中配置 WhatsApp。
+2. 在 `~/.danv-intel/autolab.json` 中配置 WhatsApp。
 3. 运行 `autolab channels login` 扫描二维码（关联设备）。
 4. 启动 Gateway 网关。
 
@@ -390,7 +390,7 @@ WhatsApp 将音频作为**语音消息**（PTT 气泡）发送。
 ## 日志 + 故障排除
 
 - 子系统：`whatsapp/inbound`、`whatsapp/outbound`、`web-heartbeat`、`web-reconnect`。
-- 日志文件：`/tmp/autolab/autolab-YYYY-MM-DD.log`（可配置）。
+- 日志文件：`/tmp/danv-intel/autolab-YYYY-MM-DD.log`（可配置）。
 - 故障排除指南：[Gateway 网关故障排除](/gateway/troubleshooting)。
 
 ## 故障排除（快速）

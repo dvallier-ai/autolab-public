@@ -1,4 +1,5 @@
 ---
+title: "Release Checklist"
 summary: "Step-by-step release checklist for npm + macOS app"
 read_when:
   - Cutting a new npm release
@@ -22,13 +23,13 @@ When the operator says “release”, immediately do this preflight (no extra qu
 
 - [ ] Bump `package.json` version (e.g., `2026.1.29`).
 - [ ] Run `pnpm plugins:sync` to align extension package versions + changelogs.
-- [ ] Update CLI/version strings: [`src/cli/program.ts`](https://github.com/autolab/autolab/blob/main/src/cli/program.ts) and the Baileys user agent in [`src/provider-web.ts`](https://github.com/autolab/autolab/blob/main/src/provider-web.ts).
-- [ ] Confirm package metadata (name, description, repository, keywords, license) and `bin` map points to [`autolab.mjs`](https://github.com/autolab/autolab/blob/main/autolab.mjs) for `autolab`.
+- [ ] Update CLI/version strings: [`src/cli/program.ts`](https://github.com/danv-intel/autolab/blob/main/src/cli/program.ts) and the Baileys user agent in [`src/provider-web.ts`](https://github.com/danv-intel/autolab/blob/main/src/provider-web.ts).
+- [ ] Confirm package metadata (name, description, repository, keywords, license) and `bin` map points to [`autolab.mjs`](https://github.com/danv-intel/autolab/blob/main/autolab.mjs) for `autolab`.
 - [ ] If dependencies changed, run `pnpm install` so `pnpm-lock.yaml` is current.
 
 2. **Build & artifacts**
 
-- [ ] If A2UI inputs changed, run `pnpm canvas:a2ui:bundle` and commit any updated [`src/canvas-host/a2ui/a2ui.bundle.js`](https://github.com/autolab/autolab/blob/main/src/canvas-host/a2ui/a2ui.bundle.js).
+- [ ] If A2UI inputs changed, run `pnpm canvas:a2ui:bundle` and commit any updated [`src/canvas-host/a2ui/a2ui.bundle.js`](https://github.com/danv-intel/autolab/blob/main/src/canvas-host/a2ui/a2ui.bundle.js).
 - [ ] `pnpm run build` (regenerates `dist/`).
 - [ ] Verify npm package `files` includes all required `dist/*` folders (notably `dist/node-host/**` and `dist/acp/**` for headless node + ACP CLI).
 - [ ] Confirm `dist/build-info.json` exists and includes the expected `commit` hash (CLI banner uses this for npm installs).
@@ -57,7 +58,7 @@ When the operator says “release”, immediately do this preflight (no extra qu
 5. **macOS app (Sparkle)**
 
 - [ ] Build + sign the macOS app, then zip it for distribution.
-- [ ] Generate the Sparkle appcast (HTML notes via [`scripts/make_appcast.sh`](https://github.com/autolab/autolab/blob/main/scripts/make_appcast.sh)) and update `appcast.xml`.
+- [ ] Generate the Sparkle appcast (HTML notes via [`scripts/make_appcast.sh`](https://github.com/danv-intel/autolab/blob/main/scripts/make_appcast.sh)) and update `appcast.xml`.
 - [ ] Keep the app zip (and optional dSYM zip) ready to attach to the GitHub release.
 - [ ] Follow [macOS release](/platforms/mac/release) for the exact commands and required env vars.
   - `APP_BUILD` must be numeric + monotonic (no `-beta`) so Sparkle compares versions correctly.

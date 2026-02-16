@@ -34,7 +34,7 @@ autolab gateway --force
 pnpm gateway:watch
 ```
 
-- 配置热重载监视 `~/.autolab/autolab.json`（或 `AUTOLAB_CONFIG_PATH`）。
+- 配置热重载监视 `~/.danv-intel/autolab.json`（或 `AUTOLAB_CONFIG_PATH`）。
   - 默认模式：`gateway.reload.mode="hybrid"`（热应用安全更改，关键更改时重启）。
   - 热重载在需要时通过 **SIGUSR1** 使用进程内重启。
   - 使用 `gateway.reload.mode="off"` 禁用。

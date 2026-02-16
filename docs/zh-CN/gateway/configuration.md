@@ -1,7 +1,7 @@
 ---
 read_when:
   - 添加或修改配置字段时
-summary: ~/.autolab/autolab.json 的所有配置选项及示例
+summary: ~/.danv-intel/autolab.json 的所有配置选项及示例
 title: 配置
 x-i18n:
   generated_at: "2026-02-01T21:29:41Z"
@@ -14,7 +14,7 @@ x-i18n:
 
 # 配置 🔧
 
-AutoLab 从 `~/.autolab/autolab.json` 读取可选的 **JSON5** 配置（支持注释和尾逗号）。
+AutoLab 从 `~/.danv-intel/autolab.json` 读取可选的 **JSON5** 配置（支持注释和尾逗号）。
 
 如果文件不存在，AutoLab 使用安全的默认值（内置 Pi 智能体 + 按发送者分会话 + 工作区 `~/.autolab/workspace`）。通常只在以下情况需要配置：
 
@@ -57,7 +57,7 @@ Gateway 网关通过 `config.schema` 暴露配置的 JSON Schema 表示，供 UI
 它会写入重启哨兵文件，并在 Gateway 网关恢复后 ping 最后活跃的会话。
 
 警告：`config.apply` 会替换**整个配置**。如果你只想更改部分键，
-请使用 `config.patch` 或 `autolab config set`。请备份 `~/.autolab/autolab.json`。
+请使用 `config.patch` 或 `autolab config set`。请备份 `~/.danv-intel/autolab.json`。
 
 参数：
 
@@ -161,7 +161,7 @@ scripts/sandbox-setup.sh
 ### 基本用法
 
 ```json5
-// ~/.autolab/autolab.json
+// ~/.danv-intel/autolab.json
 {
   gateway: { port: 18789 },
 
@@ -231,7 +231,7 @@ scripts/sandbox-setup.sh
 ### 示例：多客户法律事务设置
 
 ```json5
-// ~/.autolab/autolab.json
+// ~/.danv-intel/autolab.json
 {
   gateway: { port: 18789, auth: { token: "secret" } },
 
@@ -456,8 +456,8 @@ AutoLab 在以下位置存储**每个智能体的**认证配置文件（OAuth + 
 
 ### `logging`
 
-- 默认日志文件：`/tmp/autolab/autolab-YYYY-MM-DD.log`
-- 如需稳定路径，将 `logging.file` 设为 `/tmp/autolab/autolab.log`。
+- 默认日志文件：`/tmp/danv-intel/autolab-YYYY-MM-DD.log`
+- 如需稳定路径，将 `logging.file` 设为 `/tmp/danv-intel/autolab.log`。
 - 控制台输出可通过以下方式单独调整：
   - `logging.consoleLevel`（默认 `info`，使用 `--verbose` 时提升为 `debug`）
   - `logging.consoleStyle`（`pretty` | `compact` | `json`）
@@ -469,7 +469,7 @@ AutoLab 在以下位置存储**每个智能体的**认证配置文件（OAuth + 
 {
   logging: {
     level: "info",
-    file: "/tmp/autolab/autolab.log",
+    file: "/tmp/danv-intel/autolab.log",
     consoleLevel: "info",
     consoleStyle: "pretty",
     redactSensitive: "tools",
@@ -1612,14 +1612,14 @@ WhatsApp 入站前缀通过 `channels.whatsapp.messagePrefix` 配置（已弃用
 
 Talk 模式（macOS/iOS/Android）的默认值。语音 ID 在未设置时回退到 `ELEVENLABS_VOICE_ID` 或 `SAG_VOICE_ID`。
 `apiKey` 在未设置时回退到 `ELEVENLABS_API_KEY`（或 Gateway 网关的 shell 配置文件）。
-`voiceAliases` 允许 Talk 指令使用友好名称（例如 `"voice":"Labby"`）。
+`voiceAliases` 允许 Talk 指令使用友好名称（例如 `"voice":"Clawd"`）。
 
 ```json5
 {
   talk: {
     voiceId: "elevenlabs_voice_id",
     voiceAliases: {
-      Labby: "EXAVITQu4vr4xnSDxMaL",
+      Clawd: "EXAVITQu4vr4xnSDxMaL",
       Roger: "CwhRBWXzGAHq8TQ4Fs17",
     },
     modelId: "eleven_v3",
@@ -2953,7 +2953,7 @@ AutoLab 可以为 AutoLab 启动一个**专用、隔离的** Chrome/Brave/Edge/C
 
 macOS 应用行为：
 
-- AutoLab.app 监视 `~/.autolab/autolab.json`，当 `gateway.mode` 或 `gateway.remote.url` 变更时实时切换模式。
+- AutoLab.app 监视 `~/.danv-intel/autolab.json`，当 `gateway.mode` 或 `gateway.remote.url` 变更时实时切换模式。
 - 如果 `gateway.mode` 未设置但 `gateway.remote.url` 已设置，macOS 应用将其视为远程模式。
 - 当你在 macOS 应用中更改连接模式时，它会将 `gateway.mode`（以及远程模式下的 `gateway.remote.url` + `gateway.remote.transport`）写回配置文件。
 
@@ -2987,7 +2987,7 @@ macOS 应用行为：
 
 ### `gateway.reload`（配置热重载）
 
-Gateway 网关监视 `~/.autolab/autolab.json`（或 `AUTOLAB_CONFIG_PATH`）并自动应用更改。
+Gateway 网关监视 `~/.danv-intel/autolab.json`（或 `AUTOLAB_CONFIG_PATH`）并自动应用更改。
 
 模式：
 
@@ -3011,7 +3011,7 @@ Gateway 网关监视 `~/.autolab/autolab.json`（或 `AUTOLAB_CONFIG_PATH`）并
 
 监视的文件：
 
-- `~/.autolab/autolab.json`（或 `AUTOLAB_CONFIG_PATH`）
+- `~/.danv-intel/autolab.json`（或 `AUTOLAB_CONFIG_PATH`）
 
 热应用（无需完全重启 Gateway 网关）：
 

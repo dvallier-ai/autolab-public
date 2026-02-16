@@ -5,33 +5,29 @@ import type { AutoLabConfig } from "./types.js";
 import { expandHomePrefix, resolveRequiredHomeDir } from "../infra/home-dir.js";
 
 /**
- * Nix mode detection: When AUTOLAB_NIX_MODE=1 (or legacy AUTOLAB_NIX_MODE), the gateway is running under Nix.
+ * Nix mode detection: When AUTOLAB_NIX_MODE=1, the gateway is running under Nix.
  * In this mode:
  * - No auto-install flows should be attempted
  * - Missing dependencies should produce actionable Nix-specific error messages
  * - Config is managed externally (read-only from Nix perspective)
  */
 export function resolveIsNixMode(env: NodeJS.ProcessEnv = process.env): boolean {
-  return env.AUTOLAB_NIX_MODE === "1" || env.AUTOLAB_NIX_MODE === "1";
+  return env.AUTOLAB_NIX_MODE === "1";
 }
 
 export const isNixMode = resolveIsNixMode();
 
-const LEGACY_STATE_DIRNAMES = [".clawdbot", ".moltbot", ".moldbot", ".autolab"] as const;
+// Support historical (and occasionally misspelled) legacy state dirs.
+const LEGACY_STATE_DIRNAMES = [".clawdbot", ".moldbot", ".moltbot"] as const;
 const NEW_STATE_DIRNAME = ".autolab";
 const CONFIG_FILENAME = "autolab.json";
-const LEGACY_CONFIG_FILENAMES = [
-  "clawdbot.json",
-  "moltbot.json",
-  "moldbot.json",
-  "autolab.json",
-] as const;
+const LEGACY_CONFIG_FILENAMES = ["clawdbot.json", "moldbot.json", "moltbot.json"] as const;
 
 function resolveDefaultHomeDir(): string {
   return resolveRequiredHomeDir(process.env, os.homedir);
 }
 
-/** Build a homedir thunk that respects AUTOLAB_HOME or legacy AUTOLAB_HOME for the given env. */
+/** Build a homedir thunk that respects AUTOLAB_HOME for the given env. */
 function envHomedir(env: NodeJS.ProcessEnv): () => string {
   return () => resolveRequiredHomeDir(env, os.homedir);
 }
@@ -58,18 +54,15 @@ export function resolveNewStateDir(homedir: () => string = resolveDefaultHomeDir
 
 /**
  * State directory for mutable data (sessions, logs, caches).
- * Can be overridden via AUTOLAB_STATE_DIR (preferred) or legacy AUTOLAB_STATE_DIR/CLAWDBOT_STATE_DIR.
- * Default: ~/.autolab (checks for existing ~/.autolab for backward compatibility)
+ * Can be overridden via AUTOLAB_STATE_DIR.
+ * Default: ~/.autolab
  */
 export function resolveStateDir(
   env: NodeJS.ProcessEnv = process.env,
   homedir: () => string = envHomedir(env),
 ): string {
   const effectiveHomedir = () => resolveRequiredHomeDir(env, homedir);
-  const override =
-    env.AUTOLAB_STATE_DIR?.trim() ||
-    env.AUTOLAB_STATE_DIR?.trim() ||
-    env.CLAWDBOT_STATE_DIR?.trim();
+  const override = env.AUTOLAB_STATE_DIR?.trim() || env.CLAWDBOT_STATE_DIR?.trim();
   if (override) {
     return resolveUserPath(override, env, effectiveHomedir);
   }
@@ -116,17 +109,14 @@ export const STATE_DIR = resolveStateDir();
 
 /**
  * Config file path (JSON5).
- * Can be overridden via AUTOLAB_CONFIG_PATH (preferred) or legacy AUTOLAB_CONFIG_PATH/CLAWDBOT_CONFIG_PATH.
- * Default: ~/.autolab/autolab.json (or $AUTOLAB_STATE_DIR/autolab.json)
+ * Can be overridden via AUTOLAB_CONFIG_PATH.
+ * Default: ~/.danv-intel/autolab.json (or $AUTOLAB_STATE_DIR/autolab.json)
  */
 export function resolveCanonicalConfigPath(
   env: NodeJS.ProcessEnv = process.env,
   stateDir: string = resolveStateDir(env, envHomedir(env)),
 ): string {
-  const override =
-    env.AUTOLAB_CONFIG_PATH?.trim() ||
-    env.AUTOLAB_CONFIG_PATH?.trim() ||
-    env.CLAWDBOT_CONFIG_PATH?.trim();
+  const override = env.AUTOLAB_CONFIG_PATH?.trim() || env.CLAWDBOT_CONFIG_PATH?.trim();
   if (override) {
     return resolveUserPath(override, env, envHomedir(env));
   }
@@ -163,11 +153,11 @@ export function resolveConfigPath(
   stateDir: string = resolveStateDir(env, envHomedir(env)),
   homedir: () => string = envHomedir(env),
 ): string {
-  const override = env.AUTOLAB_CONFIG_PATH?.trim() || env.AUTOLAB_CONFIG_PATH?.trim();
+  const override = env.AUTOLAB_CONFIG_PATH?.trim();
   if (override) {
     return resolveUserPath(override, env, homedir);
   }
-  const stateOverride = env.AUTOLAB_STATE_DIR?.trim() || env.AUTOLAB_STATE_DIR?.trim();
+  const stateOverride = env.AUTOLAB_STATE_DIR?.trim();
   const candidates = [
     path.join(stateDir, CONFIG_FILENAME),
     ...LEGACY_CONFIG_FILENAMES.map((name) => path.join(stateDir, name)),
@@ -268,10 +258,7 @@ export function resolveGatewayPort(
   cfg?: AutoLabConfig,
   env: NodeJS.ProcessEnv = process.env,
 ): number {
-  const envRaw =
-    env.AUTOLAB_GATEWAY_PORT?.trim() ||
-    env.AUTOLAB_GATEWAY_PORT?.trim() ||
-    env.CLAWDBOT_GATEWAY_PORT?.trim();
+  const envRaw = env.AUTOLAB_GATEWAY_PORT?.trim() || env.CLAWDBOT_GATEWAY_PORT?.trim();
   if (envRaw) {
     const parsed = Number.parseInt(envRaw, 10);
     if (Number.isFinite(parsed) && parsed > 0) {

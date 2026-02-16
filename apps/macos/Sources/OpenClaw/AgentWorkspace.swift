@@ -19,7 +19,7 @@ enum AgentWorkspace {
     ]
     enum BootstrapSafety: Equatable {
         case safe
-        case unsafe(reason: String)
+        case unsafe (reason: String)
     }
 
     static func displayPath(for url: URL) -> String {
@@ -72,7 +72,7 @@ enum AgentWorkspace {
             return .safe
         }
         if !isDir.boolValue {
-            return .unsafe(reason: "Workspace path points to a file.")
+            return .unsafe (reason: "Workspace path points to a file.")
         }
         let agentsURL = self.agentsURL(workspaceURL: workspaceURL)
         if fm.fileExists(atPath: agentsURL.path) {
@@ -82,9 +82,9 @@ enum AgentWorkspace {
             let entries = try self.workspaceEntries(workspaceURL: workspaceURL)
             return entries.isEmpty
                 ? .safe
-                : .unsafe(reason: "Folder isn't empty. Choose a new folder or add AGENTS.md first.")
+                : .unsafe (reason: "Folder isn't empty. Choose a new folder or add AGENTS.md first.")
         } catch {
-            return .unsafe(reason: "Couldn't inspect the workspace folder.")
+            return .unsafe (reason: "Couldn't inspect the workspace folder.")
         }
     }
 
@@ -265,7 +265,7 @@ enum AgentWorkspace {
         - Timezone (optional)
         - Notes
 
-        3) ~/.autolab/autolab.json
+        3) ~/.danv-intel/autolab.json
         Set identity.name, identity.theme, identity.emoji to match IDENTITY.md.
 
         ## Cleanup

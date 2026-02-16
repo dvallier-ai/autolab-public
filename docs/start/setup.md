@@ -17,7 +17,7 @@ Last updated: 2026-01-01
 
 ## TL;DR
 
-- **Tailoring lives outside the repo:** `~/.autolab/workspace` (workspace) + `~/.autolab/autolab.json` (config).
+- **Tailoring lives outside the repo:** `~/.autolab/workspace` (workspace) + `~/.danv-intel/autolab.json` (config).
 - **Stable workflow:** install the macOS app; let it run the bundled Gateway.
 - **Bleeding edge workflow:** run the Gateway yourself via `pnpm gateway:watch`, then let the macOS app attach in Local mode.
 
@@ -31,7 +31,7 @@ Last updated: 2026-01-01
 
 If you want “100% tailored to me” _and_ easy updates, keep your customization in:
 
-- **Config:** `~/.autolab/autolab.json` (JSON/JSON5-ish)
+- **Config:** `~/.danv-intel/autolab.json` (JSON/JSON5-ish)
 - **Workspace:** `~/.autolab/workspace` (skills, prompts, memories; make it a private git repo)
 
 Bootstrap once:

@@ -10,7 +10,7 @@ import { hasExplicitOptions } from "../command-options.js";
 export function registerSetupCommand(program: Command) {
   program
     .command("setup")
-    .description("Initialize ~/.autolab/autolab.json and the agent workspace")
+    .description("Initialize ~/.danv-intel/autolab.json and the agent workspace")
     .addHelpText(
       "after",
       () =>

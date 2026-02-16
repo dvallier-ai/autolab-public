@@ -87,7 +87,7 @@ autolab node run --host 127.0.0.1 --port 18790 --display-name "Build Node"
 
 注意事项：
 
-- 令牌是 Gateway 网关配置中的 `gateway.auth.token`（Gateway 网关主机上的 `~/.autolab/autolab.json`）。
+- 令牌是 Gateway 网关配置中的 `gateway.auth.token`（Gateway 网关主机上的 `~/.danv-intel/autolab.json`）。
 - `autolab node run` 读取 `AUTOLAB_GATEWAY_TOKEN` 进行认证。
 
 ### 启动节点主机（服务）

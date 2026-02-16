@@ -11,10 +11,10 @@ title: "Installer Internals"
 
 AutoLab ships three installer scripts, served from `autolab.ai`.
 
-| Script                             | Platform             | What it does                                                                                |
-| ---------------------------------- | -------------------- | ------------------------------------------------------------------------------------------- |
+| Script                             | Platform             | What it does                                                                                 |
+| ---------------------------------- | -------------------- | -------------------------------------------------------------------------------------------- |
 | [`install.sh`](#installsh)         | macOS / Linux / WSL  | Installs Node if needed, installs AutoLab via npm (default) or git, and can run onboarding. |
-| [`install-cli.sh`](#install-clish) | macOS / Linux / WSL  | Installs Node + AutoLab into a local prefix (`~/.autolab`). No root required.               |
+| [`install-cli.sh`](#install-clish) | macOS / Linux / WSL  | Installs Node + AutoLab into a local prefix (`~/.autolab`). No root required.              |
 | [`install.ps1`](#installps1)       | Windows (PowerShell) | Installs Node if needed, installs AutoLab via npm (default) or git, and can run onboarding. |
 
 ## Quick commands
@@ -126,28 +126,28 @@ The script exits with code `2` for invalid method selection or invalid `--instal
 <AccordionGroup>
   <Accordion title="Flags reference">
 
-| Flag                            | Description                                               |
-| ------------------------------- | --------------------------------------------------------- |
-| `--install-method npm\|git`     | Choose install method (default: `npm`). Alias: `--method` |
-| `--npm`                         | Shortcut for npm method                                   |
-| `--git`                         | Shortcut for git method. Alias: `--github`                |
-| `--version <version\|dist-tag>` | npm version or dist-tag (default: `latest`)               |
-| `--beta`                        | Use beta dist-tag if available, else fallback to `latest` |
+| Flag                            | Description                                                |
+| ------------------------------- | ---------------------------------------------------------- |
+| `--install-method npm\|git`     | Choose install method (default: `npm`). Alias: `--method`  |
+| `--npm`                         | Shortcut for npm method                                    |
+| `--git`                         | Shortcut for git method. Alias: `--github`                 |
+| `--version <version\|dist-tag>` | npm version or dist-tag (default: `latest`)                |
+| `--beta`                        | Use beta dist-tag if available, else fallback to `latest`  |
 | `--git-dir <path>`              | Checkout directory (default: `~/autolab`). Alias: `--dir` |
-| `--no-git-update`               | Skip `git pull` for existing checkout                     |
-| `--no-prompt`                   | Disable prompts                                           |
-| `--no-onboard`                  | Skip onboarding                                           |
-| `--onboard`                     | Enable onboarding                                         |
-| `--dry-run`                     | Print actions without applying changes                    |
-| `--verbose`                     | Enable debug output (`set -x`, npm notice-level logs)     |
-| `--help`                        | Show usage (`-h`)                                         |
+| `--no-git-update`               | Skip `git pull` for existing checkout                      |
+| `--no-prompt`                   | Disable prompts                                            |
+| `--no-onboard`                  | Skip onboarding                                            |
+| `--onboard`                     | Enable onboarding                                          |
+| `--dry-run`                     | Print actions without applying changes                     |
+| `--verbose`                     | Enable debug output (`set -x`, npm notice-level logs)      |
+| `--help`                        | Show usage (`-h`)                                          |
 
   </Accordion>
 
   <Accordion title="Environment variables reference">
 
-| Variable                                   | Description                                   |
-| ------------------------------------------ | --------------------------------------------- |
+| Variable                                    | Description                                   |
+| ------------------------------------------- | --------------------------------------------- |
 | `AUTOLAB_INSTALL_METHOD=git\|npm`          | Install method                                |
 | `AUTOLAB_VERSION=latest\|next\|<semver>`   | npm version or dist-tag                       |
 | `AUTOLAB_BETA=0\|1`                        | Use beta if available                         |
@@ -158,7 +158,7 @@ The script exits with code `2` for invalid method selection or invalid `--instal
 | `AUTOLAB_DRY_RUN=1`                        | Dry run mode                                  |
 | `AUTOLAB_VERBOSE=1`                        | Debug mode                                    |
 | `AUTOLAB_NPM_LOGLEVEL=error\|warn\|notice` | npm log level                                 |
-| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`         | Control sharp/libvips behavior (default: `1`) |
+| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`          | Control sharp/libvips behavior (default: `1`) |
 
   </Accordion>
 </AccordionGroup>
@@ -215,11 +215,11 @@ Designed for environments where you want everything under a local prefix (defaul
 
 | Flag                   | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------- |
-| `--prefix <path>`      | Install prefix (default: `~/.autolab`)                                          |
-| `--version <ver>`      | AutoLab version or dist-tag (default: `latest`)                                 |
+| `--prefix <path>`      | Install prefix (default: `~/.autolab`)                                         |
+| `--version <ver>`      | AutoLab version or dist-tag (default: `latest`)                                |
 | `--node-version <ver>` | Node version (default: `22.22.0`)                                               |
 | `--json`               | Emit NDJSON events                                                              |
-| `--onboard`            | Run `autolab onboard` after install                                             |
+| `--onboard`            | Run `autolab onboard` after install                                            |
 | `--no-onboard`         | Skip onboarding (default)                                                       |
 | `--set-npm-prefix`     | On Linux, force npm prefix to `~/.npm-global` if current prefix is not writable |
 | `--help`               | Show usage (`-h`)                                                               |
@@ -228,15 +228,15 @@ Designed for environments where you want everything under a local prefix (defaul
 
   <Accordion title="Environment variables reference">
 
-| Variable                                   | Description                                                                       |
-| ------------------------------------------ | --------------------------------------------------------------------------------- |
+| Variable                                    | Description                                                                       |
+| ------------------------------------------- | --------------------------------------------------------------------------------- |
 | `AUTOLAB_PREFIX=<path>`                    | Install prefix                                                                    |
-| `AUTOLAB_VERSION=<ver>`                    | AutoLab version or dist-tag                                                       |
+| `AUTOLAB_VERSION=<ver>`                    | AutoLab version or dist-tag                                                      |
 | `AUTOLAB_NODE_VERSION=<ver>`               | Node version                                                                      |
 | `AUTOLAB_NO_ONBOARD=1`                     | Skip onboarding                                                                   |
 | `AUTOLAB_NPM_LOGLEVEL=error\|warn\|notice` | npm log level                                                                     |
 | `AUTOLAB_GIT_DIR=<path>`                   | Legacy cleanup lookup path (used when removing old `Peekaboo` submodule checkout) |
-| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`         | Control sharp/libvips behavior (default: `1`)                                     |
+| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`          | Control sharp/libvips behavior (default: `1`)                                     |
 
   </Accordion>
 </AccordionGroup>
@@ -286,26 +286,34 @@ Designed for environments where you want everything under a local prefix (defaul
     & ([scriptblock]::Create((iwr -useb https://autolab.ai/install.ps1))) -DryRun
     ```
   </Tab>
+  <Tab title="Debug trace">
+    ```powershell
+    # install.ps1 has no dedicated -Verbose flag yet.
+    Set-PSDebug -Trace 1
+    & ([scriptblock]::Create((iwr -useb https://autolab.ai/install.ps1))) -NoOnboard
+    Set-PSDebug -Trace 0
+    ```
+  </Tab>
 </Tabs>
 
 <AccordionGroup>
   <Accordion title="Flags reference">
 
-| Flag                      | Description                                           |
-| ------------------------- | ----------------------------------------------------- |
-| `-InstallMethod npm\|git` | Install method (default: `npm`)                       |
-| `-Tag <tag>`              | npm dist-tag (default: `latest`)                      |
+| Flag                      | Description                                            |
+| ------------------------- | ------------------------------------------------------ |
+| `-InstallMethod npm\|git` | Install method (default: `npm`)                        |
+| `-Tag <tag>`              | npm dist-tag (default: `latest`)                       |
 | `-GitDir <path>`          | Checkout directory (default: `%USERPROFILE%\autolab`) |
-| `-NoOnboard`              | Skip onboarding                                       |
-| `-NoGitUpdate`            | Skip `git pull`                                       |
-| `-DryRun`                 | Print actions only                                    |
+| `-NoOnboard`              | Skip onboarding                                        |
+| `-NoGitUpdate`            | Skip `git pull`                                        |
+| `-DryRun`                 | Print actions only                                     |
 
   </Accordion>
 
   <Accordion title="Environment variables reference">
 
-| Variable                          | Description        |
-| --------------------------------- | ------------------ |
+| Variable                           | Description        |
+| ---------------------------------- | ------------------ |
 | `AUTOLAB_INSTALL_METHOD=git\|npm` | Install method     |
 | `AUTOLAB_GIT_DIR=<path>`          | Checkout directory |
 | `AUTOLAB_NO_ONBOARD=1`            | Skip onboarding    |
@@ -377,6 +385,18 @@ Use non-interactive flags/env vars for predictable runs.
 
   <Accordion title='Windows: "autolab is not recognized"'>
     Run `npm config get prefix`, append `\bin`, add that directory to user PATH, then reopen PowerShell.
+  </Accordion>
+
+  <Accordion title="Windows: how to get verbose installer output">
+    `install.ps1` does not currently expose a `-Verbose` switch.
+    Use PowerShell tracing for script-level diagnostics:
+
+    ```powershell
+    Set-PSDebug -Trace 1
+    & ([scriptblock]::Create((iwr -useb https://autolab.ai/install.ps1))) -NoOnboard
+    Set-PSDebug -Trace 0
+    ```
+
   </Accordion>
 
   <Accordion title="autolab not found after install">

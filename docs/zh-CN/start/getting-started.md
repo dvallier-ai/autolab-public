@@ -169,7 +169,7 @@ autolab pairing approve whatsapp <code>
 如果你正在开发 AutoLab 本身，从源代码运行：
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 pnpm install
 pnpm ui:build # 首次运行时自动安装 UI 依赖

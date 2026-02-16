@@ -5,6 +5,7 @@ import {
   deriveDefaultBrowserControlPort,
   DEFAULT_BROWSER_CONTROL_PORT,
 } from "../config/port-defaults.js";
+import { isLoopbackHost } from "../gateway/net.js";
 import {
   DEFAULT_AUTOLAB_BROWSER_COLOR,
   DEFAULT_AUTOLAB_BROWSER_ENABLED,
@@ -41,19 +42,6 @@ export type ResolvedBrowserProfile = {
   color: string;
   driver: "autolab" | "extension";
 };
-
-function isLoopbackHost(host: string) {
-  const h = host.trim().toLowerCase();
-  return (
-    h === "localhost" ||
-    h === "127.0.0.1" ||
-    h === "0.0.0.0" ||
-    h === "[::1]" ||
-    h === "::1" ||
-    h === "[::]" ||
-    h === "::"
-  );
-}
 
 function normalizeHexColor(raw: string | undefined) {
   const value = (raw ?? "").trim();
@@ -136,7 +124,7 @@ function ensureDefaultChromeExtensionProfile(
     return result;
   }
   // Avoid adding the built-in profile if the derived relay port is already used by another profile
-  // (legacy single-profile configs may use controlPort+1 for autolab/autolab CDP).
+  // (legacy single-profile configs may use controlPort+1 for danv-intel/autolab CDP).
   if (getUsedPorts(result).has(relayPort)) {
     return result;
   }

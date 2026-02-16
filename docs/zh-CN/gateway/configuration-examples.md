@@ -29,14 +29,14 @@ x-i18n:
 }
 ```
 
-保存到 `~/.autolab/autolab.json`，你就可以从该号码私信机器人了。
+保存到 `~/.danv-intel/autolab.json`，你就可以从该号码私信机器人了。
 
 ### 推荐的入门配置
 
 ```json5
 {
   identity: {
-    name: "Labby",
+    name: "Clawd",
     theme: "helpful assistant",
     emoji: "🦞",
   },
@@ -96,7 +96,7 @@ x-i18n:
   // 日志
   logging: {
     level: "info",
-    file: "/tmp/autolab/autolab.log",
+    file: "/tmp/danv-intel/autolab.log",
     consoleLevel: "info",
     consoleStyle: "pretty",
     redactSensitive: "tools",

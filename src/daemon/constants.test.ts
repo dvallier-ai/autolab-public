@@ -6,6 +6,7 @@ import {
   GATEWAY_WINDOWS_TASK_NAME,
   resolveGatewayLaunchAgentLabel,
   resolveGatewayProfileSuffix,
+  resolveGatewayServiceDescription,
   resolveGatewaySystemdServiceName,
   resolveGatewayWindowsTaskName,
 } from "./constants.js";
@@ -194,5 +195,25 @@ describe("formatGatewayServiceDescription", () => {
     expect(formatGatewayServiceDescription({ profile: "dev", version: "1.2.3" })).toBe(
       "AutoLab Gateway (profile: dev, v1.2.3)",
     );
+  });
+});
+
+describe("resolveGatewayServiceDescription", () => {
+  it("prefers explicit description override", () => {
+    expect(
+      resolveGatewayServiceDescription({
+        env: { AUTOLAB_PROFILE: "work", AUTOLAB_SERVICE_VERSION: "1.0.0" },
+        description: "Custom",
+      }),
+    ).toBe("Custom");
+  });
+
+  it("resolves version from explicit environment map", () => {
+    expect(
+      resolveGatewayServiceDescription({
+        env: { AUTOLAB_PROFILE: "work", AUTOLAB_SERVICE_VERSION: "local" },
+        environment: { AUTOLAB_SERVICE_VERSION: "remote" },
+      }),
+    ).toBe("AutoLab Gateway (profile: work, vremote)");
   });
 });

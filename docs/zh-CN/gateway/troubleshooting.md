@@ -24,8 +24,8 @@ x-i18n:
 
 快速分类命令（按顺序）：
 
-| 命令                              | 它告诉你什么                                                                          | 何时使用                              |
-| --------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------- |
+| 命令                               | 它告诉你什么                                                                          | 何时使用                              |
+| ---------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------- |
 | `autolab status`                  | 本地摘要：操作系统 + 更新、Gateway 网关可达性/模式、服务、智能体/会话、提供商配置状态 | 首次检查，快速概览                    |
 | `autolab status --all`            | 完整本地诊断（只读、可粘贴、相对安全）包括日志尾部                                    | 当你需要分享调试报告时                |
 | `autolab status --deep`           | 运行 Gateway 网关健康检查（包括提供商探测；需要可达的 Gateway 网关）                  | 当"已配置"不意味着"正常工作"时        |
@@ -119,7 +119,7 @@ Doctor/service 将显示运行时状态（PID/最后退出）和日志提示。
 **日志：**
 
 - 优先：`autolab logs --follow`
-- 文件日志（始终）：`/tmp/autolab/autolab-YYYY-MM-DD.log`（或你配置的 `logging.file`）
+- 文件日志（始终）：`/tmp/danv-intel/autolab-YYYY-MM-DD.log`（或你配置的 `logging.file`）
 - macOS LaunchAgent（如果已安装）：`$AUTOLAB_STATE_DIR/logs/gateway.log` 和 `gateway.err.log`
 - Linux systemd（如果已安装）：`journalctl --user -u autolab-gateway[-<profile>].service -n 200 --no-pager`
 - Windows：`schtasks /Query /TN "AutoLab Gateway (<profile>)" /V /FO LIST`
@@ -322,7 +322,7 @@ autolab status
 # 消息必须匹配 mentionPatterns 或显式提及；默认值在渠道 groups/guilds 中。
 # 多智能体：`agents.list[].groupChat.mentionPatterns` 覆盖全局模式。
 grep -n "agents\\|groupChat\\|mentionPatterns\\|channels\\.whatsapp\\.groups\\|channels\\.telegram\\.groups\\|channels\\.imessage\\.groups\\|channels\\.discord\\.guilds" \
-  "${AUTOLAB_CONFIG_PATH:-$HOME/.autolab/autolab.json}"
+  "${AUTOLAB_CONFIG_PATH:-$HOME/.danv-intel/autolab.json}"
 ```
 
 **检查 3：** 检查日志
@@ -330,7 +330,7 @@ grep -n "agents\\|groupChat\\|mentionPatterns\\|channels\\.whatsapp\\.groups\\|c
 ```bash
 autolab logs --follow
 # 或者如果你想快速过滤：
-tail -f "$(ls -t /tmp/autolab/autolab-*.log | head -1)" | grep "blocked\\|skip\\|unauthorized"
+tail -f "$(ls -t /tmp/danv-intel/autolab-*.log | head -1)" | grep "blocked\\|skip\\|unauthorized"
 ```
 
 ### 配对码未到达
@@ -443,7 +443,7 @@ ls -la /path/to/your/image.jpg
 **检查 3：** 检查媒体日志
 
 ```bash
-grep "media\\|fetch\\|download" "$(ls -t /tmp/autolab/autolab-*.log | head -1)" | tail -20
+grep "media\\|fetch\\|download" "$(ls -t /tmp/danv-intel/autolab-*.log | head -1)" | tail -20
 ```
 
 ### 高内存使用
@@ -631,7 +631,7 @@ tccutil reset All bot.molt.mac.debug
 ```
 
 **修复 2：强制使用新的 Bundle ID**
-如果重置不起作用，在 [`scripts/package-mac-app.sh`](https://github.com/autolab/autolab/blob/main/scripts/package-mac-app.sh) 中更改 `BUNDLE_ID`（例如，添加 `.test` 后缀）并重新构建。这会强制 macOS 将其视为新应用。
+如果重置不起作用，在 [`scripts/package-mac-app.sh`](https://github.com/danv-intel/autolab/blob/main/scripts/package-mac-app.sh) 中更改 `BUNDLE_ID`（例如，添加 `.test` 后缀）并重新构建。这会强制 macOS 将其视为新应用。
 
 ### Gateway 网关卡在"Starting..."
 
@@ -674,7 +674,7 @@ npm install -g autolab@<version>
 
 ```bash
 # 在配置中打开跟踪日志：
-#   ${AUTOLAB_CONFIG_PATH:-$HOME/.autolab/autolab.json} -> { logging: { level: "trace" } }
+#   ${AUTOLAB_CONFIG_PATH:-$HOME/.danv-intel/autolab.json} -> { logging: { level: "trace" } }
 #
 # 然后运行详细命令将调试输出镜像到标准输出：
 autolab gateway --verbose
@@ -683,13 +683,13 @@ autolab channels login --verbose
 
 ## 日志位置
 
-| 日志                             | 位置                                                                                                                                                                                                                                                                                                                 |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Gateway 网关文件日志（结构化）   | `/tmp/autolab/autolab-YYYY-MM-DD.log`（或 `logging.file`）                                                                                                                                                                                                                                                           |
+| 日志                             | 位置                                                                                                                                                                                                                                                                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Gateway 网关文件日志（结构化）   | `/tmp/danv-intel/autolab-YYYY-MM-DD.log`（或 `logging.file`）                                                                                                                                                                                                                                                              |
 | Gateway 网关服务日志（监管程序） | macOS：`$AUTOLAB_STATE_DIR/logs/gateway.log` + `gateway.err.log`（默认：`~/.autolab/logs/...`；配置文件使用 `~/.autolab-<profile>/logs/...`）<br />Linux：`journalctl --user -u autolab-gateway[-<profile>].service -n 200 --no-pager`<br />Windows：`schtasks /Query /TN "AutoLab Gateway (<profile>)" /V /FO LIST` |
-| 会话文件                         | `$AUTOLAB_STATE_DIR/agents/<agentId>/sessions/`                                                                                                                                                                                                                                                                      |
-| 媒体缓存                         | `$AUTOLAB_STATE_DIR/media/`                                                                                                                                                                                                                                                                                          |
-| 凭证                             | `$AUTOLAB_STATE_DIR/credentials/`                                                                                                                                                                                                                                                                                    |
+| 会话文件                         | `$AUTOLAB_STATE_DIR/agents/<agentId>/sessions/`                                                                                                                                                                                                                                                                          |
+| 媒体缓存                         | `$AUTOLAB_STATE_DIR/media/`                                                                                                                                                                                                                                                                                              |
+| 凭证                             | `$AUTOLAB_STATE_DIR/credentials/`                                                                                                                                                                                                                                                                                        |
 
 ## 健康检查
 
@@ -710,7 +710,7 @@ lsof -nP -iTCP:18789 -sTCP:LISTEN
 # 最近活动（RPC 日志尾部）
 autolab logs --follow
 # 如果 RPC 宕机的备用方案
-tail -20 /tmp/autolab/autolab-*.log
+tail -20 /tmp/danv-intel/autolab-*.log
 ```
 
 ## 重置所有内容

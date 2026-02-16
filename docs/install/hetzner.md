@@ -99,7 +99,7 @@ docker compose version
 ## 3) Clone the AutoLab repository
 
 ```bash
-git clone https://github.com/autolab/autolab.git
+git clone https://github.com/danv-intel/autolab.git
 cd autolab
 ```
 
@@ -177,10 +177,6 @@ services:
       # Recommended: keep the Gateway loopback-only on the VPS; access via SSH tunnel.
       # To expose it publicly, remove the `127.0.0.1:` prefix and firewall accordingly.
       - "127.0.0.1:${AUTOLAB_GATEWAY_PORT}:18789"
-
-      # Optional: only if you run iOS/Android nodes against this VPS and need Canvas host.
-      # If you expose this publicly, read /gateway/security and firewall accordingly.
-      # - "18793:18793"
     command:
       [
         "node",
@@ -317,15 +313,36 @@ Paste your gateway token.
 AutoLab runs in Docker, but Docker is not the source of truth.
 All long-lived state must survive restarts, rebuilds, and reboots.
 
-| Component           | Location                         | Persistence mechanism  | Notes                           |
-| ------------------- | -------------------------------- | ---------------------- | ------------------------------- |
+| Component           | Location                          | Persistence mechanism  | Notes                            |
+| ------------------- | --------------------------------- | ---------------------- | -------------------------------- |
 | Gateway config      | `/home/node/.autolab/`           | Host volume mount      | Includes `autolab.json`, tokens |
-| Model auth profiles | `/home/node/.autolab/`           | Host volume mount      | OAuth tokens, API keys          |
-| Skill configs       | `/home/node/.autolab/skills/`    | Host volume mount      | Skill-level state               |
-| Agent workspace     | `/home/node/.autolab/workspace/` | Host volume mount      | Code and agent artifacts        |
-| WhatsApp session    | `/home/node/.autolab/`           | Host volume mount      | Preserves QR login              |
-| Gmail keyring       | `/home/node/.autolab/`           | Host volume + password | Requires `GOG_KEYRING_PASSWORD` |
-| External binaries   | `/usr/local/bin/`                | Docker image           | Must be baked at build time     |
-| Node runtime        | Container filesystem             | Docker image           | Rebuilt every image build       |
-| OS packages         | Container filesystem             | Docker image           | Do not install at runtime       |
-| Docker container    | Ephemeral                        | Restartable            | Safe to destroy                 |
+| Model auth profiles | `/home/node/.autolab/`           | Host volume mount      | OAuth tokens, API keys           |
+| Skill configs       | `/home/node/.autolab/skills/`    | Host volume mount      | Skill-level state                |
+| Agent workspace     | `/home/node/.autolab/workspace/` | Host volume mount      | Code and agent artifacts         |
+| WhatsApp session    | `/home/node/.autolab/`           | Host volume mount      | Preserves QR login               |
+| Gmail keyring       | `/home/node/.autolab/`           | Host volume + password | Requires `GOG_KEYRING_PASSWORD`  |
+| External binaries   | `/usr/local/bin/`                 | Docker image           | Must be baked at build time      |
+| Node runtime        | Container filesystem              | Docker image           | Rebuilt every image build        |
+| OS packages         | Container filesystem              | Docker image           | Do not install at runtime        |
+| Docker container    | Ephemeral                         | Restartable            | Safe to destroy                  |
+
+---
+
+## Infrastructure as Code (Terraform)
+
+For teams preferring infrastructure-as-code workflows, a community-maintained Terraform setup provides:
+
+- Modular Terraform configuration with remote state management
+- Automated provisioning via cloud-init
+- Deployment scripts (bootstrap, deploy, backup/restore)
+- Security hardening (firewall, UFW, SSH-only access)
+- SSH tunnel configuration for gateway access
+
+**Repositories:**
+
+- Infrastructure: [autolab-terraform-hetzner](https://github.com/andreesg/autolab-terraform-hetzner)
+- Docker config: [autolab-docker-config](https://github.com/andreesg/autolab-docker-config)
+
+This approach complements the Docker setup above with reproducible deployments, version-controlled infrastructure, and automated disaster recovery.
+
+> **Note:** Community-maintained. For issues or contributions, see the repository links above.

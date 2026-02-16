@@ -308,7 +308,7 @@ export async function finalizeOnboardingWizard(
     await prompter.note(
       [
         "Gateway token: shared auth for the Gateway + Control UI.",
-        "Stored in: ~/.autolab/autolab.json (gateway.auth.token) or AUTOLAB_GATEWAY_TOKEN.",
+        "Stored in: ~/.danv-intel/autolab.json (gateway.auth.token) or AUTOLAB_GATEWAY_TOKEN.",
         `View token: ${formatCliCommand("autolab config get gateway.auth.token")}`,
         `Generate token: ${formatCliCommand("autolab doctor --generate-gateway-token")}`,
         "Web UI stores a copy in this browser's localStorage (autolab.control.settings.v1).",
@@ -329,7 +329,7 @@ export async function finalizeOnboardingWizard(
     });
 
     if (hatchChoice === "tui") {
-      restoreTerminalState("pre-onboarding tui");
+      restoreTerminalState("pre-onboarding tui", { resumeStdinIfPaused: true });
       await runTui({
         url: links.wsUrl,
         token: settings.authMode === "token" ? settings.gatewayToken : undefined,

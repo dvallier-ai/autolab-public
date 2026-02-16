@@ -206,7 +206,9 @@ extension OnboardingView {
                                             .textFieldStyle(.roundedBorder)
                                             .frame(width: fieldWidth)
                                     }
-                                    if let message = CommandResolver.sshTargetValidationMessage(self.state.remoteTarget) {
+                                    if let message = CommandResolver
+                                        .sshTargetValidationMessage(self.state.remoteTarget)
+                                    {
                                         GridRow {
                                             Text("")
                                                 .frame(width: labelWidth, alignment: .leading)
@@ -651,7 +653,7 @@ extension OnboardingView {
                                     let saved = await self.saveAgentWorkspace(AgentWorkspace.displayPath(for: url))
                                     if saved {
                                         self.workspaceStatus =
-                                            "Saved to ~/.autolab/autolab.json (agents.defaults.workspace)"
+                                            "Saved to ~/.danv-intel/autolab.json (agents.defaults.workspace)"
                                     }
                                 }
                             }

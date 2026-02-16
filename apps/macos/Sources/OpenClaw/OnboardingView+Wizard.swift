@@ -1,5 +1,5 @@
-import AutoLabProtocol
 import Observation
+import AutoLabProtocol
 import SwiftUI
 
 extension OnboardingView {

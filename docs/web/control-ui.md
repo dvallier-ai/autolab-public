@@ -71,7 +71,7 @@ you revoke it with `autolab devices revoke --device <id> --role <role>`. See
 - Skills: status, enable/disable, install, API key updates (`skills.*`)
 - Nodes: list + caps (`node.list`)
 - Exec approvals: edit gateway or node allowlists + ask policy for `exec host=gateway/node` (`exec.approvals.*`)
-- Config: view/edit `~/.autolab/autolab.json` (`config.get`, `config.set`)
+- Config: view/edit `~/.danv-intel/autolab.json` (`config.get`, `config.set`)
 - Config: apply + restart with validation (`config.apply`) and wake the last active session
 - Config writes include a base-hash guard to prevent clobbering concurrent edits
 - Config schema + form rendering (`config.schema`, including plugin + channel schemas); Raw JSON editor remains available
@@ -83,6 +83,9 @@ Cron jobs panel notes:
 
 - For isolated jobs, delivery defaults to announce summary. You can switch to none if you want internal-only runs.
 - Channel/target fields appear when announce is selected.
+- New job form includes a **Notify webhook** toggle (`notify` on the job).
+- Gateway webhook posting requires both `notify: true` on the job and `cron.webhook` in config.
+- Set `cron.webhookToken` to send a dedicated bearer token, if omitted the webhook is sent without an auth header.
 
 ## Chat behavior
 
@@ -93,6 +96,10 @@ Cron jobs panel notes:
   - Click **Stop** (calls `chat.abort`)
   - Type `/stop` (or `stop|esc|abort|wait|exit|interrupt`) to abort out-of-band
   - `chat.abort` supports `{ sessionKey }` (no `runId`) to abort all active runs for that session
+- Abort partial retention:
+  - When a run is aborted, partial assistant text can still be shown in the UI
+  - Gateway persists aborted partial assistant text into transcript history when buffered output exists
+  - Persisted entries include abort metadata so transcript consumers can tell abort partials from normal completion output
 
 ## Tailnet access (recommended)
 
