@@ -129,10 +129,6 @@ Run `autolab doctor` to surface risky/misconfigured DM policies.
 - **[Companion apps](https://docs.autolab.ai/platforms/macos)** — macOS menu bar app + iOS/Android [nodes](https://docs.autolab.ai/nodes).
 - **[Onboarding](https://docs.autolab.ai/start/wizard) + [skills](https://docs.autolab.ai/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=danv-intel/autolab&type=date&legend=top-left)](https://www.star-history.com/#danv-intel/autolab&type=date&legend=top-left)
-
 ## Everything we built so far
 
 ### Core platform
