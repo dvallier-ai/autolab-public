@@ -442,14 +442,14 @@ Use these when you’re past the onboarding flow and want the deeper reference.
 
 ## Workspace & skills
 
-- [Skills config](docs/tools/skills-config)
-- [Default AGENTS](docs/reference/AGENTS.default)
-- [Templates: AGENTS](docs/reference/templates/AGENTS)
-- [Templates: BOOTSTRAP](docs/reference/templates/BOOTSTRAP)
-- [Templates: IDENTITY](docs/reference/templates/IDENTITY)
-- [Templates: SOUL](docs/reference/templates/SOUL)
-- [Templates: TOOLS](docs/reference/templates/TOOLS)
-- [Templates: USER](docs/reference/templates/USER)
+- [Skills config](docs/tools/skills-config.md)
+- [Default AGENTS](docs/reference/AGENTS.default.md)
+- [Templates: AGENTS](docs/reference/templates/AGENTS.md)
+- [Templates: BOOTSTRAP](docs/reference/templates/BOOTSTRAP.md)
+- [Templates: IDENTITY](docs/reference/templates/IDENTITY.md)
+- [Templates: SOUL](docs/reference/templates/SOUL.md)
+- [Templates: TOOLS](docs/reference/templates/TOOLS.md)
+- [Templates: USER](docs/reference/templates/USER.md)
 
 ## Platform internals
 
