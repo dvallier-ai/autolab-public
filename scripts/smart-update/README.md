@@ -88,16 +88,16 @@ maintaining a complete rebrand (zero `openclaw` references in source).
 
 | Machine | Role | Gateway Install | Update Method |
 |---------|------|-----------------|---------------|
-| **MacB** (liams-mac, 192.168.254.221) | Primary, Liam | Git repo `~/autolab/` | `autolab-update.sh` + `autolab-deploy.sh` |
-| **MacA** (nova-mac, 192.168.254.222) | Secondary, Nova | npm global `/opt/homebrew/lib/node_modules/openclaw/` | `autolab-pull.sh` (converts to git-based) |
-| **dvallier-mobl** (DHCP) | Secondary, Cipher | TBD | `autolab-pull.sh` |
+| **Machine A** (localhost) | Primary | Git repo `~/autolab/` | `autolab-update.sh` + `autolab-deploy.sh` |
+| **Machine B** (remote-1) | Secondary | npm global `/opt/homebrew/lib/node_modules/openclaw/` | `autolab-pull.sh` (converts to git-based) |
+| **Machine C** (remote-2) | Secondary | TBD | `autolab-pull.sh` |
 
-### MacA Special Notes
+### Machine B Special Notes
 - Currently running OpenClaw v2026.2.13 from **npm global install** (not git)
 - LaunchAgent label: `ai.openclaw.gateway` (not rebranded)
 - Gateway port: 18789
 - First deployment will need to:
-  1. Clone `danv-intel/autolab` to `~/autolab/`
+  1. Clone `upstream/autolab` to `~/autolab/`
   2. Replace the LaunchAgent plist (rename to `ai.autolab.gateway`)
   3. Update env vars from `OPENCLAW_*` to `AUTOLAB_*`
 
