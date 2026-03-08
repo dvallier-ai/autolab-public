@@ -1,4 +1,4 @@
-# 🦞 AutoLab — Personal AI Assistant
+# AutoLab — Personal AI Assistant
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-banner.png" alt="AutoLab" width="800">
