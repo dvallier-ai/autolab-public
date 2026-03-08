@@ -23,7 +23,7 @@ It answers you on the channels you already use (WhatsApp, Telegram, Slack, Disco
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-[Website]() · [Docs](docs/index.md) · [DeepWiki]() · [Getting Started](docs/start/getting-started) · [Updating](docs/install/updating) · [Showcase](docs/start/showcase) · [FAQ](docs/start/faq) · [Wizard](docs/start/wizard) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](docs/install/docker) · 
+[Docs](docs/index.md) · [Getting Started](docs/start/getting-started) · [Updating](docs/install/updating) · [Showcase](docs/start/showcase) · [FAQ](docs/start/faq) · [Wizard](docs/start/wizard) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](docs/install/docker)
 
 Preferred setup: run the onboarding wizard (`autolab onboard`) in your terminal.
 The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.
@@ -407,7 +407,7 @@ Browser control (optional):
 
 Use these when you’re past the onboarding flow and want the deeper reference.
 
-- [Start with the docs index for navigation and “what’s where.”](https://docs.autolab.ai)
+- [Start with the docs index for navigation and “what’s where.”](docs/index.md)
 - [Read the architecture overview for the gateway + protocol model.](docs/concepts/architecture)
 - [Use the full configuration reference when you need every key and example.](docs/gateway/configuration)
 - [Run the Gateway by the book with the operational runbook.](docs/gateway)
