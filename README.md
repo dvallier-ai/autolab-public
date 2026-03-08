@@ -10,10 +10,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/dvallier-ai/autolab-public/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/dvallier-ai/autolab-public/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/dvallier-ai/autolab-public/releases"><img src="https://img.shields.io/github/v/release/dvallier-ai/autolab-public?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
-  <a href=""><img src="https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge" alt="Discord"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
 
 **AutoLab** is a _personal AI assistant_ you run on your own devices.
