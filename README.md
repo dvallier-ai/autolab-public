@@ -1,11 +1,20 @@
-# AutoLab — Personal AI Assistant
+# 🦞 AutoLab — Personal AI Assistant
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-banner.png" alt="AutoLab" width="800">
+    <picture>
+        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-logo-text-dark.png">
+        <img src="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-logo-text.png" alt="AutoLab" width="500">
+    </picture>
 </p>
 
 <p align="center">
+  <strong>EXFOLIATE! EXFOLIATE!</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/dvallier-ai/autolab-public/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/dvallier-ai/autolab-public/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
   <a href="https://github.com/dvallier-ai/autolab-public/releases"><img src="https://img.shields.io/github/v/release/dvallier-ai/autolab-public?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
+  <a href=""><img src="https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge" alt="Discord"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
 
@@ -14,23 +23,24 @@ It answers you on the channels you already use (WhatsApp, Telegram, Slack, Disco
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
+[Website](https://autolab.ai) · [Docs](https://docs.autolab.ai) · [DeepWiki](https://deepwiki.com/dvallier-ai/autolab-public) · [Getting Started](docs/start/getting-started) · [Updating](docs/install/updating) · [Showcase](docs/start/showcase) · [FAQ](docs/start/faq) · [Wizard](docs/start/wizard) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](docs/install/docker) · [Discord]()
 
 Preferred setup: run the onboarding wizard (`autolab onboard`) in your terminal.
 The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.
 Works with npm, pnpm, or bun.
-New install? Start here: Getting started
+New install? Start here: [Getting started](docs/start/getting-started)
 
 **Subscriptions (OAuth):**
 
 - **[Anthropic](https://www.anthropic.com/)** (Claude Pro/Max)
 - **[OpenAI](https://openai.com/)** (ChatGPT/Codex)
 
-Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See Onboarding.
+Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See [Onboarding](docs/start/onboarding).
 
 ## Models (selection + auth)
 
-- Models config + CLI: Models
-- Auth profile rotation (OAuth vs API keys) + fallbacks: Model failover
+- Models config + CLI: [Models](docs/concepts/models)
+- Auth profile rotation (OAuth vs API keys) + fallbacks: [Model failover](docs/concepts/model-failover)
 
 ## Install (recommended)
 
@@ -49,7 +59,7 @@ The wizard installs the Gateway daemon (launchd/systemd user service) so it stay
 
 Runtime: **Node ≥22**.
 
-Full beginner guide (auth, pairing, channels): Getting started
+Full beginner guide (auth, pairing, channels): [Getting started](docs/start/getting-started)
 
 ```bash
 autolab onboard --install-daemon
@@ -63,7 +73,7 @@ autolab message send --to +1234567890 --message "Hello from AutoLab"
 autolab agent --message "Ship checklist" --thinking high
 ```
 
-Upgrading? Updating guide (and run `autolab doctor`).
+Upgrading? [Updating guide](docs/install/updating) (and run `autolab doctor`).
 
 ## Development channels
 
@@ -72,7 +82,7 @@ Upgrading? Updating guide (and run `autolab doctor`).
 - **dev**: moving head of `main`, npm dist-tag `dev` (when published).
 
 Switch channels (git + npm): `autolab update --channel stable|beta|dev`.
-Details: Development channels.
+Details: [Development channels](docs/install/development-channels).
 
 ## From source (development)
 
@@ -98,7 +108,7 @@ Note: `pnpm autolab ...` runs TypeScript directly (via `tsx`). `pnpm build` prod
 
 AutoLab connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
 
-Full security guide: Security
+Full security guide: [Security](docs/gateway/security)
 
 Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:
 
@@ -110,58 +120,58 @@ Run `autolab doctor` to surface risky/misconfigured DM policies.
 
 ## Highlights
 
-- **Local-first Gateway** — single control plane for sessions, channels, tools, and events.
-- **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
-- **Multi-agent routing** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
-- **Voice Wake + Talk Mode** — always-on speech for macOS/iOS/Android with ElevenLabs.
-- **Live Canvas** — agent-driven visual workspace with A2UI.
-- **First-class tools** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
-- **Companion apps** — macOS menu bar app + iOS/Android nodes.
-- **Onboarding + skills** — wizard-driven setup with bundled/managed/workspace skills.
+- **[Local-first Gateway](docs/gateway)** — single control plane for sessions, channels, tools, and events.
+- **[Multi-channel inbox](docs/channels)** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
+- **[Multi-agent routing](docs/gateway/configuration)** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
+- **[Voice Wake](docs/nodes/voicewake) + [Talk Mode](docs/nodes/talk)** — always-on speech for macOS/iOS/Android with ElevenLabs.
+- **[Live Canvas](docs/platforms/mac/canvas)** — agent-driven visual workspace with [A2UI](docs/platforms/mac/canvas#canvas-a2ui).
+- **[First-class tools](docs/tools)** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
+- **[Companion apps](docs/platforms/macos)** — macOS menu bar app + iOS/Android [nodes](docs/nodes).
+- **[Onboarding](docs/start/wizard) + [skills](docs/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.
 
 ## Everything we built so far
 
 ### Core platform
 
-- Gateway WS control plane with sessions, presence, config, cron, webhooks, Control UI, and Canvas host.
-- CLI surface: gateway, agent, send, wizard, and doctor.
-- Pi agent runtime in RPC mode with tool streaming and block streaming.
-- Session model: `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: Groups.
-- Media pipeline: images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: Audio.
+- [Gateway WS control plane](docs/gateway) with sessions, presence, config, cron, webhooks, [Control UI](docs/web), and [Canvas host](docs/platforms/mac/canvas#canvas-a2ui).
+- [CLI surface](docs/tools/agent-send): gateway, agent, send, [wizard](docs/start/wizard), and [doctor](docs/gateway/doctor).
+- [Pi agent runtime](docs/concepts/agent) in RPC mode with tool streaming and block streaming.
+- [Session model](docs/concepts/session): `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: [Groups](docs/concepts/groups).
+- [Media pipeline](docs/nodes/images): images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: [Audio](docs/nodes/audio).
 
 ### Channels
 
-- Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), BlueBubbles (iMessage, recommended), iMessage (legacy imsg), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat.
-- Group routing: mention gating, reply tags, per-channel chunking and routing. Channel rules: Channels.
+- [Channels](docs/channels): [WhatsApp](docs/channels/whatsapp) (Baileys), [Telegram](docs/channels/telegram) (grammY), [Slack](docs/channels/slack) (Bolt), [Discord](docs/channels/discord) (discord.js), [Google Chat](docs/channels/googlechat) (Chat API), [Signal](docs/channels/signal) (signal-cli), [BlueBubbles](docs/channels/bluebubbles) (iMessage, recommended), [iMessage](docs/channels/imessage) (legacy imsg), [Microsoft Teams](docs/channels/msteams) (extension), [Matrix](docs/channels/matrix) (extension), [Zalo](docs/channels/zalo) (extension), [Zalo Personal](docs/channels/zalouser) (extension), [WebChat](docs/web/webchat).
+- [Group routing](docs/concepts/group-messages): mention gating, reply tags, per-channel chunking and routing. Channel rules: [Channels](docs/channels).
 
 ### Apps + nodes
 
-- macOS app: menu bar control plane, Voice Wake/PTT, Talk Mode overlay, WebChat, debug tools, remote gateway control.
-- iOS node: Canvas, Voice Wake, Talk Mode, camera, screen recording, Bonjour pairing.
-- Android node: Canvas, Talk Mode, camera, screen recording, optional SMS.
-- macOS node mode: system.run/notify + canvas/camera exposure.
+- [macOS app](docs/platforms/macos): menu bar control plane, [Voice Wake](docs/nodes/voicewake)/PTT, [Talk Mode](docs/nodes/talk) overlay, [WebChat](docs/web/webchat), debug tools, [remote gateway](docs/gateway/remote) control.
+- [iOS node](docs/platforms/ios): [Canvas](docs/platforms/mac/canvas), [Voice Wake](docs/nodes/voicewake), [Talk Mode](docs/nodes/talk), camera, screen recording, Bonjour pairing.
+- [Android node](docs/platforms/android): [Canvas](docs/platforms/mac/canvas), [Talk Mode](docs/nodes/talk), camera, screen recording, optional SMS.
+- [macOS node mode](docs/nodes): system.run/notify + canvas/camera exposure.
 
 ### Tools + automation
 
-- Browser control: dedicated autolab Chrome/Chromium, snapshots, actions, uploads, profiles.
-- Canvas: A2UI push/reset, eval, snapshot.
-- Nodes: camera snap/clip, screen record, location.get, notifications.
-- Cron + wakeups; webhooks; Gmail Pub/Sub.
-- Skills platform: bundled, managed, and workspace skills with install gating + UI.
+- [Browser control](docs/tools/browser): dedicated autolab Chrome/Chromium, snapshots, actions, uploads, profiles.
+- [Canvas](docs/platforms/mac/canvas): [A2UI](docs/platforms/mac/canvas#canvas-a2ui) push/reset, eval, snapshot.
+- [Nodes](docs/nodes): camera snap/clip, screen record, [location.get](docs/nodes/location-command), notifications.
+- [Cron + wakeups](docs/automation/cron-jobs); [webhooks](docs/automation/webhook); [Gmail Pub/Sub](docs/automation/gmail-pubsub).
+- [Skills platform](docs/tools/skills): bundled, managed, and workspace skills with install gating + UI.
 
 ### Runtime + safety
 
-- Channel routing, retry policy, and streaming/chunking.
-- Presence, typing indicators, and usage tracking.
-- Models, model failover, and session pruning.
-- Security and troubleshooting.
+- [Channel routing](docs/concepts/channel-routing), [retry policy](docs/concepts/retry), and [streaming/chunking](docs/concepts/streaming).
+- [Presence](docs/concepts/presence), [typing indicators](docs/concepts/typing-indicators), and [usage tracking](docs/concepts/usage-tracking).
+- [Models](docs/concepts/models), [model failover](docs/concepts/model-failover), and [session pruning](docs/concepts/session-pruning).
+- [Security](docs/gateway/security) and [troubleshooting](docs/channels/troubleshooting).
 
 ### Ops + packaging
 
-- Control UI + WebChat served directly from the Gateway.
-- Tailscale Serve/Funnel or SSH tunnels with token/password auth.
-- Nix mode for declarative config; Docker-based installs.
-- Doctor migrations, logging.
+- [Control UI](docs/web) + [WebChat](docs/web/webchat) served directly from the Gateway.
+- [Tailscale Serve/Funnel](docs/gateway/tailscale) or [SSH tunnels](docs/gateway/remote) with token/password auth.
+- [Nix mode](docs/install/nix) for declarative config; [Docker](docs/install/docker)-based installs.
+- [Doctor](docs/gateway/doctor) migrations, [logging](docs/logging).
 
 ## How it works (short)
 
@@ -184,12 +194,12 @@ WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBu
 
 ## Key subsystems
 
-- **Gateway WebSocket network** — single WS control plane for clients, tools, and events (plus ops: Gateway runbook).
-- **Tailscale exposure** — Serve/Funnel for the Gateway dashboard + WS (remote access: Remote).
-- **Browser control** — autolab‑managed Chrome/Chromium with CDP control.
-- **Canvas + A2UI** — agent‑driven visual workspace (A2UI host: Canvas/A2UI).
-- **Voice Wake + Talk Mode** — always‑on speech and continuous conversation.
-- **Nodes** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.
+- **[Gateway WebSocket network](docs/concepts/architecture)** — single WS control plane for clients, tools, and events (plus ops: [Gateway runbook](docs/gateway)).
+- **[Tailscale exposure](docs/gateway/tailscale)** — Serve/Funnel for the Gateway dashboard + WS (remote access: [Remote](docs/gateway/remote)).
+- **[Browser control](docs/tools/browser)** — autolab‑managed Chrome/Chromium with CDP control.
+- **[Canvas + A2UI](docs/platforms/mac/canvas)** — agent‑driven visual workspace (A2UI host: [Canvas/A2UI](docs/platforms/mac/canvas#canvas-a2ui)).
+- **[Voice Wake](docs/nodes/voicewake) + [Talk Mode](docs/nodes/talk)** — always‑on speech and continuous conversation.
+- **[Nodes](docs/nodes)** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.
 
 ## Tailscale access (Gateway dashboard)
 
@@ -206,7 +216,7 @@ Notes:
 - Funnel refuses to start unless `gateway.auth.mode: "password"` is set.
 - Optional: `gateway.tailscale.resetOnExit` to undo Serve/Funnel on shutdown.
 
-Details: Tailscale guide · Web surfaces
+Details: [Tailscale guide](docs/gateway/tailscale) · [Web surfaces](docs/web)
 
 ## Remote Gateway (Linux is great)
 
@@ -216,7 +226,7 @@ It’s perfectly fine to run the Gateway on a small Linux instance. Clients (mac
 - **Device nodes** run device‑local actions (`system.run`, camera, screen recording, notifications) via `node.invoke`.
   In short: exec runs where the Gateway lives; device actions run where the device lives.
 
-Details: Remote access · Nodes · Security
+Details: [Remote access](docs/gateway/remote) · [Nodes](docs/nodes) · [Security](docs/gateway/security)
 
 ## macOS permissions via the Gateway protocol
 
@@ -231,7 +241,7 @@ Elevated bash (host permissions) is separate from macOS TCC:
 - Use `/elevated on|off` to toggle per‑session elevated access when enabled + allowlisted.
 - Gateway persists the per‑session toggle via `sessions.patch` (WS method) alongside `thinkingLevel`, `verboseLevel`, `model`, `sendPolicy`, and `groupActivation`.
 
-Details: Nodes · macOS app · Gateway protocol
+Details: [Nodes](docs/nodes) · [macOS app](docs/platforms/macos) · [Gateway protocol](docs/concepts/architecture)
 
 ## Agent to Agent (sessions\_\* tools)
 
@@ -240,12 +250,13 @@ Details: Nodes · macOS app · Gateway protocol
 - `sessions_history` — fetch transcript logs for a session.
 - `sessions_send` — message another session; optional reply‑back ping‑pong + announce step (`REPLY_SKIP`, `ANNOUNCE_SKIP`).
 
-Details: Session tools
+Details: [Session tools](docs/concepts/session-tool)
 
 ## Skills registry (ClawHub)
 
 ClawHub is a minimal skill registry. With ClawHub enabled, the agent can search for skills automatically and pull in new ones as needed.
 
+[ClawHub]()
 
 ## Chat commands
 
@@ -281,13 +292,13 @@ Note: signed builds required for macOS permissions to stick across rebuilds (see
 - Voice trigger forwarding + Canvas surface.
 - Controlled via `autolab nodes …`.
 
-Runbook: iOS connect.
+Runbook: [iOS connect](docs/platforms/ios).
 
 ### Android node (optional)
 
 - Pairs via the same Bridge + pairing flow as iOS.
 - Exposes Canvas, Camera, and Screen capture commands.
-- Runbook: Android connect.
+- Runbook: [Android connect](docs/platforms/android).
 
 ## Agent workspace + skills
 
@@ -307,7 +318,7 @@ Minimal `~/.dvallier-ai/autolab-public.json` (model + defaults):
 }
 ```
 
-Full configuration reference (all keys + examples).
+[Full configuration reference (all keys + examples).](docs/gateway/configuration)
 
 ## Security model (important)
 
@@ -315,15 +326,15 @@ Full configuration reference (all keys + examples).
 - **Group/channel safety:** set `agents.defaults.sandbox.mode: "non-main"` to run **non‑main sessions** (groups/channels) inside per‑session Docker sandboxes; bash then runs in Docker for those sessions.
 - **Sandbox defaults:** allowlist `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; denylist `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.
 
-Details: Security guide · Docker + sandboxing · Sandbox config
+Details: [Security guide](docs/gateway/security) · [Docker + sandboxing](docs/install/docker) · [Sandbox config](docs/gateway/configuration)
 
-### WhatsApp
+### [WhatsApp](docs/channels/whatsapp)
 
 - Link the device: `pnpm autolab channels login` (stores creds in `~/.autolab/credentials`).
 - Allowlist who can talk to the assistant via `channels.whatsapp.allowFrom`.
 - If `channels.whatsapp.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
 
-### Telegram
+### [Telegram](docs/channels/telegram)
 
 - Set `TELEGRAM_BOT_TOKEN` or `channels.telegram.botToken` (env wins).
 - Optional: set `channels.telegram.groups` (with `channels.telegram.groups."*".requireMention`); when set, it is a group allowlist (include `"*"` to allow all). Also `channels.telegram.allowFrom` or `channels.telegram.webhookUrl` + `channels.telegram.webhookSecret` as needed.
@@ -338,11 +349,11 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 }
 ```
 
-### Slack
+### [Slack](docs/channels/slack)
 
 - Set `SLACK_BOT_TOKEN` + `SLACK_APP_TOKEN` (or `channels.slack.botToken` + `channels.slack.appToken`).
 
-### Discord
+### [Discord](docs/channels/discord)
 
 - Set `DISCORD_BOT_TOKEN` or `channels.discord.token` (env wins).
 - Optional: set `commands.native`, `commands.text`, or `commands.useAccessGroups`, plus `channels.discord.allowFrom`, `channels.discord.guilds`, or `channels.discord.mediaMaxMb` as needed.
@@ -357,27 +368,27 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 }
 ```
 
-### Signal
+### [Signal](docs/channels/signal)
 
 - Requires `signal-cli` and a `channels.signal` config section.
 
-### BlueBubbles (iMessage)
+### [BlueBubbles (iMessage)](docs/channels/bluebubbles)
 
 - **Recommended** iMessage integration.
 - Configure `channels.bluebubbles.serverUrl` + `channels.bluebubbles.password` and a webhook (`channels.bluebubbles.webhookPath`).
 - The BlueBubbles server runs on macOS; the Gateway can run on macOS or elsewhere.
 
-### iMessage (legacy)
+### [iMessage (legacy)](docs/channels/imessage)
 
 - Legacy macOS-only integration via `imsg` (Messages must be signed in).
 - If `channels.imessage.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
 
-### Microsoft Teams
+### [Microsoft Teams](docs/channels/msteams)
 
 - Configure a Teams app + Bot Framework, then add a `msteams` config section.
 - Allowlist who can talk via `msteams.allowFrom`; group access via `msteams.groupAllowFrom` or `msteams.groupPolicy: "open"`.
 
-### WebChat
+### [WebChat](docs/web/webchat)
 
 - Uses the Gateway WebSocket; no separate WebChat port/config.
 
@@ -396,74 +407,64 @@ Browser control (optional):
 
 Use these when you’re past the onboarding flow and want the deeper reference.
 
-- Start with the docs index for navigation and “what’s where.”
-- Read the architecture overview for the gateway + protocol model.
-- Use the full configuration reference when you need every key and example.
-- Run the Gateway by the book with the operational runbook.
-- Learn how the Control UI/Web surfaces work and how to expose them safely.
-- Understand remote access over SSH tunnels or tailnets.
-- Follow the onboarding wizard flow for a guided setup.
-- Wire external triggers via the webhook surface.
-- Set up Gmail Pub/Sub triggers.
-- Learn the macOS menu bar companion details.
-- Platform guides: Windows (WSL2), Linux, macOS, iOS, Android
-- Debug common failures with the troubleshooting guide.
-- Review security guidance before exposing anything.
+- [Start with the docs index for navigation and “what’s where.”](https://docs.autolab.ai)
+- [Read the architecture overview for the gateway + protocol model.](docs/concepts/architecture)
+- [Use the full configuration reference when you need every key and example.](docs/gateway/configuration)
+- [Run the Gateway by the book with the operational runbook.](docs/gateway)
+- [Learn how the Control UI/Web surfaces work and how to expose them safely.](docs/web)
+- [Understand remote access over SSH tunnels or tailnets.](docs/gateway/remote)
+- [Follow the onboarding wizard flow for a guided setup.](docs/start/wizard)
+- [Wire external triggers via the webhook surface.](docs/automation/webhook)
+- [Set up Gmail Pub/Sub triggers.](docs/automation/gmail-pubsub)
+- [Learn the macOS menu bar companion details.](docs/platforms/mac/menu-bar)
+- [Platform guides: Windows (WSL2)](docs/platforms/windows), [Linux](docs/platforms/linux), [macOS](docs/platforms/macos), [iOS](docs/platforms/ios), [Android](docs/platforms/android)
+- [Debug common failures with the troubleshooting guide.](docs/channels/troubleshooting)
+- [Review security guidance before exposing anything.](docs/gateway/security)
 
 ## Advanced docs (discovery + control)
 
-- Discovery + transports
-- Bonjour/mDNS
-- Gateway pairing
-- Remote gateway README
-- Control UI
-- Dashboard
+- [Discovery + transports](docs/gateway/discovery)
+- [Bonjour/mDNS](docs/gateway/bonjour)
+- [Gateway pairing](docs/gateway/pairing)
+- [Remote gateway README](docs/gateway/remote-gateway-readme)
+- [Control UI](docs/web/control-ui)
+- [Dashboard](docs/web/dashboard)
 
 ## Operations & troubleshooting
 
-- Health checks
-- Gateway lock
-- Background process
-- Browser troubleshooting (Linux)
-- Logging
+- [Health checks](docs/gateway/health)
+- [Gateway lock](docs/gateway/gateway-lock)
+- [Background process](docs/gateway/background-process)
+- [Browser troubleshooting (Linux)](docs/tools/browser-linux-troubleshooting)
+- [Logging](docs/logging)
 
 ## Deep dives
 
-- Agent loop
-- Presence
-- TypeBox schemas
-- RPC adapters
-- Queue
+- [Agent loop](docs/concepts/agent-loop)
+- [Presence](docs/concepts/presence)
+- [TypeBox schemas](docs/concepts/typebox)
+- [RPC adapters](docs/reference/rpc)
+- [Queue](docs/concepts/queue)
 
 ## Workspace & skills
 
-- Skills config
-- Default AGENTS
-- Templates: AGENTS
-- Templates: BOOTSTRAP
-- Templates: IDENTITY
-- Templates: SOUL
-- Templates: TOOLS
-- Templates: USER
+- [Skills config](docs/tools/skills-config)
+- [Default AGENTS](docs/reference/AGENTS.default)
+- [Templates: AGENTS](docs/reference/templates/AGENTS)
+- [Templates: BOOTSTRAP](docs/reference/templates/BOOTSTRAP)
+- [Templates: IDENTITY](docs/reference/templates/IDENTITY)
+- [Templates: SOUL](docs/reference/templates/SOUL)
+- [Templates: TOOLS](docs/reference/templates/TOOLS)
+- [Templates: USER](docs/reference/templates/USER)
 
 ## Platform internals
 
-- macOS dev setup
-- macOS menu bar
-- macOS voice wake
-- iOS node
-- Android node
-- Windows (WSL2)
-- Linux app
+- [macOS dev setup](docs/platforms/mac/dev-setup)
+- [macOS menu bar](docs/platforms/mac/menu-bar)
+- [macOS voice wake](docs/platforms/mac/voicewake)
+- [iOS node](docs/platforms/ios)
+- [Android node](docs/platforms/android)
+- [Windows (WSL2)](docs/platforms/windows)
+- [Linux app](docs/platforms/linux)
 
 ## Email hooks (Gmail)
-
-
-
-## Molty
-
-AutoLab was built for **Molty**, a space lobster AI assistant. 🦞
-by Peter Steinberger and the community.
-
-- autolab.ai
-- [soul.md]()
