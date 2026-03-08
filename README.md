@@ -2,8 +2,8 @@
 
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danv-intel/autolab/main/docs/assets/autolab-logo-text-dark.png">
-        <img src="https://raw.githubusercontent.com/danv-intel/autolab/main/docs/assets/autolab-logo-text.png" alt="AutoLab" width="500">
+        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-logo-text-dark.png">
+        <img src="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-logo-text.png" alt="AutoLab" width="500">
     </picture>
 </p>
 
@@ -12,8 +12,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/danv-intel/autolab/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/danv-intel/autolab/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/danv-intel/autolab/releases"><img src="https://img.shields.io/github/v/release/danv-intel/autolab?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
+  <a href="https://github.com/dvallier-ai/autolab-public/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/dvallier-ai/autolab-public/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
+  <a href="https://github.com/dvallier-ai/autolab-public/releases"><img src="https://img.shields.io/github/v/release/dvallier-ai/autolab-public?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
   <a href="https://discord.gg/clawd"><img src="https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge" alt="Discord"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
@@ -23,7 +23,7 @@ It answers you on the channels you already use (WhatsApp, Telegram, Slack, Disco
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-[Website](https://autolab.ai) · [Docs](https://docs.autolab.ai) · [DeepWiki](https://deepwiki.com/danv-intel/autolab) · [Getting Started](https://docs.autolab.ai/start/getting-started) · [Updating](https://docs.autolab.ai/install/updating) · [Showcase](https://docs.autolab.ai/start/showcase) · [FAQ](https://docs.autolab.ai/start/faq) · [Wizard](https://docs.autolab.ai/start/wizard) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](https://docs.autolab.ai/install/docker) · [Discord](https://discord.gg/clawd)
+[Website](https://autolab.ai) · [Docs](https://docs.autolab.ai) · [DeepWiki](https://deepwiki.com/dvallier-ai/autolab-public) · [Getting Started](https://docs.autolab.ai/start/getting-started) · [Updating](https://docs.autolab.ai/install/updating) · [Showcase](https://docs.autolab.ai/start/showcase) · [FAQ](https://docs.autolab.ai/start/faq) · [Wizard](https://docs.autolab.ai/start/wizard) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](https://docs.autolab.ai/install/docker) · [Discord](https://discord.gg/clawd)
 
 Preferred setup: run the onboarding wizard (`autolab onboard`) in your terminal.
 The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.
@@ -89,7 +89,7 @@ Details: [Development channels](https://docs.autolab.ai/install/development-chan
 Prefer `pnpm` for builds from source. Bun is optional for running TypeScript directly.
 
 ```bash
-git clone https://github.com/danv-intel/autolab.git
+git clone https://github.com/dvallier-ai/autolab-public.git
 cd autolab
 
 pnpm install
@@ -308,7 +308,7 @@ Runbook: [iOS connect](https://docs.autolab.ai/platforms/ios).
 
 ## Configuration
 
-Minimal `~/.danv-intel/autolab.json` (model + defaults):
+Minimal `~/.dvallier-ai/autolab-public.json` (model + defaults):
 
 ```json5
 {
