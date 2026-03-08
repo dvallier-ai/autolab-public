@@ -66,5 +66,5 @@ If you only want to reset sessions, delete `agents/<agentId>/sessions/` and `age
 
 ## References
 
-- [https://docs.autolab.ai/testing](https://docs.autolab.ai/testing)
-- [https://docs.autolab.ai/start/getting-started](https://docs.autolab.ai/start/getting-started)
+- [https://dvallier-ai.github.io/autolab-public/testing](https://dvallier-ai.github.io/autolab-public/testing)
+- [https://dvallier-ai.github.io/autolab-public/start/getting-started](https://dvallier-ai.github.io/autolab-public/start/getting-started)

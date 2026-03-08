@@ -63,7 +63,7 @@ autolab browser --browser-profile work tabs
 
 ```bash
 autolab browser tabs
-autolab browser open https://docs.autolab.ai
+autolab browser open https://dvallier-ai.github.io/autolab-public
 autolab browser focus <targetId>
 autolab browser close <targetId>
 ```

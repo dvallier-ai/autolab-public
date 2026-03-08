@@ -119,7 +119,7 @@ sudo sysctl -p
 ### 选项 A：标准安装（推荐）
 
 ```bash
-curl -fsSL https://autolab.ai/install.sh | bash
+curl -fsSL https://dvallier-ai.github.io/autolab-public/install.sh | bash
 ```
 
 ### 选项 B：可修改安装（用于调试）

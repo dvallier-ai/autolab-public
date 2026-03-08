@@ -838,7 +838,7 @@ flowchart TB
 
 Found a vulnerability in AutoLab? Please report responsibly:
 
-1. Email: [security@autolab.ai](mailto:security@autolab.ai)
+1. Email: [security@dvallier-ai.github.io/autolab-public](mailto:security@dvallier-ai.github.io/autolab-public)
 2. Don't post publicly until fixed
 3. We'll credit you (unless you prefer anonymity)
 

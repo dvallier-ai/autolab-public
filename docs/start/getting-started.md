@@ -32,7 +32,7 @@ Check your Node version with `node --version` if you are unsure.
     <Tabs>
       <Tab title="macOS/Linux">
         ```bash
-        curl -fsSL https://autolab.ai/install.sh | bash
+        curl -fsSL https://dvallier-ai.github.io/autolab-public/install.sh | bash
         ```
         <img
   src="/assets/install-script.svg"
@@ -42,7 +42,7 @@ Check your Node version with `node --version` if you are unsure.
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        iwr -useb https://autolab.ai/install.ps1 | iex
+        iwr -useb https://dvallier-ai.github.io/autolab-public/install.ps1 | iex
         ```
       </Tab>
     </Tabs>

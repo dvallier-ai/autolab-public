@@ -37,7 +37,7 @@ x-i18n:
 Shelley，[exe.dev](https://exe.dev) 的智能体，可以使用我们的提示立即安装 AutoLab。使用的提示如下：
 
 ```
-Set up AutoLab (https://docs.autolab.ai/install) on this VM. Use the non-interactive and accept-risk flags for autolab onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "autolab devices list" and "autolab device approve <request id>". Make sure the dashboard shows that AutoLab's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
+Set up AutoLab (https://dvallier-ai.github.io/autolab-public/install) on this VM. Use the non-interactive and accept-risk flags for autolab onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "autolab devices list" and "autolab device approve <request id>". Make sure the dashboard shows that AutoLab's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
 ```
 
 ## 手动安装
@@ -70,7 +70,7 @@ sudo apt-get install -y git curl jq ca-certificates openssl
 运行 AutoLab 安装脚本：
 
 ```bash
-curl -fsSL https://autolab.ai/install.sh | bash
+curl -fsSL https://dvallier-ai.github.io/autolab-public/install.sh | bash
 ```
 
 ## 4) 设置 nginx 将 AutoLab 代理到端口 8000

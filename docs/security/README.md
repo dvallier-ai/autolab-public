@@ -1,6 +1,6 @@
 # AutoLab Security & Trust
 
-**Live:** [trust.autolab.ai](https://trust.autolab.ai)
+**Live:** [trust.dvallier-ai.github.io/autolab-public](https://trust.dvallier-ai.github.io/autolab-public)
 
 ## Documents
 
@@ -9,7 +9,7 @@
 
 ## Reporting Vulnerabilities
 
-See the [Trust page](https://trust.autolab.ai) for full reporting instructions covering all repos.
+See the [Trust page](https://trust.dvallier-ai.github.io/autolab-public) for full reporting instructions covering all repos.
 
 ## Contact
 

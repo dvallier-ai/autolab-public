@@ -106,7 +106,7 @@ tailscale status
 ## 5) 安装 AutoLab
 
 ```bash
-curl -fsSL https://autolab.ai/install.sh | bash
+curl -fsSL https://dvallier-ai.github.io/autolab-public/install.sh | bash
 source ~/.bashrc
 ```
 

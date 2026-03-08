@@ -116,7 +116,7 @@ If you used a profile, delete the matching task name and `~\.autolab-<profile>\g
 
 ### Normal install (install.sh / npm / pnpm / bun)
 
-If you used `https://autolab.ai/install.sh` or `install.ps1`, the CLI was installed with `npm install -g autolab@latest`.
+If you used `https://dvallier-ai.github.io/autolab-public/install.sh` or `install.ps1`, the CLI was installed with `npm install -g autolab@latest`.
 Remove it with `npm rm -g autolab` (or `pnpm remove -g` / `bun remove -g` if you installed that way).
 
 ### Source checkout (git clone)

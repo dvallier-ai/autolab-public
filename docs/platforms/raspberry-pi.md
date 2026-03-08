@@ -112,7 +112,7 @@ sudo sysctl -p
 ### Option A: Standard Install (Recommended)
 
 ```bash
-curl -fsSL https://autolab.ai/install.sh | bash
+curl -fsSL https://dvallier-ai.github.io/autolab-public/install.sh | bash
 ```
 
 ### Option B: Hackable Install (For tinkering)

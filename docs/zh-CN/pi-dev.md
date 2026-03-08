@@ -73,5 +73,5 @@ scripts/pi/run-tests.sh --live
 
 ## 参考资料
 
-- https://docs.autolab.ai/testing
-- https://docs.autolab.ai/start/getting-started
+- https://dvallier-ai.github.io/autolab-public/testing
+- https://dvallier-ai.github.io/autolab-public/start/getting-started

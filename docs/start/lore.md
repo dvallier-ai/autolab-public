@@ -119,7 +119,7 @@ In just 3 hours:
 - GitHub renamed: `github.com/danv-intel/autolab` ✅
 - X handle `@autolab` secured with GOLD CHECKMARK 💰
 - npm packages released under new name
-- Docs migrated to `docs.autolab.ai`
+- Docs migrated to `dvallier-ai.github.io/autolab-public`
 - 200K+ views on announcement in 90 minutes
 
 **The Heroes:**

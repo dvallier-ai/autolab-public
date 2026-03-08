@@ -133,7 +133,7 @@ Hook 包可以附带依赖；它们将安装在 `~/.autolab/hooks/<id>` 下。
 ---
 name: my-hook
 description: "Short description of what this hook does"
-homepage: https://docs.autolab.ai/automation/hooks#my-hook
+homepage: https://dvallier-ai.github.io/autolab-public/automation/hooks#my-hook
 metadata:
   { "autolab": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---

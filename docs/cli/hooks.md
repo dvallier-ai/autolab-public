@@ -90,7 +90,7 @@ Details:
   Source: autolab-bundled
   Path: /path/to/autolab/hooks/bundled/session-memory/HOOK.md
   Handler: /path/to/autolab/hooks/bundled/session-memory/handler.ts
-  Homepage: https://docs.autolab.ai/automation/hooks#session-memory
+  Homepage: https://dvallier-ai.github.io/autolab-public/automation/hooks#session-memory
   Events: command:new
 
 Requirements:
