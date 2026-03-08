@@ -141,8 +141,8 @@ Run `autolab doctor` to surface risky/misconfigured DM policies.
 ### Apps + nodes
 
 - [macOS app](docs/platforms/macos): menu bar control plane, [Voice Wake](docs/nodes/voicewake)/PTT, [Talk Mode](docs/nodes/talk) overlay, [WebChat](docs/web/webchat), debug tools, [remote gateway](docs/gateway/remote) control.
-- [iOS node](docs/platforms/ios): [Canvas](docs/platforms/mac/canvas), [Voice Wake](docs/nodes/voicewake), [Talk Mode](docs/nodes/talk), camera, screen recording, Bonjour pairing.
-- [Android node](docs/platforms/android): [Canvas](docs/platforms/mac/canvas), [Talk Mode](docs/nodes/talk), camera, screen recording, optional SMS.
+- [iOS node](docs/platforms/ios.md): [Canvas](docs/platforms/mac/canvas), [Voice Wake](docs/nodes/voicewake), [Talk Mode](docs/nodes/talk), camera, screen recording, Bonjour pairing.
+- [Android node](docs/platforms/android.md): [Canvas](docs/platforms/mac/canvas), [Talk Mode](docs/nodes/talk), camera, screen recording, optional SMS.
 - [macOS node mode](docs/nodes): system.run/notify + canvas/camera exposure.
 
 ### Tools + automation
@@ -286,13 +286,13 @@ Note: signed builds required for macOS permissions to stick across rebuilds (see
 - Voice trigger forwarding + Canvas surface.
 - Controlled via `autolab nodes …`.
 
-Runbook: [iOS connect](docs/platforms/ios).
+Runbook: [iOS connect](docs/platforms/ios.md).
 
 ### Android node (optional)
 
 - Pairs via the same Bridge + pairing flow as iOS.
 - Exposes Canvas, Camera, and Screen capture commands.
-- Runbook: [Android connect](docs/platforms/android).
+- Runbook: [Android connect](docs/platforms/android.md).
 
 ## Agent workspace + skills
 
@@ -410,8 +410,8 @@ Use these when you’re past the onboarding flow and want the deeper reference.
 - [Follow the onboarding wizard flow for a guided setup.](docs/start/wizard)
 - [Wire external triggers via the webhook surface.](docs/automation/webhook)
 - [Set up Gmail Pub/Sub triggers.](docs/automation/gmail-pubsub)
-- [Learn the macOS menu bar companion details.](docs/platforms/mac/menu-bar)
-- [Platform guides: Windows (WSL2)](docs/platforms/windows), [Linux](docs/platforms/linux), [macOS](docs/platforms/macos), [iOS](docs/platforms/ios), [Android](docs/platforms/android)
+- [Learn the macOS menu bar companion details.](docs/platforms/mac/menu-bar.md)
+- [Platform guides: Windows (WSL2)](docs/platforms/windows.md), [Linux](docs/platforms/linux.md), [macOS](docs/platforms/macos), [iOS](docs/platforms/ios.md), [Android](docs/platforms/android.md)
 - [Debug common failures with the troubleshooting guide.](docs/channels/troubleshooting)
 - [Review security guidance before exposing anything.](docs/gateway/security)
 
@@ -453,12 +453,10 @@ Use these when you’re past the onboarding flow and want the deeper reference.
 
 ## Platform internals
 
-- [macOS dev setup](docs/platforms/mac/dev-setup)
-- [macOS menu bar](docs/platforms/mac/menu-bar)
-- [macOS voice wake](docs/platforms/mac/voicewake)
-- [iOS node](docs/platforms/ios)
-- [Android node](docs/platforms/android)
-- [Windows (WSL2)](docs/platforms/windows)
-- [Linux app](docs/platforms/linux)
-
-## Email hooks (Gmail)
+- [macOS dev setup](docs/platforms/mac/dev-setup.md)
+- [macOS menu bar](docs/platforms/mac/menu-bar.md)
+- [macOS voice wake](docs/platforms/mac/voicewake.md)
+- [iOS node](docs/platforms/ios.md)
+- [Android node](docs/platforms/android.md)
+- [Windows (WSL2)](docs/platforms/windows.md)
+- [Linux app](docs/platforms/linux.md)
