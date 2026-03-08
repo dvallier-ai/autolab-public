@@ -14,24 +14,23 @@ It answers you on the channels you already use (WhatsApp, Telegram, Slack, Disco
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-[Website](https://autolab.ai) · [Docs](https://docs.autolab.ai) · [DeepWiki](https://deepwiki.com/dvallier-ai/autolab-public) · [Getting Started](https://docs.autolab.ai/start/getting-started) · [Updating](https://docs.autolab.ai/install/updating) · [Showcase](https://docs.autolab.ai/start/showcase) · [FAQ](https://docs.autolab.ai/start/faq) · [Wizard](https://docs.autolab.ai/start/wizard) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](https://docs.autolab.ai/install/docker) · [Discord](https://discord.gg/clawd)
 
 Preferred setup: run the onboarding wizard (`autolab onboard`) in your terminal.
 The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.
 Works with npm, pnpm, or bun.
-New install? Start here: [Getting started](https://docs.autolab.ai/start/getting-started)
+New install? Start here: [Getting started]()
 
 **Subscriptions (OAuth):**
 
 - **[Anthropic](https://www.anthropic.com/)** (Claude Pro/Max)
 - **[OpenAI](https://openai.com/)** (ChatGPT/Codex)
 
-Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See [Onboarding](https://docs.autolab.ai/start/onboarding).
+Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See [Onboarding]().
 
 ## Models (selection + auth)
 
-- Models config + CLI: [Models](https://docs.autolab.ai/concepts/models)
-- Auth profile rotation (OAuth vs API keys) + fallbacks: [Model failover](https://docs.autolab.ai/concepts/model-failover)
+- Models config + CLI: [Models]()
+- Auth profile rotation (OAuth vs API keys) + fallbacks: [Model failover]()
 
 ## Install (recommended)
 
@@ -50,7 +49,7 @@ The wizard installs the Gateway daemon (launchd/systemd user service) so it stay
 
 Runtime: **Node ≥22**.
 
-Full beginner guide (auth, pairing, channels): [Getting started](https://docs.autolab.ai/start/getting-started)
+Full beginner guide (auth, pairing, channels): [Getting started]()
 
 ```bash
 autolab onboard --install-daemon
@@ -64,7 +63,7 @@ autolab message send --to +1234567890 --message "Hello from AutoLab"
 autolab agent --message "Ship checklist" --thinking high
 ```
 
-Upgrading? [Updating guide](https://docs.autolab.ai/install/updating) (and run `autolab doctor`).
+Upgrading? [Updating guide]() (and run `autolab doctor`).
 
 ## Development channels
 
@@ -73,7 +72,7 @@ Upgrading? [Updating guide](https://docs.autolab.ai/install/updating) (and run `
 - **dev**: moving head of `main`, npm dist-tag `dev` (when published).
 
 Switch channels (git + npm): `autolab update --channel stable|beta|dev`.
-Details: [Development channels](https://docs.autolab.ai/install/development-channels).
+Details: [Development channels]().
 
 ## From source (development)
 
@@ -99,7 +98,7 @@ Note: `pnpm autolab ...` runs TypeScript directly (via `tsx`). `pnpm build` prod
 
 AutoLab connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
 
-Full security guide: [Security](https://docs.autolab.ai/gateway/security)
+Full security guide: [Security]()
 
 Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:
 
@@ -111,58 +110,58 @@ Run `autolab doctor` to surface risky/misconfigured DM policies.
 
 ## Highlights
 
-- **[Local-first Gateway](https://docs.autolab.ai/gateway)** — single control plane for sessions, channels, tools, and events.
-- **[Multi-channel inbox](https://docs.autolab.ai/channels)** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
-- **[Multi-agent routing](https://docs.autolab.ai/gateway/configuration)** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
-- **[Voice Wake](https://docs.autolab.ai/nodes/voicewake) + [Talk Mode](https://docs.autolab.ai/nodes/talk)** — always-on speech for macOS/iOS/Android with ElevenLabs.
-- **[Live Canvas](https://docs.autolab.ai/platforms/mac/canvas)** — agent-driven visual workspace with [A2UI](https://docs.autolab.ai/platforms/mac/canvas#canvas-a2ui).
-- **[First-class tools](https://docs.autolab.ai/tools)** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
-- **[Companion apps](https://docs.autolab.ai/platforms/macos)** — macOS menu bar app + iOS/Android [nodes](https://docs.autolab.ai/nodes).
-- **[Onboarding](https://docs.autolab.ai/start/wizard) + [skills](https://docs.autolab.ai/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.
+- **[Local-first Gateway]()** — single control plane for sessions, channels, tools, and events.
+- **[Multi-channel inbox]()** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
+- **[Multi-agent routing]()** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
+- **[Voice Wake]() + [Talk Mode]()** — always-on speech for macOS/iOS/Android with ElevenLabs.
+- **[Live Canvas]()** — agent-driven visual workspace with [A2UI]().
+- **[First-class tools]()** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
+- **[Companion apps]()** — macOS menu bar app + iOS/Android [nodes]().
+- **[Onboarding]() + [skills]()** — wizard-driven setup with bundled/managed/workspace skills.
 
 ## Everything we built so far
 
 ### Core platform
 
-- [Gateway WS control plane](https://docs.autolab.ai/gateway) with sessions, presence, config, cron, webhooks, [Control UI](https://docs.autolab.ai/web), and [Canvas host](https://docs.autolab.ai/platforms/mac/canvas#canvas-a2ui).
-- [CLI surface](https://docs.autolab.ai/tools/agent-send): gateway, agent, send, [wizard](https://docs.autolab.ai/start/wizard), and [doctor](https://docs.autolab.ai/gateway/doctor).
-- [Pi agent runtime](https://docs.autolab.ai/concepts/agent) in RPC mode with tool streaming and block streaming.
-- [Session model](https://docs.autolab.ai/concepts/session): `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: [Groups](https://docs.autolab.ai/concepts/groups).
-- [Media pipeline](https://docs.autolab.ai/nodes/images): images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: [Audio](https://docs.autolab.ai/nodes/audio).
+- [Gateway WS control plane]() with sessions, presence, config, cron, webhooks, [Control UI](), and [Canvas host]().
+- [CLI surface](): gateway, agent, send, [wizard](), and [doctor]().
+- [Pi agent runtime]() in RPC mode with tool streaming and block streaming.
+- [Session model](): `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: [Groups]().
+- [Media pipeline](): images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: [Audio]().
 
 ### Channels
 
-- [Channels](https://docs.autolab.ai/channels): [WhatsApp](https://docs.autolab.ai/channels/whatsapp) (Baileys), [Telegram](https://docs.autolab.ai/channels/telegram) (grammY), [Slack](https://docs.autolab.ai/channels/slack) (Bolt), [Discord](https://docs.autolab.ai/channels/discord) (discord.js), [Google Chat](https://docs.autolab.ai/channels/googlechat) (Chat API), [Signal](https://docs.autolab.ai/channels/signal) (signal-cli), [BlueBubbles](https://docs.autolab.ai/channels/bluebubbles) (iMessage, recommended), [iMessage](https://docs.autolab.ai/channels/imessage) (legacy imsg), [Microsoft Teams](https://docs.autolab.ai/channels/msteams) (extension), [Matrix](https://docs.autolab.ai/channels/matrix) (extension), [Zalo](https://docs.autolab.ai/channels/zalo) (extension), [Zalo Personal](https://docs.autolab.ai/channels/zalouser) (extension), [WebChat](https://docs.autolab.ai/web/webchat).
-- [Group routing](https://docs.autolab.ai/concepts/group-messages): mention gating, reply tags, per-channel chunking and routing. Channel rules: [Channels](https://docs.autolab.ai/channels).
+- [Channels](): [WhatsApp]() (Baileys), [Telegram]() (grammY), [Slack]() (Bolt), [Discord]() (discord.js), [Google Chat]() (Chat API), [Signal]() (signal-cli), [BlueBubbles]() (iMessage, recommended), [iMessage]() (legacy imsg), [Microsoft Teams]() (extension), [Matrix]() (extension), [Zalo]() (extension), [Zalo Personal]() (extension), [WebChat]().
+- [Group routing](): mention gating, reply tags, per-channel chunking and routing. Channel rules: [Channels]().
 
 ### Apps + nodes
 
-- [macOS app](https://docs.autolab.ai/platforms/macos): menu bar control plane, [Voice Wake](https://docs.autolab.ai/nodes/voicewake)/PTT, [Talk Mode](https://docs.autolab.ai/nodes/talk) overlay, [WebChat](https://docs.autolab.ai/web/webchat), debug tools, [remote gateway](https://docs.autolab.ai/gateway/remote) control.
-- [iOS node](https://docs.autolab.ai/platforms/ios): [Canvas](https://docs.autolab.ai/platforms/mac/canvas), [Voice Wake](https://docs.autolab.ai/nodes/voicewake), [Talk Mode](https://docs.autolab.ai/nodes/talk), camera, screen recording, Bonjour pairing.
-- [Android node](https://docs.autolab.ai/platforms/android): [Canvas](https://docs.autolab.ai/platforms/mac/canvas), [Talk Mode](https://docs.autolab.ai/nodes/talk), camera, screen recording, optional SMS.
-- [macOS node mode](https://docs.autolab.ai/nodes): system.run/notify + canvas/camera exposure.
+- [macOS app](): menu bar control plane, [Voice Wake]()/PTT, [Talk Mode]() overlay, [WebChat](), debug tools, [remote gateway]() control.
+- [iOS node](): [Canvas](), [Voice Wake](), [Talk Mode](), camera, screen recording, Bonjour pairing.
+- [Android node](): [Canvas](), [Talk Mode](), camera, screen recording, optional SMS.
+- [macOS node mode](): system.run/notify + canvas/camera exposure.
 
 ### Tools + automation
 
-- [Browser control](https://docs.autolab.ai/tools/browser): dedicated autolab Chrome/Chromium, snapshots, actions, uploads, profiles.
-- [Canvas](https://docs.autolab.ai/platforms/mac/canvas): [A2UI](https://docs.autolab.ai/platforms/mac/canvas#canvas-a2ui) push/reset, eval, snapshot.
-- [Nodes](https://docs.autolab.ai/nodes): camera snap/clip, screen record, [location.get](https://docs.autolab.ai/nodes/location-command), notifications.
-- [Cron + wakeups](https://docs.autolab.ai/automation/cron-jobs); [webhooks](https://docs.autolab.ai/automation/webhook); [Gmail Pub/Sub](https://docs.autolab.ai/automation/gmail-pubsub).
-- [Skills platform](https://docs.autolab.ai/tools/skills): bundled, managed, and workspace skills with install gating + UI.
+- [Browser control](): dedicated autolab Chrome/Chromium, snapshots, actions, uploads, profiles.
+- [Canvas](): [A2UI]() push/reset, eval, snapshot.
+- [Nodes](): camera snap/clip, screen record, [location.get](), notifications.
+- [Cron + wakeups](); [webhooks](); [Gmail Pub/Sub]().
+- [Skills platform](): bundled, managed, and workspace skills with install gating + UI.
 
 ### Runtime + safety
 
-- [Channel routing](https://docs.autolab.ai/concepts/channel-routing), [retry policy](https://docs.autolab.ai/concepts/retry), and [streaming/chunking](https://docs.autolab.ai/concepts/streaming).
-- [Presence](https://docs.autolab.ai/concepts/presence), [typing indicators](https://docs.autolab.ai/concepts/typing-indicators), and [usage tracking](https://docs.autolab.ai/concepts/usage-tracking).
-- [Models](https://docs.autolab.ai/concepts/models), [model failover](https://docs.autolab.ai/concepts/model-failover), and [session pruning](https://docs.autolab.ai/concepts/session-pruning).
-- [Security](https://docs.autolab.ai/gateway/security) and [troubleshooting](https://docs.autolab.ai/channels/troubleshooting).
+- [Channel routing](), [retry policy](), and [streaming/chunking]().
+- [Presence](), [typing indicators](), and [usage tracking]().
+- [Models](), [model failover](), and [session pruning]().
+- [Security]() and [troubleshooting]().
 
 ### Ops + packaging
 
-- [Control UI](https://docs.autolab.ai/web) + [WebChat](https://docs.autolab.ai/web/webchat) served directly from the Gateway.
-- [Tailscale Serve/Funnel](https://docs.autolab.ai/gateway/tailscale) or [SSH tunnels](https://docs.autolab.ai/gateway/remote) with token/password auth.
-- [Nix mode](https://docs.autolab.ai/install/nix) for declarative config; [Docker](https://docs.autolab.ai/install/docker)-based installs.
-- [Doctor](https://docs.autolab.ai/gateway/doctor) migrations, [logging](https://docs.autolab.ai/logging).
+- [Control UI]() + [WebChat]() served directly from the Gateway.
+- [Tailscale Serve/Funnel]() or [SSH tunnels]() with token/password auth.
+- [Nix mode]() for declarative config; [Docker]()-based installs.
+- [Doctor]() migrations, [logging]().
 
 ## How it works (short)
 
@@ -185,12 +184,12 @@ WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBu
 
 ## Key subsystems
 
-- **[Gateway WebSocket network](https://docs.autolab.ai/concepts/architecture)** — single WS control plane for clients, tools, and events (plus ops: [Gateway runbook](https://docs.autolab.ai/gateway)).
-- **[Tailscale exposure](https://docs.autolab.ai/gateway/tailscale)** — Serve/Funnel for the Gateway dashboard + WS (remote access: [Remote](https://docs.autolab.ai/gateway/remote)).
-- **[Browser control](https://docs.autolab.ai/tools/browser)** — autolab‑managed Chrome/Chromium with CDP control.
-- **[Canvas + A2UI](https://docs.autolab.ai/platforms/mac/canvas)** — agent‑driven visual workspace (A2UI host: [Canvas/A2UI](https://docs.autolab.ai/platforms/mac/canvas#canvas-a2ui)).
-- **[Voice Wake](https://docs.autolab.ai/nodes/voicewake) + [Talk Mode](https://docs.autolab.ai/nodes/talk)** — always‑on speech and continuous conversation.
-- **[Nodes](https://docs.autolab.ai/nodes)** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.
+- **[Gateway WebSocket network]()** — single WS control plane for clients, tools, and events (plus ops: [Gateway runbook]()).
+- **[Tailscale exposure]()** — Serve/Funnel for the Gateway dashboard + WS (remote access: [Remote]()).
+- **[Browser control]()** — autolab‑managed Chrome/Chromium with CDP control.
+- **[Canvas + A2UI]()** — agent‑driven visual workspace (A2UI host: [Canvas/A2UI]()).
+- **[Voice Wake]() + [Talk Mode]()** — always‑on speech and continuous conversation.
+- **[Nodes]()** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.
 
 ## Tailscale access (Gateway dashboard)
 
@@ -207,7 +206,7 @@ Notes:
 - Funnel refuses to start unless `gateway.auth.mode: "password"` is set.
 - Optional: `gateway.tailscale.resetOnExit` to undo Serve/Funnel on shutdown.
 
-Details: [Tailscale guide](https://docs.autolab.ai/gateway/tailscale) · [Web surfaces](https://docs.autolab.ai/web)
+Details: [Tailscale guide]() · [Web surfaces]()
 
 ## Remote Gateway (Linux is great)
 
@@ -217,7 +216,7 @@ It’s perfectly fine to run the Gateway on a small Linux instance. Clients (mac
 - **Device nodes** run device‑local actions (`system.run`, camera, screen recording, notifications) via `node.invoke`.
   In short: exec runs where the Gateway lives; device actions run where the device lives.
 
-Details: [Remote access](https://docs.autolab.ai/gateway/remote) · [Nodes](https://docs.autolab.ai/nodes) · [Security](https://docs.autolab.ai/gateway/security)
+Details: [Remote access]() · [Nodes]() · [Security]()
 
 ## macOS permissions via the Gateway protocol
 
@@ -232,7 +231,7 @@ Elevated bash (host permissions) is separate from macOS TCC:
 - Use `/elevated on|off` to toggle per‑session elevated access when enabled + allowlisted.
 - Gateway persists the per‑session toggle via `sessions.patch` (WS method) alongside `thinkingLevel`, `verboseLevel`, `model`, `sendPolicy`, and `groupActivation`.
 
-Details: [Nodes](https://docs.autolab.ai/nodes) · [macOS app](https://docs.autolab.ai/platforms/macos) · [Gateway protocol](https://docs.autolab.ai/concepts/architecture)
+Details: [Nodes]() · [macOS app]() · [Gateway protocol]()
 
 ## Agent to Agent (sessions\_\* tools)
 
@@ -241,7 +240,7 @@ Details: [Nodes](https://docs.autolab.ai/nodes) · [macOS app](https://docs.auto
 - `sessions_history` — fetch transcript logs for a session.
 - `sessions_send` — message another session; optional reply‑back ping‑pong + announce step (`REPLY_SKIP`, `ANNOUNCE_SKIP`).
 
-Details: [Session tools](https://docs.autolab.ai/concepts/session-tool)
+Details: [Session tools]()
 
 ## Skills registry (ClawHub)
 
@@ -283,13 +282,13 @@ Note: signed builds required for macOS permissions to stick across rebuilds (see
 - Voice trigger forwarding + Canvas surface.
 - Controlled via `autolab nodes …`.
 
-Runbook: [iOS connect](https://docs.autolab.ai/platforms/ios).
+Runbook: [iOS connect]().
 
 ### Android node (optional)
 
 - Pairs via the same Bridge + pairing flow as iOS.
 - Exposes Canvas, Camera, and Screen capture commands.
-- Runbook: [Android connect](https://docs.autolab.ai/platforms/android).
+- Runbook: [Android connect]().
 
 ## Agent workspace + skills
 
@@ -309,7 +308,7 @@ Minimal `~/.dvallier-ai/autolab-public.json` (model + defaults):
 }
 ```
 
-[Full configuration reference (all keys + examples).](https://docs.autolab.ai/gateway/configuration)
+[Full configuration reference (all keys + examples).]()
 
 ## Security model (important)
 
@@ -317,15 +316,15 @@ Minimal `~/.dvallier-ai/autolab-public.json` (model + defaults):
 - **Group/channel safety:** set `agents.defaults.sandbox.mode: "non-main"` to run **non‑main sessions** (groups/channels) inside per‑session Docker sandboxes; bash then runs in Docker for those sessions.
 - **Sandbox defaults:** allowlist `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; denylist `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.
 
-Details: [Security guide](https://docs.autolab.ai/gateway/security) · [Docker + sandboxing](https://docs.autolab.ai/install/docker) · [Sandbox config](https://docs.autolab.ai/gateway/configuration)
+Details: [Security guide]() · [Docker + sandboxing]() · [Sandbox config]()
 
-### [WhatsApp](https://docs.autolab.ai/channels/whatsapp)
+### [WhatsApp]()
 
 - Link the device: `pnpm autolab channels login` (stores creds in `~/.autolab/credentials`).
 - Allowlist who can talk to the assistant via `channels.whatsapp.allowFrom`.
 - If `channels.whatsapp.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
 
-### [Telegram](https://docs.autolab.ai/channels/telegram)
+### [Telegram]()
 
 - Set `TELEGRAM_BOT_TOKEN` or `channels.telegram.botToken` (env wins).
 - Optional: set `channels.telegram.groups` (with `channels.telegram.groups."*".requireMention`); when set, it is a group allowlist (include `"*"` to allow all). Also `channels.telegram.allowFrom` or `channels.telegram.webhookUrl` + `channels.telegram.webhookSecret` as needed.
@@ -340,11 +339,11 @@ Details: [Security guide](https://docs.autolab.ai/gateway/security) · [Docker +
 }
 ```
 
-### [Slack](https://docs.autolab.ai/channels/slack)
+### [Slack]()
 
 - Set `SLACK_BOT_TOKEN` + `SLACK_APP_TOKEN` (or `channels.slack.botToken` + `channels.slack.appToken`).
 
-### [Discord](https://docs.autolab.ai/channels/discord)
+### [Discord]()
 
 - Set `DISCORD_BOT_TOKEN` or `channels.discord.token` (env wins).
 - Optional: set `commands.native`, `commands.text`, or `commands.useAccessGroups`, plus `channels.discord.allowFrom`, `channels.discord.guilds`, or `channels.discord.mediaMaxMb` as needed.
@@ -359,27 +358,27 @@ Details: [Security guide](https://docs.autolab.ai/gateway/security) · [Docker +
 }
 ```
 
-### [Signal](https://docs.autolab.ai/channels/signal)
+### [Signal]()
 
 - Requires `signal-cli` and a `channels.signal` config section.
 
-### [BlueBubbles (iMessage)](https://docs.autolab.ai/channels/bluebubbles)
+### [BlueBubbles (iMessage)]()
 
 - **Recommended** iMessage integration.
 - Configure `channels.bluebubbles.serverUrl` + `channels.bluebubbles.password` and a webhook (`channels.bluebubbles.webhookPath`).
 - The BlueBubbles server runs on macOS; the Gateway can run on macOS or elsewhere.
 
-### [iMessage (legacy)](https://docs.autolab.ai/channels/imessage)
+### [iMessage (legacy)]()
 
 - Legacy macOS-only integration via `imsg` (Messages must be signed in).
 - If `channels.imessage.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
 
-### [Microsoft Teams](https://docs.autolab.ai/channels/msteams)
+### [Microsoft Teams]()
 
 - Configure a Teams app + Bot Framework, then add a `msteams` config section.
 - Allowlist who can talk via `msteams.allowFrom`; group access via `msteams.groupAllowFrom` or `msteams.groupPolicy: "open"`.
 
-### [WebChat](https://docs.autolab.ai/web/webchat)
+### [WebChat]()
 
 - Uses the Gateway WebSocket; no separate WebChat port/config.
 
@@ -398,76 +397,76 @@ Browser control (optional):
 
 Use these when you’re past the onboarding flow and want the deeper reference.
 
-- [Start with the docs index for navigation and “what’s where.”](https://docs.autolab.ai)
-- [Read the architecture overview for the gateway + protocol model.](https://docs.autolab.ai/concepts/architecture)
-- [Use the full configuration reference when you need every key and example.](https://docs.autolab.ai/gateway/configuration)
-- [Run the Gateway by the book with the operational runbook.](https://docs.autolab.ai/gateway)
-- [Learn how the Control UI/Web surfaces work and how to expose them safely.](https://docs.autolab.ai/web)
-- [Understand remote access over SSH tunnels or tailnets.](https://docs.autolab.ai/gateway/remote)
-- [Follow the onboarding wizard flow for a guided setup.](https://docs.autolab.ai/start/wizard)
-- [Wire external triggers via the webhook surface.](https://docs.autolab.ai/automation/webhook)
-- [Set up Gmail Pub/Sub triggers.](https://docs.autolab.ai/automation/gmail-pubsub)
-- [Learn the macOS menu bar companion details.](https://docs.autolab.ai/platforms/mac/menu-bar)
-- [Platform guides: Windows (WSL2)](https://docs.autolab.ai/platforms/windows), [Linux](https://docs.autolab.ai/platforms/linux), [macOS](https://docs.autolab.ai/platforms/macos), [iOS](https://docs.autolab.ai/platforms/ios), [Android](https://docs.autolab.ai/platforms/android)
-- [Debug common failures with the troubleshooting guide.](https://docs.autolab.ai/channels/troubleshooting)
-- [Review security guidance before exposing anything.](https://docs.autolab.ai/gateway/security)
+- [Start with the docs index for navigation and “what’s where.”]()
+- [Read the architecture overview for the gateway + protocol model.]()
+- [Use the full configuration reference when you need every key and example.]()
+- [Run the Gateway by the book with the operational runbook.]()
+- [Learn how the Control UI/Web surfaces work and how to expose them safely.]()
+- [Understand remote access over SSH tunnels or tailnets.]()
+- [Follow the onboarding wizard flow for a guided setup.]()
+- [Wire external triggers via the webhook surface.]()
+- [Set up Gmail Pub/Sub triggers.]()
+- [Learn the macOS menu bar companion details.]()
+- [Platform guides: Windows (WSL2)](), [Linux](), [macOS](), [iOS](), [Android]()
+- [Debug common failures with the troubleshooting guide.]()
+- [Review security guidance before exposing anything.]()
 
 ## Advanced docs (discovery + control)
 
-- [Discovery + transports](https://docs.autolab.ai/gateway/discovery)
-- [Bonjour/mDNS](https://docs.autolab.ai/gateway/bonjour)
-- [Gateway pairing](https://docs.autolab.ai/gateway/pairing)
-- [Remote gateway README](https://docs.autolab.ai/gateway/remote-gateway-readme)
-- [Control UI](https://docs.autolab.ai/web/control-ui)
-- [Dashboard](https://docs.autolab.ai/web/dashboard)
+- [Discovery + transports]()
+- [Bonjour/mDNS]()
+- [Gateway pairing]()
+- [Remote gateway README]()
+- [Control UI]()
+- [Dashboard]()
 
 ## Operations & troubleshooting
 
-- [Health checks](https://docs.autolab.ai/gateway/health)
-- [Gateway lock](https://docs.autolab.ai/gateway/gateway-lock)
-- [Background process](https://docs.autolab.ai/gateway/background-process)
-- [Browser troubleshooting (Linux)](https://docs.autolab.ai/tools/browser-linux-troubleshooting)
-- [Logging](https://docs.autolab.ai/logging)
+- [Health checks]()
+- [Gateway lock]()
+- [Background process]()
+- [Browser troubleshooting (Linux)]()
+- [Logging]()
 
 ## Deep dives
 
-- [Agent loop](https://docs.autolab.ai/concepts/agent-loop)
-- [Presence](https://docs.autolab.ai/concepts/presence)
-- [TypeBox schemas](https://docs.autolab.ai/concepts/typebox)
-- [RPC adapters](https://docs.autolab.ai/reference/rpc)
-- [Queue](https://docs.autolab.ai/concepts/queue)
+- [Agent loop]()
+- [Presence]()
+- [TypeBox schemas]()
+- [RPC adapters]()
+- [Queue]()
 
 ## Workspace & skills
 
-- [Skills config](https://docs.autolab.ai/tools/skills-config)
-- [Default AGENTS](https://docs.autolab.ai/reference/AGENTS.default)
-- [Templates: AGENTS](https://docs.autolab.ai/reference/templates/AGENTS)
-- [Templates: BOOTSTRAP](https://docs.autolab.ai/reference/templates/BOOTSTRAP)
-- [Templates: IDENTITY](https://docs.autolab.ai/reference/templates/IDENTITY)
-- [Templates: SOUL](https://docs.autolab.ai/reference/templates/SOUL)
-- [Templates: TOOLS](https://docs.autolab.ai/reference/templates/TOOLS)
-- [Templates: USER](https://docs.autolab.ai/reference/templates/USER)
+- [Skills config]()
+- [Default AGENTS]()
+- [Templates: AGENTS]()
+- [Templates: BOOTSTRAP]()
+- [Templates: IDENTITY]()
+- [Templates: SOUL]()
+- [Templates: TOOLS]()
+- [Templates: USER]()
 
 ## Platform internals
 
-- [macOS dev setup](https://docs.autolab.ai/platforms/mac/dev-setup)
-- [macOS menu bar](https://docs.autolab.ai/platforms/mac/menu-bar)
-- [macOS voice wake](https://docs.autolab.ai/platforms/mac/voicewake)
-- [iOS node](https://docs.autolab.ai/platforms/ios)
-- [Android node](https://docs.autolab.ai/platforms/android)
-- [Windows (WSL2)](https://docs.autolab.ai/platforms/windows)
-- [Linux app](https://docs.autolab.ai/platforms/linux)
+- [macOS dev setup]()
+- [macOS menu bar]()
+- [macOS voice wake]()
+- [iOS node]()
+- [Android node]()
+- [Windows (WSL2)]()
+- [Linux app]()
 
 ## Email hooks (Gmail)
 
-- [docs.autolab.ai/gmail-pubsub](https://docs.autolab.ai/automation/gmail-pubsub)
+
 
 ## Molty
 
 AutoLab was built for **Molty**, a space lobster AI assistant. 🦞
 by Peter Steinberger and the community.
 
-- [autolab.ai](https://autolab.ai)
+- [autolab.ai]()
 - [soul.md](https://soul.md)
 - [steipete.me](https://steipete.me)
 - [@autolab](https://x.com/autolab)
