@@ -17,7 +17,7 @@ It answers you on the channels you already use (WhatsApp, Telegram, Slack, Disco
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-[Docs](docs/index.md) · [Getting Started](docs/start/getting-started) · [Updating](docs/install/updating) · [Showcase](docs/start/showcase) · [FAQ](docs/help/faq) · [Wizard](docs/start/wizard) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](docs/install/docker)
+[Docs](docs/index.md) · [Getting Started](docs/start/getting-started) · [Updating](docs/install/updating) · [Showcase](docs/start/showcase) · [FAQ](docs/help/faq) · [Wizard](docs/start/wizard.md) · [Nix](https://github.com/autolab/nix-autolab) · [Docker](docs/install/docker)
 
 Preferred setup: run the onboarding wizard (`autolab onboard`) in your terminal.
 The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.
@@ -102,7 +102,7 @@ Note: `pnpm autolab ...` runs TypeScript directly (via `tsx`). `pnpm build` prod
 
 AutoLab connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
 
-Full security guide: [Security](docs/gateway/security)
+Full security guide: [Security](docs/security/README.md)
 
 Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:
 
@@ -114,21 +114,21 @@ Run `autolab doctor` to surface risky/misconfigured DM policies.
 
 ## Highlights
 
-- **[Local-first Gateway](docs/gateway)** — single control plane for sessions, channels, tools, and events.
+- **[Local-first Gateway](docs/cli/gateway.md)** — single control plane for sessions, channels, tools, and events.
 - **[Multi-channel inbox](docs/channels)** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
-- **[Multi-agent routing](docs/gateway/configuration)** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
+- **[Multi-agent routing](docs/gateway/configuration.md)** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
 - **[Voice Wake](docs/nodes/voicewake) + [Talk Mode](docs/nodes/talk)** — always-on speech for macOS/iOS/Android with ElevenLabs.
 - **[Live Canvas](docs/platforms/mac/canvas)** — agent-driven visual workspace with [A2UI](docs/platforms/mac/canvas).
 - **[First-class tools](docs/tools)** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
-- **[Companion apps](docs/platforms/macos)** — macOS menu bar app + iOS/Android [nodes](docs/nodes).
-- **[Onboarding](docs/start/wizard) + [skills](docs/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.
+- **[Companion apps](docs/platforms/macos.md)** — macOS menu bar app + iOS/Android [nodes](docs/nodes).
+- **[Onboarding](docs/start/wizard.md) + [skills](docs/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.
 
 ## Everything we built so far
 
 ### Core platform
 
-- [Gateway WS control plane](docs/gateway) with sessions, presence, config, cron, webhooks, [Control UI](docs/web), and [Canvas host](docs/platforms/mac/canvas).
-- [CLI surface](docs/tools/agent-send): gateway, agent, send, [wizard](docs/start/wizard), and [doctor](docs/gateway/doctor).
+- [Gateway WS control plane](docs/cli/gateway.md) with sessions, presence, config, cron, webhooks, [Control UI](docs/web), and [Canvas host](docs/platforms/mac/canvas).
+- [CLI surface](docs/tools/agent-send): gateway, agent, send, [wizard](docs/start/wizard.md), and [doctor](docs/gateway/doctor).
 - [Pi agent runtime](docs/concepts/agent) in RPC mode with tool streaming and block streaming.
 - [Session model](docs/concepts/session): `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: [Groups](docs/channels/groups).
 - [Media pipeline](docs/nodes/images): images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: [Audio](docs/nodes/audio).
@@ -140,7 +140,7 @@ Run `autolab doctor` to surface risky/misconfigured DM policies.
 
 ### Apps + nodes
 
-- [macOS app](docs/platforms/macos): menu bar control plane, [Voice Wake](docs/nodes/voicewake)/PTT, [Talk Mode](docs/nodes/talk) overlay, [WebChat](docs/web/webchat), debug tools, [remote gateway](docs/gateway/remote) control.
+- [macOS app](docs/platforms/macos.md): menu bar control plane, [Voice Wake](docs/nodes/voicewake)/PTT, [Talk Mode](docs/nodes/talk) overlay, [WebChat](docs/web/webchat), debug tools, [remote gateway](docs/gateway/remote.md) control.
 - [iOS node](docs/platforms/ios.md): [Canvas](docs/platforms/mac/canvas), [Voice Wake](docs/nodes/voicewake), [Talk Mode](docs/nodes/talk), camera, screen recording, Bonjour pairing.
 - [Android node](docs/platforms/android.md): [Canvas](docs/platforms/mac/canvas), [Talk Mode](docs/nodes/talk), camera, screen recording, optional SMS.
 - [macOS node mode](docs/nodes): system.run/notify + canvas/camera exposure.
@@ -150,22 +150,22 @@ Run `autolab doctor` to surface risky/misconfigured DM policies.
 - [Browser control](docs/tools/browser): dedicated autolab Chrome/Chromium, snapshots, actions, uploads, profiles.
 - [Canvas](docs/platforms/mac/canvas): [A2UI](docs/platforms/mac/canvas) push/reset, eval, snapshot.
 - [Nodes](docs/nodes): camera snap/clip, screen record, [location.get](docs/nodes/location-command), notifications.
-- [Cron + wakeups](docs/automation/cron-jobs); [webhooks](docs/automation/webhook); [Gmail Pub/Sub](docs/automation/gmail-pubsub).
+- [Cron + wakeups](docs/automation/cron-jobs); [webhooks](docs/automation/webhook.md); [Gmail Pub/Sub](docs/automation/gmail-pubsub.md).
 - [Skills platform](docs/tools/skills): bundled, managed, and workspace skills with install gating + UI.
 
 ### Runtime + safety
 
 - [Channel routing](docs/channels/channel-routing), [retry policy](docs/concepts/retry), and [streaming/chunking](docs/concepts/streaming).
-- [Presence](docs/concepts/presence), [typing indicators](docs/concepts/typing-indicators), and [usage tracking](docs/concepts/usage-tracking).
+- [Presence](docs/concepts/presence.md), [typing indicators](docs/concepts/typing-indicators), and [usage tracking](docs/concepts/usage-tracking).
 - [Models](docs/concepts/models), [model failover](docs/concepts/model-failover), and [session pruning](docs/concepts/session-pruning).
-- [Security](docs/gateway/security) and [troubleshooting](docs/channels/troubleshooting).
+- [Security](docs/security/README.md) and [troubleshooting](docs/channels/troubleshooting.md).
 
 ### Ops + packaging
 
 - [Control UI](docs/web) + [WebChat](docs/web/webchat) served directly from the Gateway.
-- [Tailscale Serve/Funnel](docs/gateway/tailscale) or [SSH tunnels](docs/gateway/remote) with token/password auth.
+- [Tailscale Serve/Funnel](docs/gateway/tailscale) or [SSH tunnels](docs/gateway/remote.md) with token/password auth.
 - [Nix mode](docs/install/nix) for declarative config; [Docker](docs/install/docker)-based installs.
-- [Doctor](docs/gateway/doctor) migrations, [logging](docs/logging).
+- [Doctor](docs/gateway/doctor) migrations, [logging](docs/logging.md).
 
 ## How it works (short)
 
@@ -188,8 +188,8 @@ WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBu
 
 ## Key subsystems
 
-- **[Gateway WebSocket network](docs/concepts/architecture)** — single WS control plane for clients, tools, and events (plus ops: [Gateway runbook](docs/gateway)).
-- **[Tailscale exposure](docs/gateway/tailscale)** — Serve/Funnel for the Gateway dashboard + WS (remote access: [Remote](docs/gateway/remote)).
+- **[Gateway WebSocket network](docs/concepts/architecture.md)** — single WS control plane for clients, tools, and events (plus ops: [Gateway runbook](docs/cli/gateway.md)).
+- **[Tailscale exposure](docs/gateway/tailscale)** — Serve/Funnel for the Gateway dashboard + WS (remote access: [Remote](docs/gateway/remote.md)).
 - **[Browser control](docs/tools/browser)** — autolab‑managed Chrome/Chromium with CDP control.
 - **[Canvas + A2UI](docs/platforms/mac/canvas)** — agent‑driven visual workspace (A2UI host: [Canvas/A2UI](docs/platforms/mac/canvas)).
 - **[Voice Wake](docs/nodes/voicewake) + [Talk Mode](docs/nodes/talk)** — always‑on speech and continuous conversation.
@@ -220,7 +220,7 @@ It’s perfectly fine to run the Gateway on a small Linux instance. Clients (mac
 - **Device nodes** run device‑local actions (`system.run`, camera, screen recording, notifications) via `node.invoke`.
   In short: exec runs where the Gateway lives; device actions run where the device lives.
 
-Details: [Remote access](docs/gateway/remote) · [Nodes](docs/nodes) · [Security](docs/gateway/security)
+Details: [Remote access](docs/gateway/remote.md) · [Nodes](docs/nodes) · [Security](docs/security/README.md)
 
 ## macOS permissions via the Gateway protocol
 
@@ -235,7 +235,7 @@ Elevated bash (host permissions) is separate from macOS TCC:
 - Use `/elevated on|off` to toggle per‑session elevated access when enabled + allowlisted.
 - Gateway persists the per‑session toggle via `sessions.patch` (WS method) alongside `thinkingLevel`, `verboseLevel`, `model`, `sendPolicy`, and `groupActivation`.
 
-Details: [Nodes](docs/nodes) · [macOS app](docs/platforms/macos) · [Gateway protocol](docs/concepts/architecture)
+Details: [Nodes](docs/nodes) · [macOS app](docs/platforms/macos.md) · [Gateway protocol](docs/concepts/architecture.md)
 
 ## Agent to Agent (sessions\_\* tools)
 
@@ -312,7 +312,7 @@ Minimal `~/.dvallier-ai/autolab-public.json` (model + defaults):
 }
 ```
 
-[Full configuration reference (all keys + examples).](docs/gateway/configuration)
+[Full configuration reference (all keys + examples).](docs/gateway/configuration.md)
 
 ## Security model (important)
 
@@ -320,7 +320,7 @@ Minimal `~/.dvallier-ai/autolab-public.json` (model + defaults):
 - **Group/channel safety:** set `agents.defaults.sandbox.mode: "non-main"` to run **non‑main sessions** (groups/channels) inside per‑session Docker sandboxes; bash then runs in Docker for those sessions.
 - **Sandbox defaults:** allowlist `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; denylist `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.
 
-Details: [Security guide](docs/gateway/security) · [Docker + sandboxing](docs/install/docker) · [Sandbox config](docs/gateway/configuration)
+Details: [Security guide](docs/security/README.md) · [Docker + sandboxing](docs/install/docker) · [Sandbox config](docs/gateway/configuration.md)
 
 ### [WhatsApp](docs/channels/whatsapp)
 
@@ -402,43 +402,43 @@ Browser control (optional):
 Use these when you’re past the onboarding flow and want the deeper reference.
 
 - [Start with the docs index for navigation and “what’s where.”](docs/index.md)
-- [Read the architecture overview for the gateway + protocol model.](docs/concepts/architecture)
-- [Use the full configuration reference when you need every key and example.](docs/gateway/configuration)
-- [Run the Gateway by the book with the operational runbook.](docs/gateway)
-- [Learn how the Control UI/Web surfaces work and how to expose them safely.](docs/web)
-- [Understand remote access over SSH tunnels or tailnets.](docs/gateway/remote)
-- [Follow the onboarding wizard flow for a guided setup.](docs/start/wizard)
-- [Wire external triggers via the webhook surface.](docs/automation/webhook)
-- [Set up Gmail Pub/Sub triggers.](docs/automation/gmail-pubsub)
+- [Read the architecture overview for the gateway + protocol model.](docs/concepts/architecture.md)
+- [Use the full configuration reference when you need every key and example.](docs/gateway/configuration.md)
+- [Run the Gateway by the book with the operational runbook.](docs/cli/gateway.md)
+- [Learn how the Control UI/Web surfaces work and how to expose them safely.](docs/web/index.md)
+- [Understand remote access over SSH tunnels or tailnets.](docs/gateway/remote.md)
+- [Follow the onboarding wizard flow for a guided setup.](docs/start/wizard.md)
+- [Wire external triggers via the webhook surface.](docs/automation/webhook.md)
+- [Set up Gmail Pub/Sub triggers.](docs/automation/gmail-pubsub.md)
 - [Learn the macOS menu bar companion details.](docs/platforms/mac/menu-bar.md)
-- [Platform guides: Windows (WSL2)](docs/platforms/windows.md), [Linux](docs/platforms/linux.md), [macOS](docs/platforms/macos), [iOS](docs/platforms/ios.md), [Android](docs/platforms/android.md)
-- [Debug common failures with the troubleshooting guide.](docs/channels/troubleshooting)
-- [Review security guidance before exposing anything.](docs/gateway/security)
+- [Platform guides: Windows (WSL2)](docs/platforms/windows.md), [Linux](docs/platforms/linux.md), [macOS](docs/platforms/macos.md), [iOS](docs/platforms/ios.md), [Android](docs/platforms/android.md)
+- [Debug common failures with the troubleshooting guide.](docs/channels/troubleshooting.md)
+- [Review security guidance before exposing anything.](docs/security/README.md)
 
 ## Advanced docs (discovery + control)
 
-- [Discovery + transports](docs/gateway/discovery)
-- [Bonjour/mDNS](docs/gateway/bonjour)
-- [Gateway pairing](docs/gateway/pairing)
-- [Remote gateway README](docs/gateway/remote-gateway-readme)
-- [Control UI](docs/web/control-ui)
-- [Dashboard](docs/web/dashboard)
+- [Discovery + transports](docs/gateway/discovery.md)
+- [Bonjour/mDNS](docs/gateway/bonjour.md)
+- [Gateway pairing](docs/gateway/pairing.md)
+- [Remote gateway README](docs/gateway/remote-gateway-readme.md)
+- [Control UI](docs/web/control-ui.md)
+- [Dashboard](docs/web/dashboard.md)
 
 ## Operations & troubleshooting
 
-- [Health checks](docs/gateway/health)
-- [Gateway lock](docs/gateway/gateway-lock)
-- [Background process](docs/gateway/background-process)
-- [Browser troubleshooting (Linux)](docs/tools/browser-linux-troubleshooting)
-- [Logging](docs/logging)
+- [Health checks](docs/gateway/health.md)
+- [Gateway lock](docs/gateway/gateway-lock.md)
+- [Background process](docs/gateway/background-process.md)
+- [Browser troubleshooting (Linux)](docs/tools/browser-linux-troubleshooting.md)
+- [Logging](docs/logging.md)
 
 ## Deep dives
 
-- [Agent loop](docs/concepts/agent-loop)
-- [Presence](docs/concepts/presence)
-- [TypeBox schemas](docs/concepts/typebox)
-- [RPC adapters](docs/reference/rpc)
-- [Queue](docs/concepts/queue)
+- [Agent loop](docs/concepts/agent-loop.md)
+- [Presence](docs/concepts/presence.md)
+- [TypeBox schemas](docs/concepts/typebox.md)
+- [RPC adapters](docs/reference/rpc.md)
+- [Queue](docs/concepts/queue.md)
 
 ## Workspace & skills
 
