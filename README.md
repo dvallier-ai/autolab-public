@@ -1,10 +1,7 @@
 # 🦞 AutoLab — Personal AI Assistant
 
 <p align="center">
-    <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-logo-text-dark.png">
-        <img src="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-logo-text.png" alt="AutoLab" width="500">
-    </picture>
+    <img src="https://raw.githubusercontent.com/dvallier-ai/autolab-public/main/docs/assets/autolab-banner.png" alt="AutoLab" width="800">
 </p>
 
 <p align="center">
